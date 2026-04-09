@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viva Eventos — Painel de Pendências</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f7f8fa;color:#1a202c;min-height:100vh}
+.topbar{background:#1a202c;color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100}
+.topbar-title{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.topbar-sub{font-size:11px;color:#a0aec0;margin-top:1px}
+.topbar-right{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.legend{display:flex;gap:10px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:#a0aec0}
+.leg-dot{width:7px;height:7px;border-radius:50%}
+.refresh-btn{background:rgba(255,255,255,.1);border:none;color:#fff;font-size:11px;padding:5px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.refresh-btn:hover{background:rgba(255,255,255,.2)}
+.container{max-width:1100px;margin:0 auto;padding:20px 16px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}}
+.metric{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #e2e8f0}
+.metric-label{font-size:11px;color:#718096;margin-bottom:4px}
+.metric-val{font-size:26px;font-weight:600}
+.metric-val.red{color:#c53030}
+.metric-val.amber{color:#b7791f}
+.metric-val.green{color:#276749}
+.metric-val.blue{color:#2b6cb0}
+.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.filters input,.filters select{border:1px solid #e2e8f0;border-radius:8px;padding:7px 12px;font-size:13px;background:#fff;outline:none;height:36px}
+.filters input{flex:1;min-width:180px}
+.filters input:focus,.filters select:focus{border-color:#4a90d9}
+.section-label{font-size:11px;font-weight:600;color:#718096;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;padding-left:2px}
+.section-label:first-child{margin-top:0}
+.card{background:#fff;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:8px;overflow:hidden;transition:border-color .15s}
+.card:hover{border-color:#cbd5e0}
+.card.urgente{border-left:3px solid #e53e3e}
+.card-header{padding:12px 16px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;user-select:none}
+.card-num{font-size:11px;color:#a0aec0;min-width:20px;padding-top:2px}
+.card-left{flex:1;min-width:0}
+.card-title{font-size:13px;font-weight:600;color:#1a202c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.card-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.card-meta span{font-size:11px;color:#718096}
+.chip{display:inline-block;font-size:10px;padding:2px 7px;border-radius:5px;background:#f7f8fa;color:#4a5568;border:1px solid #e2e8f0;white-space:nowrap}
+.cidade-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px;vertical-align:middle}
+.card-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.badge{display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.badge-ok{background:#c6f6d5;color:#22543d}
+.badge-pend{background:#fed7d7;color:#742a2a}
+.badge-warn{background:#fefcbf;color:#744210}
+.badge-past{background:#e2e8f0;color:#4a5568}
+.badge-na{background:#f7f8fa;color:#a0aec0}
+.prog-wrap{width:80px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden}
+.prog-bar{height:100%;border-radius:2px;transition:width .3s}
+.days-tag{font-size:10px}
+.days-urgent{color:#c53030;font-weight:600}
+.days-warn{color:#b7791f}
+.days-ok{color:#a0aec0}
+.chevron{width:22px;height:22px;border-radius:50%;background:#f7f8fa;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#718096;flex-shrink:0;margin-top:2px;transition:transform .2s}
+.chevron.open{transform:rotate(180deg)}
+.card-body{border-top:1px solid #f0f0f0;padding:12px 16px;display:none;background:#fafbfc}
+.card-body.open{display:block}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px}
+.svc-item{display:flex;align-items:center;gap:6px;padding:6px 9px;border-radius:7px;background:#fff;border:1px solid #e2e8f0}
+.svc-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-ok{background:#48bb78}
+.dot-pend{background:#fc8181}
+.dot-warn{background:#f6ad55}
+.svc-name{font-size:11px;color:#718096;flex-shrink:0;white-space:nowrap}
+.svc-sep{font-size:11px;color:#cbd5e0;margin:0 2px}
+.svc-forn{font-size:11px;font-weight:500;color:#2d3748;flex:1;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.svc-sit{font-size:10px;margin-left:4px;padding:1px 5px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.sit-ok{background:#c6f6d5;color:#22543d}
+.sit-warn{background:#fefcbf;color:#744210}
+.sit-pend{background:#fed7d7;color:#742a2a}
+.card-footer{margin-top:10px;padding-top:8px;border-top:1px solid #f0f0f0;font-size:11px;color:#a0aec0;display:flex;gap:12px}
+.empty{text-align:center;padding:60px 20px;color:#a0aec0;font-size:14px}
+.loading{text-align:center;padding:60px 20px;color:#a0aec0;font-size:14px}
+.error-box{background:#fff5f5;border:1px solid #feb2b2;border-radius:10px;padding:16px 20px;margin-bottom:16px;font-size:13px;color:#c53030}
+.last-update{font-size:11px;color:#a0aec0;text-align:right;margin-bottom:12px}
+@media(max-width:600px){
+  .card-title{font-size:12px}
+  .svc-grid{grid-template-columns:1fr}
+  .topbar{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Viva Eventos — Painel de Pendências</div>
+    <div class="topbar-sub" id="last-update">Carregando...</div>
+  </div>
+  <div class="topbar-right">
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#48bb78"></div>Contratado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#f6ad55"></div>Pago entrada</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#fc8181"></div>Pendente</div>
+    </div>
+    <button class="refresh-btn" onclick="carregarDados()">↻ Atualizar</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="metrics" id="metrics">
+    <div class="metric"><div class="metric-label">Eventos futuros</div><div class="metric-val blue" id="m-total">—</div></div>
+    <div class="metric"><div class="metric-label">Com pendências</div><div class="metric-val red" id="m-pend">—</div></div>
+    <div class="metric"><div class="metric-label">Urgentes ≤7 dias</div><div class="metric-val amber" id="m-urg">—</div></div>
+    <div class="metric"><div class="metric-label">Tudo contratado</div><div class="metric-val green" id="m-ok">—</div></div>
+  </div>
+
+  <div class="filters">
+    <input type="text" id="busca" placeholder="Buscar cliente, fornecedor ou serviço...">
+    <select id="f-cidade">
+      <option value="">Todas as cidades</option>
+      <option>GV</option><option>TO</option><option>TF</option><option>IPA</option><option>ITA</option>
+    </select>
+    <select id="f-status">
+      <option value="">Todos os status</option>
+      <option value="pend">Com pendências</option>
+      <option value="ok">Tudo OK</option>
+      <option value="urg">Urgentes (≤7 dias)</option>
+      <option value="passado">Passados</option>
+    </select>
+    <select id="f-tipo"><option value="">Todos os tipos</option></select>
+  </div>
+
+  <div id="last-update-bar" class="last-update"></div>
+  <div id="lista"><div class="loading">Carregando eventos...</div></div>
+</div>
+
+<script>
+// ─── CONFIGURAÇÃO ───────────────────────────────────────────
+// Troque pela URL do webhook do seu n8n após configurar
+const WEBHOOK_URL = 'http://localhost:5678/webhook-test/viva-eventos';
+
+// Cores por cidade
+const CIDADE_COR = {GV:'#378ADD',TO:'#1D9E75',TF:'#D85A30',IPA:'#7F77DD',ITA:'#D4537E'};
+
+// Situações OK e pendentes
+const SIT_OK   = new Set(['Contratado','Pago Entrada','Comissão']);
+const SIT_PEND = new Set(['Não Iniciado','Negociação','Contato Feito','Aguardando Contrato','Comercial']);
+
+let TODOS_EVENTOS = [];
+let tiposCarregados = false;
+
+// ─── CARREGAR DADOS ─────────────────────────────────────────
+async function carregarDados() {
+  document.getElementById('lista').innerHTML = '<div class="loading">Carregando eventos...</div>';
+  try {
+    const res = await fetch(WEBHOOK_URL);
+    if (!res.ok) throw new Error('Erro HTTP ' + res.status);
+    const dados = await res.json();
+    TODOS_EVENTOS = dados;
+    const agora = new Date().toLocaleString('pt-BR');
+    document.getElementById('last-update').textContent = 'Atualizado: ' + agora;
+    document.getElementById('last-update-bar').textContent = 'Última atualização: ' + agora;
+    if (!tiposCarregados) popularTipos();
+    renderizar();
+  } catch(e) {
+    document.getElementById('lista').innerHTML = `
+      <div class="error-box">
+        Não foi possível carregar os dados.<br>
+        Verifique se o n8n está rodando e o webhook está ativo.<br>
+        <small style="opacity:.7">${e.message}</small>
+      </div>`;
+  }
+}
+
+// ─── POPULAR FILTRO DE TIPOS ────────────────────────────────
+function popularTipos() {
+  const tipos = [...new Set(TODOS_EVENTOS.map(e => e.tipo))].sort();
+  const sel = document.getElementById('f-tipo');
+  tipos.forEach(t => {
+    const o = document.createElement('option');
+    o.value = t; o.textContent = t;
+    sel.appendChild(o);
+  });
+  tiposCarregados = true;
+}
+
+// ─── RENDERIZAR ─────────────────────────────────────────────
+function renderizar() {
+  const busca  = (document.getElementById('busca').value || '').toLowerCase();
+  const cidade = document.getElementById('f-cidade').value;
+  const status = document.getElementById('f-status').value;
+  const tipo   = document.getElementById('f-tipo').value;
+
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+
+  // Métricas
+  const futuros  = TODOS_EVENTOS.filter(e => !e.passado);
+  const comPend  = futuros.filter(e => e.n_pend > 0);
+  const urgentes = futuros.filter(e => e.days_to <= 7 && e.n_pend > 0);
+  document.getElementById('m-total').textContent = futuros.length;
+  document.getElementById('m-pend').textContent  = comPend.length;
+  document.getElementById('m-urg').textContent   = urgentes.length;
+  document.getElementById('m-ok').textContent    = futuros.length - comPend.length;
+
+  // Filtrar
+  let filtrados = TODOS_EVENTOS.filter(e => {
+    if (cidade && e.cidade !== cidade) return false;
+    if (tipo   && e.tipo !== tipo)     return false;
+    if (status === 'pend'    && (e.passado || e.n_pend === 0))  return false;
+    if (status === 'ok'      && (e.passado || e.n_pend > 0))    return false;
+    if (status === 'urg'     && !(e.days_to <= 7 && !e.passado && e.n_pend > 0)) return false;
+    if (status === 'passado' && !e.passado) return false;
+    if (busca) {
+      const haystack = [e.fundo, e.tipo, e.cidade,
+        ...Object.values(e.servicos).map(s => s.fornecedor)].join(' ').toLowerCase();
+      if (!haystack.includes(busca)) return false;
+    }
+    return true;
+  });
+
+  if (!filtrados.length) {
+    document.getElementById('lista').innerHTML = '<div class="empty">Nenhum evento encontrado com esses filtros.</div>';
+    return;
+  }
+
+  // Agrupar
+  const urgF  = filtrados.filter(e => !e.passado && e.days_to <= 14 && e.n_pend > 0);
+  const proxF = filtrados.filter(e => !e.passado && !(e.days_to <= 14 && e.n_pend > 0));
+  const pastF = filtrados.filter(e => e.passado);
+
+  let html = '';
+  let uid = 0;
+  if (urgF.length) {
+    html += '<div class="section-label">⚠ Atenção — próximos 14 dias com pendências</div>';
+    urgF.forEach(e  => { html += buildCard(e, uid++, true); });
+  }
+  if (proxF.length) {
+    html += `<div class="section-label">${urgF.length ? 'Demais eventos futuros' : 'Próximos eventos'}</div>`;
+    proxF.forEach(e => { html += buildCard(e, uid++, false); });
+  }
+  if (pastF.length) {
+    html += '<div class="section-label">Passados</div>';
+    pastF.forEach(e => { html += buildCard(e, uid++, false); });
+  }
+
+  document.getElementById('lista').innerHTML = html;
+}
+
+// ─── BUILD CARD ─────────────────────────────────────────────
+function buildCard(e, uid, urgente) {
+  const total = e.n_ok + e.n_pend;
+  const pct   = total ? Math.round(e.n_ok / total * 100) : 100;
+  const cor   = CIDADE_COR[e.cidade] || '#888';
+  const svcs  = Object.entries(e.servicos || {});
+
+  const progCor = e.n_pend === 0 ? '#48bb78' : e.n_pend <= 3 ? '#f6ad55' : '#fc8181';
+
+  let daysHtml = '';
+  if (e.passado) {
+    daysHtml = `<span class="days-tag days-ok">${Math.abs(e.days_to)}d atrás</span>`;
+  } else if (e.days_to <= 0) {
+    daysHtml = `<span class="days-tag days-urgent">Hoje!</span>`;
+  } else if (e.days_to <= 7) {
+    daysHtml = `<span class="days-tag days-urgent">em ${e.days_to}d</span>`;
+  } else if (e.days_to <= 30) {
+    daysHtml = `<span class="days-tag days-warn">em ${e.days_to}d</span>`;
+  } else {
+    daysHtml = `<span class="days-tag days-ok">em ${e.days_to}d</span>`;
+  }
+
+  let badgeHtml = '';
+  if (e.passado)       badgeHtml = '<span class="badge badge-past">Passado</span>';
+  else if (!e.n_pend && !e.n_ok) badgeHtml = '<span class="badge badge-na">Sem serviços</span>';
+  else if (!e.n_pend)  badgeHtml = '<span class="badge badge-ok">Tudo OK</span>';
+  else if (e.n_pend <= 3) badgeHtml = `<span class="badge badge-warn">${e.n_pend} pendente${e.n_pend > 1 ? 's' : ''}</span>`;
+  else badgeHtml = `<span class="badge badge-pend">${e.n_pend} pendentes</span>`;
+
+  const svcsHtml = svcs.map(([nome, sv]) => {
+    const dotCls = sv.status === 'ok' ? 'dot-ok' : sv.status === 'warn' ? 'dot-warn' : 'dot-pend';
+    const sitCls = sv.status === 'ok' ? 'sit-ok' : sv.status === 'warn' ? 'sit-warn' : 'sit-pend';
+    return `
+      <div class="svc-item">
+        <div class="svc-dot ${dotCls}"></div>
+        <div class="svc-name">${nome}</div>
+        <div class="svc-forn" title="${sv.fornecedor}">${sv.fornecedor || '—'}</div>
+        <span class="svc-sit ${sitCls}">${sv.situacao}</span>
+      </div>`;
+  }).join('');
+
+  return `
+<div class="card${urgente ? ' urgente' : ''}">
+  <div class="card-header" onclick="tog(${uid})">
+    <div class="card-num">#${e.num}</div>
+    <div class="card-left">
+      <div class="card-title">${e.fundo}</div>
+      <div class="card-meta">
+        <span style="display:inline-flex;align-items:center">
+          <span class="cidade-dot" style="background:${cor}"></span>
+          <strong style="font-size:11px">${e.cidade}</strong>
+        </span>
+        <span class="chip">${e.tipo}</span>
+        <span>${e.data} · ${e.dia}</span>
+        <span>${e.horario}</span>
+        ${daysHtml}
+      </div>
+    </div>
+    <div class="card-right">
+      ${badgeHtml}
+      ${total ? `
+        <div style="display:flex;align-items:center;gap:5px">
+          <span style="font-size:10px;color:#a0aec0">${e.n_ok}/${total}</span>
+          <div class="prog-wrap"><div class="prog-bar" style="width:${pct}%;background:${progCor}"></div></div>
+        </div>` : ''}
+      <div class="chevron" id="chev-${uid}">▼</div>
+    </div>
+  </div>
+  <div class="card-body" id="body-${uid}">
+    ${svcs.length ? `<div class="svc-grid">${svcsHtml}</div>` : '<div style="font-size:12px;color:#a0aec0">Nenhum serviço registrado.</div>'}
+    <div class="card-footer">
+      <span>Empresa: <strong>${e.empresa}</strong></span>
+      ${e.local ? `<span>Local: <strong>${e.local}</strong></span>` : ''}
+    </div>
+  </div>
+</div>`;
+}
+
+// ─── TOGGLE CARD ────────────────────────────────────────────
+function tog(uid) {
+  const body = document.getElementById('body-' + uid);
+  const chev = document.getElementById('chev-' + uid);
+  if (!body || !chev) return;
+  const aberto = body.classList.contains('open');
+  body.classList.toggle('open', !aberto);
+  chev.classList.toggle('open', !aberto);
+}
+
+// ─── FILTROS ────────────────────────────────────────────────
+['busca','f-cidade','f-status','f-tipo'].forEach(id => {
+  document.getElementById(id).addEventListener('input',  renderizar);
+  document.getElementById(id).addEventListener('change', renderizar);
+});
+
+// ─── INICIAR ────────────────────────────────────────────────
+carregarDados();
+</script>
+</body>
+</html>
