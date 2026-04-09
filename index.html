@@ -128,7 +128,7 @@ details summary::-webkit-details-marker{display:none}
   <div id="lista"><div class="loading">Carregando eventos...</div></div>
 </div>
 <script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKdhl3mIj94_yAAdejvjLSf_LBNR-2ZbGI6DXIOXC3ut7bzRsJqQNcDsTgzQ2-JsSUaA/exec';
+const GVIZ_URL = 'https://docs.google.com/spreadsheets/d/1Xvq2FP-3Ejk2NT3VV33VoH8KxErTXQqVoXXjn-KPQSM/gviz/tq?tqx=out:json&sheet=Contrata%C3%A7%C3%A3o_Fornecedores';
 const CCOR = {GV:'#378ADD',TO:'#1D9E75',TF:'#D85A30',IPA:'#7F77DD',ITA:'#D4537E'};
 const TODOS_GRUPOS = ['Local','Gerador','Climatizador','Vigia','Buffet','Extra Buffet',
   'Sobremesa','Bebidas','Gelo','Bar de Drinks','Decoração','Estruturas',
@@ -136,22 +136,47 @@ const TODOS_GRUPOS = ['Local','Gerador','Climatizador','Vigia','Buffet','Extra B
   'Equipe Limpeza','Banheiro Químico','Aftermovie','Fotografia',
   'Caneca + Tirante','Camisa','Chinelo','Kit Robe','Óculos','Boné VIVA'];
 
+const MAPA_COLS = {
+  'Local':[11,12],'Gerador':[13,14],'Climatizador':[15,16],'Vigia':[17,18],
+  'Buffet':[19,20],'Extra Buffet':[22,23],'Sobremesa':[25,26],
+  'Bebidas':[30,31],'Gelo':[32,33],'Bar de Drinks':[34,35],
+  'Decoração':[36,37],'Estruturas':[38,39],
+  'Atração 01':[40,41],'Atração 02':[42,43],
+  'DJ Residente':[44,45],'VJ':[46,47],'MC':[48,49],
+  'Seguranças':[50,51],'Equipe Limpeza':[52,53],'Banheiro Químico':[54,55],
+  'Aftermovie':[56,57],'Fotografia':[58,59],
+  'Caneca + Tirante':[60,61],'Camisa':[62,63],'Chinelo':[64,65],
+  'Kit Robe':[66,67],'Óculos':[68,69],'Boné VIVA':[70,71]
+};
+
+const SIT_OK   = new Set(['Contratado','Pago Entrada','Comissão']);
+const SIT_PEND = new Set(['Não Iniciado','Negociação','Contato Feito','Aguardando Contrato','Comercial']);
+const EXCL_TIPOS = new Set(['Particular','Não agendar','ExpoAgro GV','Carnaval']);
+const EXCL_KW  = ['Flávio: Fora','Janine: Viagem','ExpoAgro','Carnaval','Não agendar'];
+const DIAS     = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+
 let EVENTOS = [], tiposOk = false;
 
 async function carregar() {
-  document.getElementById('lista').innerHTML = '<div class="loading">Carregando eventos...</div>';
-  document.getElementById('topbar-sub').textContent = 'Carregando...';
+  document.getElementById('lista').innerHTML = '<div class="loading">Carregando eventos diretos da planilha...</div>';
+  document.getElementById('topbar-sub').textContent = 'Conectando ao Google Sheets...';
   try {
-    const res = await fetch(APPS_SCRIPT_URL);
-    EVENTOS = await res.json();
-    console.log("📥 Dados carregados:", EVENTOS);
+    const res = await fetch(GVIZ_URL);
+    const rawText = await res.text();
     
-    if (!Array.isArray(EVENTOS)) {
-      throw new Error('A API não retornou uma lista válida (Array).');
+    // O Google Sheets retorna com formato especial, precisamos limpar
+    const jsonStr = rawText.replace(/^[\s\S]*?google\.visualization\.Query\.setResponse\(/, '').replace(/\);?\s*$/, '');
+    const dataObj = JSON.parse(jsonStr);
+    
+    if (dataObj.status === 'error') {
+      throw new Error(dataObj.errors[0].message);
     }
     
+    EVENTOS = extrairDadosPlanilha(dataObj.table);
+    console.log("📥 Dados carregados via Sheets Direto:", EVENTOS);
+    
     if (EVENTOS.length === 0) {
-      console.warn("⚠️ A API retornou uma lista vazia ([]). Verifique o Google Apps Script e a Planilha.");
+      console.warn("⚠️ A Planilha não retornou nenhum evento válido. Verifique filtros e abas.");
     }
     
     document.getElementById('topbar-sub').textContent = 'Atualizado: ' + new Date().toLocaleString('pt-BR');
@@ -159,9 +184,64 @@ async function carregar() {
     renderizar();
   } catch(e) {
     console.error("❌ Erro em carregar():", e);
-    document.getElementById('topbar-sub').textContent = 'Erro ao carregar';
-    document.getElementById('lista').innerHTML = '<div class="error-box"><strong>Não foi possível carregar os dados.</strong><br><br>Verifique se o Apps Script está implantado com acesso <strong>"Qualquer pessoa"</strong>.<br><br><small>Erro: ' + e.message + '</small></div>';
+    document.getElementById('topbar-sub').textContent = 'Erro ao carregar do Sheets';
+    document.getElementById('lista').innerHTML = '<div class="error-box"><strong>Não foi possível ler os dados direto da planilha.</strong><br><br>Verifique se o link está público.<br><br><small>Erro: ' + e.message + '</small></div>';
   }
+}
+
+function extrairDadosPlanilha(table) {
+  const rows = table.rows || [];
+  const hojeDate = new Date(); 
+  hojeDate.setHours(0,0,0,0);
+  const ev = [];
+  
+  function v(row, i) {
+    if (!row.c || !row.c[i] || row.c[i].v == null) return '';
+    return String(row.c[i].v).trim();
+  }
+  
+  function pd(row, i) {
+    if (!row.c || !row.c[i] || !row.c[i].v) return null;
+    const val = String(row.c[i].v);
+    const m = val.match(/Date\((\d+),(\d+),(\d+)\)/);
+    if (m) return new Date(+m[1], +m[2], +m[3]);
+    const d = new Date(val); 
+    return isNaN(d) ? null : d;
+  }
+  
+  for (const row of rows) {
+    const num = v(row, 1); 
+    if (!num || isNaN(+num)) continue;
+    
+    const fundo = v(row, 4), tipo = v(row, 9), data = pd(row, 5);
+    if (!data || EXCL_TIPOS.has(tipo) || EXCL_KW.some(k => fundo.includes(k))) continue;
+    
+    const dataEvt = new Date(data.getFullYear(), data.getMonth(), data.getDate());
+    const dt = Math.round((dataEvt - hojeDate) / 864e5);
+    
+    const svcs = {};
+    let ok = 0, pend = 0;
+    
+    for (const [g, [cf, cs]] of Object.entries(MAPA_COLS)) {
+      const fv = v(row, cf), sv = v(row, cs);
+      if (!sv || sv === 'Não Há') continue;
+      
+      let st;
+      if (SIT_OK.has(sv)) { st = sv === 'Pago Entrada' ? 'warn' : 'ok'; ok++; }
+      else if (SIT_PEND.has(sv)) { st = 'pend'; pend++; }
+      else { st = 'na'; }
+      
+      svcs[g] = { fornecedor: fv, situacao: sv, status: st };
+    }
+    
+    ev.push({
+      num: +num, cidade: v(row, 2), empresa: v(row, 3), fundo: fundo,
+      data: data.toLocaleDateString('pt-BR'), dia: DIAS[data.getDay()],
+      tipo: tipo, horario: v(row, 10), local: v(row, 7),
+      servicos: svcs, n_ok: ok, n_pend: pend, days_to: dt, passado: dt < 0
+    });
+  }
+  return ev.sort((a,b) => a.days_to - b.days_to);
 }
 
 function popularTipos() {
