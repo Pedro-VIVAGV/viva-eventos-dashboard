@@ -58,8 +58,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .kb-col-body{padding:6px;display:flex;flex-direction:column;gap:5px;min-height:36px}
 .kb-contratado .kb-col-header{background:#DBEAFE;color:#1e40af}
 .kb-contratado .kb-col-body{background:#EFF6FF}
-.kb-pagoentrada .kb-col-header{background:#DBEAFE;color:#1e40af}
-.kb-pagoentrada .kb-col-body{background:#EFF6FF}
+.kb-pagoentrada .kb-col-header{background:#DCFCE7;color:#166534}
+.kb-pagoentrada .kb-col-body{background:#F0FDF4}
 .kb-contato .kb-col-header{background:#FEF9C3;color:#854d0e}
 .kb-contato .kb-col-body{background:#FEFCE8}
 .kb-pendente .kb-col-header{background:#FEE2E2;color:#991b1b}
@@ -72,7 +72,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .kb-card-forn{font-weight:600;color:#111827;font-size:12px;line-height:1.4;word-break:break-word}
 .kb-card-sit{font-size:10px;margin-top:4px;display:inline-block;padding:2px 7px;border-radius:4px;font-weight:500}
 .kb-contratado .kb-card-sit{background:#BFDBFE;color:#1e3a8a}
-.kb-pagoentrada .kb-card-sit{background:#BFDBFE;color:#1e3a8a}
+.kb-pagoentrada .kb-card-sit{background:#BBF7D0;color:#15803D}
 .kb-contato .kb-card-sit{background:#FEF08A;color:#713f12}
 .kb-pendente .kb-card-sit{background:#FECACA;color:#7f1d1d}
 .kb-naoha .kb-card-sit{background:#E5E7EB;color:#6b7280}
@@ -96,7 +96,8 @@ details summary::-webkit-details-marker{display:none}
   </div>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <div class="legend">
-      <div class="leg-item"><div class="leg-dot" style="background:#3b82f6"></div>Contratado / Pago entrada</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#22c55e"></div>Pago Entrada</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#3b82f6"></div>Contratado</div>
       <div class="leg-item"><div class="leg-dot" style="background:#eab308"></div>Contato / Aguardando</div>
       <div class="leg-item"><div class="leg-dot" style="background:#ef4444"></div>Não iniciado</div>
     </div>
@@ -353,8 +354,8 @@ function mkcard(e, uid, urg) {
 
   const kanbanH =
     '<div class="kanban">' +
-      kbcol(cols.contratado,  'kb-contratado',  'Contratado') +
       kbcol(cols.pagoentrada, 'kb-pagoentrada', 'Pago Entrada') +
+      kbcol(cols.contratado,  'kb-contratado',  'Contratado') +
       kbcol(cols.contato,     'kb-contato',     'Contato / Aguardando') +
       kbcol(cols.pendente,    'kb-pendente',     'Não Iniciado') +
     '</div>' +
