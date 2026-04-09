@@ -110,8 +110,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <script>
-const SHEET_ID  = '1Xvq2FP-3Ejk2NT3VV33VoH8KxErTXQqVoXXjn-KPQSM';
-const SHEET_TAB = 'Contatos';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKdhl3mIj94_yAAdejvjLSf_LBNR-2ZbGI6DXIOXC3ut7bzRsJqQNcDsTgzQ2-JsSUaA/exec';
 
 const GRUPOS = {
   'Local':[11,12],'Gerador':[13,14],'Climatizador':[15,16],'Vigia':[17,18],
@@ -138,12 +137,9 @@ let EVENTOS=[], tiposOk=false;
 async function carregar(){
   document.getElementById('lista').innerHTML='<div class="loading">Carregando eventos...</div>';
   document.getElementById('topbar-sub').textContent='Carregando...';
-  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_TAB)}`;
   try{
-    const res=await fetch(url);
-    const txt=await res.text();
-    const json=JSON.parse(txt.replace(/^[^{]*/,'').replace(/\);?\s*$/,''));
-    EVENTOS=parsear(json.table);
+    const res=await fetch(APPS_SCRIPT_URL);
+    EVENTOS=await res.json();
     const now=new Date().toLocaleString('pt-BR');
     document.getElementById('topbar-sub').textContent='Atualizado: '+now;
     if(!tiposOk) popularTipos();
@@ -152,8 +148,7 @@ async function carregar(){
     document.getElementById('topbar-sub').textContent='Erro ao carregar';
     document.getElementById('lista').innerHTML=`<div class="error-box">
       <strong>N\u00e3o foi poss\u00edvel carregar os dados.</strong><br><br>
-      Confirme que a planilha est\u00e1 compartilhada como <strong>"Qualquer pessoa com o link pode ver"</strong>.<br>
-      Confirme tamb\u00e9m que o nome da aba \u00e9 exatamente: <strong>${SHEET_TAB}</strong><br><br>
+      Verifique se o Apps Script est\u00e1 implantado corretamente e com acesso <strong>"Qualquer pessoa"</strong>.<br><br>
       <small>Erro: ${e.message}</small>
     </div>`;
   }
