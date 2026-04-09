@@ -136,7 +136,6 @@ const TODOS_GRUPOS = ['Local','Gerador','Climatizador','Vigia','Buffet','Extra B
   'Atração 01','Atração 02','DJ Residente','VJ','MC','Seguranças',
   'Equipe Limpeza','Banheiro Químico','Aftermovie','Fotografia',
   'Caneca + Tirante','Camisa','Chinelo','Kit Robe','Óculos','Boné VIVA'];
-
 const MAPA_COLS = {
   'Local':[11,12],'Gerador':[13,14],'Climatizador':[15,16],'Vigia':[17,18],
   'Buffet':[19,20],'Extra Buffet':[22,23],'Sobremesa':[25,26],
@@ -149,15 +148,12 @@ const MAPA_COLS = {
   'Caneca + Tirante':[60,61],'Camisa':[62,63],'Chinelo':[64,65],
   'Kit Robe':[66,67],'Óculos':[68,69],'Boné VIVA':[70,71]
 };
-
 const SIT_OK   = new Set(['Contratado','Pago Entrada','Comissão']);
 const SIT_PEND = new Set(['Não Iniciado','Negociação','Contato Feito','Aguardando Contrato','Comercial']);
 const EXCL_TIPOS = new Set(['Particular','Não agendar','ExpoAgro GV','Carnaval']);
 const EXCL_KW  = ['Flávio: Fora','Janine: Viagem','ExpoAgro','Carnaval','Não agendar'];
 const DIAS     = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-
 let EVENTOS = [], tiposOk = false;
-
 async function carregar() {
   document.getElementById('lista').innerHTML = '<div class="loading">Carregando eventos diretos da planilha...</div>';
   document.getElementById('topbar-sub').textContent = 'Conectando ao Google Sheets...';
@@ -189,7 +185,6 @@ async function carregar() {
     document.getElementById('lista').innerHTML = '<div class="error-box"><strong>Não foi possível ler os dados direto da planilha.</strong><br><br>Verifique se o link está público.<br><br><small>Erro: ' + e.message + '</small></div>';
   }
 }
-
 function extrairDadosPlanilha(table) {
   const rows = table.rows || [];
   const hojeDate = new Date(); 
@@ -244,20 +239,17 @@ function extrairDadosPlanilha(table) {
   }
   return ev.sort((a,b) => a.days_to - b.days_to);
 }
-
 function popularTipos() {
   const tipos = [...new Set(EVENTOS.map(e => e.tipo))].filter(Boolean).sort();
   const sel = document.getElementById('f-tipo');
   tipos.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
   tiposOk = true;
 }
-
 function renderizar() {
   const busca  = document.getElementById('busca').value.toLowerCase();
   const cidade = document.getElementById('f-cidade').value;
   const status = document.getElementById('f-status').value;
   const tipo   = document.getElementById('f-tipo').value;
-
   const fut = EVENTOS.filter(e => !e.passado);
   const cp  = fut.filter(e => e.n_pend > 0);
   const urg = fut.filter(e => e.days_to <= 7 && e.n_pend > 0);
@@ -265,7 +257,6 @@ function renderizar() {
   document.getElementById('m-pend').textContent = cp.length;
   document.getElementById('m-urg').textContent  = urg.length;
   document.getElementById('m-ok').textContent   = fut.length - cp.length;
-
   let f = EVENTOS.filter(e => {
     if (cidade && e.cidade !== cidade) return false;
     if (tipo   && e.tipo   !== tipo)   return false;
@@ -284,44 +275,36 @@ function renderizar() {
     }
     return true;
   });
-
   if (!f.length) { document.getElementById('lista').innerHTML = '<div class="empty">' + (EVENTOS.length === 0 ? 'O banco de eventos está vazio. A planilha ou o Apps Script não retornaram dados.' : 'Nenhum evento encontrado com esses filtros.') + '</div>'; return; }
-
   const urgF  = f.filter(e => !e.passado && e.days_to <= 14 && e.n_pend > 0);
   const proxF = f.filter(e => !e.passado && !(e.days_to <= 14 && e.n_pend > 0));
   const pastF = f.filter(e => e.passado);
-
   let html = '', uid = 0;
   if (urgF.length)  { html += '<div class="section-label">⚠ Atenção — próximos 14 dias com pendências</div>'; urgF.forEach(e  => { html += mkcard(e, uid++, true);  }); }
   if (proxF.length) { html += '<div class="section-label">' + (urgF.length ? 'Demais eventos futuros' : 'Próximos eventos') + '</div>'; proxF.forEach(e => { html += mkcard(e, uid++, false); }); }
   if (pastF.length) { html += '<div class="section-label">Passados</div>'; pastF.forEach(e => { html += mkcard(e, uid++, false); }); }
   document.getElementById('lista').innerHTML = html;
 }
-
 function mkcard(e, uid, urg) {
   const tot = e.n_ok + e.n_pend;
   const pct = tot ? Math.round(e.n_ok / tot * 100) : 100;
   const cor = CCOR[e.cidade] || '#888';
   const pc  = !e.n_pend ? '#48bb78' : e.n_pend <= 3 ? '#f6ad55' : '#fc8181';
-
   let dt = '';
   if      (e.passado)        dt = '<span class="days-ok">' + Math.abs(e.days_to) + 'd atrás</span>';
   else if (e.days_to === 0)  dt = '<span class="days-urg">Hoje!</span>';
   else if (e.days_to <= 7)   dt = '<span class="days-urg">em ' + e.days_to + 'd</span>';
   else if (e.days_to <= 30)  dt = '<span class="days-warn">em ' + e.days_to + 'd</span>';
   else                       dt = '<span class="days-ok">em ' + e.days_to + 'd</span>';
-
   let bdg = '';
   if      (e.passado)        bdg = '<span class="badge b-past">Passado</span>';
   else if (!tot)             bdg = '<span class="badge b-na">Sem serviços</span>';
   else if (!e.n_pend)        bdg = '<span class="badge b-ok">Tudo OK</span>';
   else if (e.n_pend <= 3)    bdg = '<span class="badge b-warn">' + e.n_pend + ' pendente' + (e.n_pend > 1 ? 's' : '') + '</span>';
   else                       bdg = '<span class="badge b-pend">' + e.n_pend + ' pendentes</span>';
-
   // Kanban: agrupar todos os serviços em colunas
   const svcs = e.servicos || {};
   const cols = { contratado:[], pagoentrada:[], contato:[], pendente:[], naoha:[] };
-
   TODOS_GRUPOS.forEach(function(grupo) {
     let s = svcs[grupo];
     
@@ -344,14 +327,12 @@ function mkcard(e, uid, urg) {
       cols.pendente.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
     }
   });
-
   function kbcol(items, cls, label) {
     const cards = items.map(function(it) {
       return '<div class="kb-card"><div class="kb-card-grupo">' + it.grupo + '</div><div class="kb-card-forn">' + (it.fornecedor || '—') + '</div><span class="kb-card-sit">' + it.situacao + '</span></div>';
     }).join('');
     return '<div class="kb-col ' + cls + '"><div class="kb-col-header">' + label + '<span class="kb-count">' + items.length + '</span></div><div class="kb-col-body">' + (cards || '<div class="kb-empty">vazio</div>') + '</div></div>';
   }
-
   const kanbanH =
     '<div class="kanban">' +
       kbcol(cols.pagoentrada, 'kb-pagoentrada', 'Pago Entrada') +
@@ -362,7 +343,6 @@ function mkcard(e, uid, urg) {
     '<details><summary>▸ Não Há (' + cols.naoha.length + ' serviços)</summary><div style="margin-top:6px">' +
       kbcol(cols.naoha, 'kb-naoha', 'Não Há') +
     '</div></details>';
-
   return '<div class="card' + (urg ? ' urgente' : '') + '">' +
     '<div class="card-header" onclick="tog(' + uid + ')">' +
       '<div class="card-num">#' + e.num + '</div>' +
@@ -388,7 +368,6 @@ function mkcard(e, uid, urg) {
     '</div>' +
   '</div>';
 }
-
 function tog(uid) {
   const b = document.getElementById('body-' + uid);
   const c = document.getElementById('chev-' + uid);
@@ -397,12 +376,10 @@ function tog(uid) {
   b.classList.toggle('open', !op);
   c.classList.toggle('open', !op);
 }
-
 ['busca','f-cidade','f-status','f-tipo'].forEach(function(id) {
   document.getElementById(id).addEventListener('input',  renderizar);
   document.getElementById(id).addEventListener('change', renderizar);
 });
-
 carregar();
 </script>
 </body>
