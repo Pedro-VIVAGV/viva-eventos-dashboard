@@ -144,10 +144,21 @@ async function carregar() {
   try {
     const res = await fetch(APPS_SCRIPT_URL);
     EVENTOS = await res.json();
+    console.log("📥 Dados carregados:", EVENTOS);
+    
+    if (!Array.isArray(EVENTOS)) {
+      throw new Error('A API não retornou uma lista válida (Array).');
+    }
+    
+    if (EVENTOS.length === 0) {
+      console.warn("⚠️ A API retornou uma lista vazia ([]). Verifique o Google Apps Script e a Planilha.");
+    }
+    
     document.getElementById('topbar-sub').textContent = 'Atualizado: ' + new Date().toLocaleString('pt-BR');
     if (!tiposOk) popularTipos();
     renderizar();
   } catch(e) {
+    console.error("❌ Erro em carregar():", e);
     document.getElementById('topbar-sub').textContent = 'Erro ao carregar';
     document.getElementById('lista').innerHTML = '<div class="error-box"><strong>Não foi possível carregar os dados.</strong><br><br>Verifique se o Apps Script está implantado com acesso <strong>"Qualquer pessoa"</strong>.<br><br><small>Erro: ' + e.message + '</small></div>';
   }
@@ -182,14 +193,18 @@ function renderizar() {
     if (status === 'urg'  && !(e.days_to <= 7 && !e.passado && e.n_pend > 0)) return false;
     if (status === 'past' && !e.passado)                          return false;
     if (busca) {
-      const hay = [e.fundo, e.tipo, e.cidade,
-        ...Object.values(e.servicos || {}).map(s => s.fornecedor)].join(' ').toLowerCase();
+      const servicosValores = Object.values(e.servicos || {});
+      const nomesForn = servicosValores.map(s => {
+        if (typeof s === 'object' && s !== null) return s.fornecedor || '';
+        return String(s || '');
+      });
+      const hay = [e.fundo || '', e.tipo || '', e.cidade || '', ...nomesForn].join(' ').toLowerCase();
       if (!hay.includes(busca)) return false;
     }
     return true;
   });
 
-  if (!f.length) { document.getElementById('lista').innerHTML = '<div class="empty">Nenhum evento encontrado com esses filtros.</div>'; return; }
+  if (!f.length) { document.getElementById('lista').innerHTML = '<div class="empty">' + (EVENTOS.length === 0 ? 'O banco de eventos está vazio. A planilha ou o Apps Script não retornaram dados.' : 'Nenhum evento encontrado com esses filtros.') + '</div>'; return; }
 
   const urgF  = f.filter(e => !e.passado && e.days_to <= 14 && e.n_pend > 0);
   const proxF = f.filter(e => !e.passado && !(e.days_to <= 14 && e.n_pend > 0));
@@ -227,8 +242,14 @@ function mkcard(e, uid, urg) {
   const cols = { contratado:[], pagoentrada:[], contato:[], pendente:[], naoha:[] };
 
   TODOS_GRUPOS.forEach(function(grupo) {
-    const s = svcs[grupo];
-    if (!s) {
+    let s = svcs[grupo];
+    
+    // Tratamento de segurança caso o formato venha fora do esperado
+    if (typeof s === 'string') {
+       s = { fornecedor: '—', situacao: s };
+    }
+    
+    if (!s || !s.situacao) {
       cols.naoha.push({ grupo: grupo, fornecedor: '—', situacao: 'Não Há' });
     } else if (s.situacao === 'Contratado' || s.situacao === 'Comissão') {
       cols.contratado.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
@@ -236,6 +257,8 @@ function mkcard(e, uid, urg) {
       cols.pagoentrada.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
     } else if (s.situacao === 'Contato Feito' || s.situacao === 'Aguardando Contrato' || s.situacao === 'Negociação' || s.situacao === 'Comercial') {
       cols.contato.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
+    } else if (s.situacao === 'Não Há') {
+      cols.naoha.push({ grupo: grupo, fornecedor: s.fornecedor || '—', situacao: 'Não Há' });
     } else {
       cols.pendente.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
     }
