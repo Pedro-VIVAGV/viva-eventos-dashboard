@@ -15,9 +15,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .leg-dot{width:7px;height:7px;border-radius:50%}
 .refresh-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:11px;padding:5px 12px;border-radius:6px;cursor:pointer}
 .refresh-btn:hover{background:rgba(255,255,255,.2)}
-.container{max-width:1100px;margin:0 auto;padding:20px 16px}
+.container{max-width:1200px;margin:0 auto;padding:20px 16px}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
-@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}.svc-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}}
 .metric{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #e2e8f0}
 .metric-label{font-size:11px;color:#718096;margin-bottom:4px}
 .metric-val{font-size:26px;font-weight:600}
@@ -50,32 +50,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .chevron.open{transform:rotate(180deg)}
 .card-body{border-top:1px solid #f0f0f0;padding:12px 16px;display:none;background:#fafbfc}
 .card-body.open{display:block}
-.kanban{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:4px}
-@media(max-width:700px){.kanban{grid-template-columns:repeat(2,1fr)}}
-.kb-col{border-radius:8px;overflow:hidden}
-.kb-col-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;display:flex;align-items:center;gap:5px}
-.kb-col-body{padding:6px 6px 8px;display:flex;flex-direction:column;gap:5px;min-height:40px}
-.kb-contratado .kb-col-header{background:#EBF8FF;color:#1a5276}
-.kb-pagoentrada .kb-col-header{background:#EBF8FF;color:#1a5276}
-.kb-contato .kb-col-header{background:#FFFDE7;color:#7d6608}
-.kb-pendente .kb-col-header{background:#FFEBEE;color:#7b241c}
-.kb-naoha .kb-col-header{background:#F5F5F5;color:#757575}
-.kb-contratado .kb-col-body{background:#F0F9FF}
-.kb-pagoentrada .kb-col-body{background:#F0F9FF}
-.kb-contato .kb-col-body{background:#FFFDF0}
+.kanban{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:8px}
+@media(max-width:800px){.kanban{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.kanban{grid-template-columns:1fr}}
+.kb-col{border-radius:8px;overflow:hidden;border:1px solid #e2e8f0}
+.kb-col-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:7px 10px;display:flex;align-items:center;justify-content:space-between}
+.kb-col-body{padding:6px;display:flex;flex-direction:column;gap:5px;min-height:36px}
+.kb-contratado .kb-col-header{background:#DBEAFE;color:#1e40af}
+.kb-contratado .kb-col-body{background:#EFF6FF}
+.kb-pagoentrada .kb-col-header{background:#DBEAFE;color:#1e40af}
+.kb-pagoentrada .kb-col-body{background:#EFF6FF}
+.kb-contato .kb-col-header{background:#FEF9C3;color:#854d0e}
+.kb-contato .kb-col-body{background:#FEFCE8}
+.kb-pendente .kb-col-header{background:#FEE2E2;color:#991b1b}
 .kb-pendente .kb-col-body{background:#FFF5F5}
+.kb-naoha .kb-col-header{background:#F3F4F6;color:#6b7280}
 .kb-naoha .kb-col-body{background:#FAFAFA}
-.kb-card{background:#fff;border-radius:6px;padding:7px 9px;font-size:12px;border:1px solid #e2e8f0}
-.kb-card-grupo{font-size:10px;color:#a0aec0;margin-bottom:2px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
-.kb-card-forn{font-weight:600;color:#1a202c;line-height:1.3;word-break:break-word}
-.kb-card-sit{font-size:10px;margin-top:3px;display:inline-block;padding:1px 6px;border-radius:4px;font-weight:500}
-.kb-contratado .kb-card-sit{background:#BBDEFB;color:#0d47a1}
-.kb-pagoentrada .kb-card-sit{background:#BBDEFB;color:#0d47a1}
-.kb-contato .kb-card-sit{background:#FFF9C4;color:#795548}
-.kb-pendente .kb-card-sit{background:#FFCDD2;color:#b71c1c}
-.kb-naoha .kb-card-sit{background:#EEEEEE;color:#9E9E9E}
-.kb-empty{font-size:11px;color:#cbd5e0;text-align:center;padding:8px 0;font-style:italic}
-.kb-count{background:rgba(0,0,0,.08);border-radius:10px;font-size:10px;padding:1px 6px;font-weight:700}
+.kb-count{background:rgba(0,0,0,.1);border-radius:10px;font-size:10px;padding:1px 7px}
+.kb-card{background:#fff;border-radius:6px;padding:7px 9px;border:1px solid #e2e8f0}
+.kb-card-grupo{font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kb-card-forn{font-weight:600;color:#111827;font-size:12px;line-height:1.4;word-break:break-word}
+.kb-card-sit{font-size:10px;margin-top:4px;display:inline-block;padding:2px 7px;border-radius:4px;font-weight:500}
+.kb-contratado .kb-card-sit{background:#BFDBFE;color:#1e3a8a}
+.kb-pagoentrada .kb-card-sit{background:#BFDBFE;color:#1e3a8a}
+.kb-contato .kb-card-sit{background:#FEF08A;color:#713f12}
+.kb-pendente .kb-card-sit{background:#FECACA;color:#7f1d1d}
+.kb-naoha .kb-card-sit{background:#E5E7EB;color:#6b7280}
+.kb-empty{font-size:11px;color:#d1d5db;text-align:center;padding:10px 0;font-style:italic}
 .card-footer{margin-top:10px;padding-top:8px;border-top:1px solid #f0f0f0;font-size:11px;color:#a0aec0;display:flex;gap:12px}
 .empty{text-align:center;padding:60px 20px;color:#a0aec0;font-size:14px}
 .loading{text-align:center;padding:60px 20px;color:#a0aec0;font-size:14px}
@@ -83,10 +84,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .days-urg{color:#c53030;font-weight:600;font-size:11px}
 .days-warn{color:#b7791f;font-size:11px}
 .days-ok{color:#a0aec0;font-size:11px}
+details summary{font-size:11px;color:#9ca3af;cursor:pointer;user-select:none;padding:4px 0;list-style:none}
+details summary::-webkit-details-marker{display:none}
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <div>
     <div class="topbar-title">Viva Eventos — Painel de Pendências</div>
@@ -94,14 +96,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
     <div class="legend">
-      <div class="leg-item"><div class="leg-dot" style="background:#48bb78"></div>Contratado</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#f6ad55"></div>Pago entrada</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#fc8181"></div>Pendente</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#3b82f6"></div>Contratado / Pago entrada</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#eab308"></div>Contato / Aguardando</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#ef4444"></div>Não iniciado</div>
     </div>
     <button class="refresh-btn" onclick="carregar()">↻ Atualizar</button>
   </div>
 </div>
-
 <div class="container">
   <div class="metrics">
     <div class="metric"><div class="metric-label">Eventos futuros</div><div class="metric-val v-blue" id="m-fut">—</div></div>
@@ -119,244 +120,183 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <option value="">Todos os status</option>
       <option value="pend">Com pendências</option>
       <option value="ok">Tudo OK</option>
-      <option value="urg">Urgentes (7 dias)</option>
+      <option value="urg">Urgentes (≤7 dias)</option>
       <option value="past">Passados</option>
     </select>
     <select id="f-tipo"><option value="">Todos os tipos</option></select>
   </div>
   <div id="lista"><div class="loading">Carregando eventos...</div></div>
 </div>
-
 <script>
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKdhl3mIj94_yAAdejvjLSf_LBNR-2ZbGI6DXIOXC3ut7bzRsJqQNcDsTgzQ2-JsSUaA/exec';
+const CCOR = {GV:'#378ADD',TO:'#1D9E75',TF:'#D85A30',IPA:'#7F77DD',ITA:'#D4537E'};
+const TODOS_GRUPOS = ['Local','Gerador','Climatizador','Vigia','Buffet','Extra Buffet',
+  'Sobremesa','Bebidas','Gelo','Bar de Drinks','Decoração','Estruturas',
+  'Atração 01','Atração 02','DJ Residente','VJ','MC','Seguranças',
+  'Equipe Limpeza','Banheiro Químico','Aftermovie','Fotografia',
+  'Caneca + Tirante','Camisa','Chinelo','Kit Robe','Óculos','Boné VIVA'];
 
-const GRUPOS = {
-  'Local':[11,12],'Gerador':[13,14],'Climatizador':[15,16],'Vigia':[17,18],
-  'Buffet':[19,20],'Extra Buffet':[22,23],'Sobremesa':[25,26],
-  'Bebidas':[30,31],'Gelo':[32,33],'Bar de Drinks':[34,35],
-  'Decora\u00e7\u00e3o':[36,37],'Estruturas':[38,39],
-  'Atra\u00e7\u00e3o 01':[40,41],'Atra\u00e7\u00e3o 02':[42,43],
-  'DJ Residente':[44,45],'VJ':[46,47],'MC':[48,49],
-  'Seguran\u00e7as':[50,51],'Equipe Limpeza':[52,53],'Banheiro Qu\u00edmico':[54,55],
-  'Aftermovie':[56,57],'Fotografia':[58,59],
-  'Caneca + Tirante':[60,61],'Camisa':[62,63],'Chinelo':[64,65],
-  'Kit Robe':[66,67],'\u00d3culos':[68,69],'Bon\u00e9 VIVA':[70,71]
-};
+let EVENTOS = [], tiposOk = false;
 
-const SIT_OK   = new Set(['Contratado','Pago Entrada','Comiss\u00e3o']);
-const SIT_PEND = new Set(['N\u00e3o Iniciado','Negocia\u00e7\u00e3o','Contato Feito','Aguardando Contrato','Comercial']);
-const EXCL_T   = new Set(['Particular','N\u00e3o agendar','ExpoAgro GV','Carnaval']);
-const EXCL_KW  = ['Fl\u00e1vio: Fora','Janine: Viagem','ExpoAgro','Carnaval','N\u00e3o agendar'];
-const CCOR     = {GV:'#378ADD',TO:'#1D9E75',TF:'#D85A30',IPA:'#7F77DD',ITA:'#D4537E'};
-const DIAS     = ['Dom','Seg','Ter','Qua','Qui','Sex','S\u00e1b'];
-
-let EVENTOS=[], tiposOk=false;
-
-async function carregar(){
-  document.getElementById('lista').innerHTML='<div class="loading">Carregando eventos...</div>';
-  document.getElementById('topbar-sub').textContent='Carregando...';
-  try{
-    const res=await fetch(APPS_SCRIPT_URL);
-    EVENTOS=await res.json();
-    const now=new Date().toLocaleString('pt-BR');
-    document.getElementById('topbar-sub').textContent='Atualizado: '+now;
-    if(!tiposOk) popularTipos();
+async function carregar() {
+  document.getElementById('lista').innerHTML = '<div class="loading">Carregando eventos...</div>';
+  document.getElementById('topbar-sub').textContent = 'Carregando...';
+  try {
+    const res = await fetch(APPS_SCRIPT_URL);
+    EVENTOS = await res.json();
+    document.getElementById('topbar-sub').textContent = 'Atualizado: ' + new Date().toLocaleString('pt-BR');
+    if (!tiposOk) popularTipos();
     renderizar();
-  }catch(e){
-    document.getElementById('topbar-sub').textContent='Erro ao carregar';
-    document.getElementById('lista').innerHTML=`<div class="error-box">
-      <strong>N\u00e3o foi poss\u00edvel carregar os dados.</strong><br><br>
-      Verifique se o Apps Script est\u00e1 implantado corretamente e com acesso <strong>"Qualquer pessoa"</strong>.<br><br>
-      <small>Erro: ${e.message}</small>
-    </div>`;
+  } catch(e) {
+    document.getElementById('topbar-sub').textContent = 'Erro ao carregar';
+    document.getElementById('lista').innerHTML = '<div class="error-box"><strong>Não foi possível carregar os dados.</strong><br><br>Verifique se o Apps Script está implantado com acesso <strong>"Qualquer pessoa"</strong>.<br><br><small>Erro: ' + e.message + '</small></div>';
   }
 }
 
-function parsear(table){
-  const rows=table.rows||[];
-  const hoje=new Date(); hoje.setHours(0,0,0,0);
-  const ev=[];
-  function v(row,i){
-    if(!row.c||!row.c[i]||row.c[i].v==null)return '';
-    return String(row.c[i].v).trim();
-  }
-  function pd(row,i){
-    if(!row.c||!row.c[i]||!row.c[i].v)return null;
-    const s=String(row.c[i].v);
-    const m=s.match(/Date\((\d+),(\d+),(\d+)\)/);
-    if(m)return new Date(+m[1],+m[2],+m[3]);
-    const d=new Date(s); return isNaN(d)?null:d;
-  }
-  for(const row of rows){
-    const num=v(row,1); if(!num||isNaN(+num))continue;
-    const fundo=v(row,4), tipo=v(row,9), data=pd(row,5);
-    if(!data||EXCL_T.has(tipo)||EXCL_KW.some(k=>fundo.includes(k)))continue;
-    const de=new Date(data.getFullYear(),data.getMonth(),data.getDate());
-    const dt=Math.round((de-hoje)/864e5);
-    const svcs={};let ok=0,pend=0;
-    for(const[g,[cf,cs]]of Object.entries(GRUPOS)){
-      const fv=v(row,cf),sv=v(row,cs);
-      if(!sv||sv==='N\u00e3o H\u00e1')continue;
-      let st;
-      if(SIT_OK.has(sv)){st=sv==='Pago Entrada'?'warn':'ok';ok++;}
-      else if(SIT_PEND.has(sv)){st='pend';pend++;}
-      else continue;
-      svcs[g]={fornecedor:fv,situacao:sv,status:st};
-    }
-    ev.push({num:+num,cidade:v(row,2),empresa:v(row,3),fundo,
-      data:data.toLocaleDateString('pt-BR'),dia:DIAS[data.getDay()],
-      tipo,horario:v(row,10),local:v(row,7),
-      servicos:svcs,n_ok:ok,n_pend:pend,days_to:dt,passado:dt<0});
-  }
-  return ev.sort((a,b)=>a.days_to-b.days_to);
+function popularTipos() {
+  const tipos = [...new Set(EVENTOS.map(e => e.tipo))].filter(Boolean).sort();
+  const sel = document.getElementById('f-tipo');
+  tipos.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
+  tiposOk = true;
 }
 
-function popularTipos(){
-  const tipos=[...new Set(EVENTOS.map(e=>e.tipo))].filter(Boolean).sort();
-  const sel=document.getElementById('f-tipo');
-  tipos.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});
-  tiposOk=true;
-}
+function renderizar() {
+  const busca  = document.getElementById('busca').value.toLowerCase();
+  const cidade = document.getElementById('f-cidade').value;
+  const status = document.getElementById('f-status').value;
+  const tipo   = document.getElementById('f-tipo').value;
 
-function renderizar(){
-  const busca=document.getElementById('busca').value.toLowerCase();
-  const cidade=document.getElementById('f-cidade').value;
-  const status=document.getElementById('f-status').value;
-  const tipo=document.getElementById('f-tipo').value;
-  const fut=EVENTOS.filter(e=>!e.passado);
-  const cp=fut.filter(e=>e.n_pend>0);
-  const urg=fut.filter(e=>e.days_to<=7&&e.n_pend>0);
-  document.getElementById('m-fut').textContent=fut.length;
-  document.getElementById('m-pend').textContent=cp.length;
-  document.getElementById('m-urg').textContent=urg.length;
-  document.getElementById('m-ok').textContent=fut.length-cp.length;
-  let f=EVENTOS.filter(e=>{
-    if(cidade&&e.cidade!==cidade)return false;
-    if(tipo&&e.tipo!==tipo)return false;
-    if(status==='pend'&&(e.passado||!e.n_pend))return false;
-    if(status==='ok'&&(e.passado||e.n_pend>0))return false;
-    if(status==='urg'&&!(e.days_to<=7&&!e.passado&&e.n_pend>0))return false;
-    if(status==='past'&&!e.passado)return false;
-    if(busca){
-      const h=[e.fundo,e.tipo,e.cidade,...Object.values(e.servicos).map(s=>s.fornecedor)].join(' ').toLowerCase();
-      if(!h.includes(busca))return false;
+  const fut = EVENTOS.filter(e => !e.passado);
+  const cp  = fut.filter(e => e.n_pend > 0);
+  const urg = fut.filter(e => e.days_to <= 7 && e.n_pend > 0);
+  document.getElementById('m-fut').textContent  = fut.length;
+  document.getElementById('m-pend').textContent = cp.length;
+  document.getElementById('m-urg').textContent  = urg.length;
+  document.getElementById('m-ok').textContent   = fut.length - cp.length;
+
+  let f = EVENTOS.filter(e => {
+    if (cidade && e.cidade !== cidade) return false;
+    if (tipo   && e.tipo   !== tipo)   return false;
+    if (status === 'pend' && (e.passado || !e.n_pend))           return false;
+    if (status === 'ok'   && (e.passado ||  e.n_pend > 0))       return false;
+    if (status === 'urg'  && !(e.days_to <= 7 && !e.passado && e.n_pend > 0)) return false;
+    if (status === 'past' && !e.passado)                          return false;
+    if (busca) {
+      const hay = [e.fundo, e.tipo, e.cidade,
+        ...Object.values(e.servicos || {}).map(s => s.fornecedor)].join(' ').toLowerCase();
+      if (!hay.includes(busca)) return false;
     }
     return true;
   });
-  if(!f.length){document.getElementById('lista').innerHTML='<div class="empty">Nenhum evento encontrado.</div>';return;}
-  const urgF=f.filter(e=>!e.passado&&e.days_to<=14&&e.n_pend>0);
-  const proxF=f.filter(e=>!e.passado&&!(e.days_to<=14&&e.n_pend>0));
-  const pastF=f.filter(e=>e.passado);
-  let html='',uid=0;
-  if(urgF.length){html+='<div class="section-label">\u26a0 Aten\u00e7\u00e3o \u2014 pr\u00f3ximos 14 dias com pend\u00eancias</div>';urgF.forEach(e=>{html+=mkcard(e,uid++,true);});}
-  if(proxF.length){html+=`<div class="section-label">${urgF.length?'Demais eventos futuros':'Pr\u00f3ximos eventos'}</div>`;proxF.forEach(e=>{html+=mkcard(e,uid++,false);});}
-  if(pastF.length){html+='<div class="section-label">Passados</div>';pastF.forEach(e=>{html+=mkcard(e,uid++,false);});}
-  document.getElementById('lista').innerHTML=html;
+
+  if (!f.length) { document.getElementById('lista').innerHTML = '<div class="empty">Nenhum evento encontrado com esses filtros.</div>'; return; }
+
+  const urgF  = f.filter(e => !e.passado && e.days_to <= 14 && e.n_pend > 0);
+  const proxF = f.filter(e => !e.passado && !(e.days_to <= 14 && e.n_pend > 0));
+  const pastF = f.filter(e => e.passado);
+
+  let html = '', uid = 0;
+  if (urgF.length)  { html += '<div class="section-label">⚠ Atenção — próximos 14 dias com pendências</div>'; urgF.forEach(e  => { html += mkcard(e, uid++, true);  }); }
+  if (proxF.length) { html += '<div class="section-label">' + (urgF.length ? 'Demais eventos futuros' : 'Próximos eventos') + '</div>'; proxF.forEach(e => { html += mkcard(e, uid++, false); }); }
+  if (pastF.length) { html += '<div class="section-label">Passados</div>'; pastF.forEach(e => { html += mkcard(e, uid++, false); }); }
+  document.getElementById('lista').innerHTML = html;
 }
 
-function mkcard(e,uid,urg){
-  const tot=e.n_ok+e.n_pend,pct=tot?Math.round(e.n_ok/tot*100):100;
-  const cor=CCOR[e.cidade]||'#888';
-  const pc=!e.n_pend?'#48bb78':e.n_pend<=3?'#f6ad55':'#fc8181';
-  let dt='';
-  if(e.passado)dt=`<span class="days-ok">${Math.abs(e.days_to)}d atr\u00e1s</span>`;
-  else if(e.days_to===0)dt='<span class="days-urg">Hoje!</span>';
-  else if(e.days_to<=7)dt=`<span class="days-urg">em ${e.days_to}d</span>`;
-  else if(e.days_to<=30)dt=`<span class="days-warn">em ${e.days_to}d</span>`;
-  else dt=`<span class="days-ok">em ${e.days_to}d</span>`;
-  let bdg='';
-  if(e.passado)bdg='<span class="badge b-past">Passado</span>';
-  else if(!tot)bdg='<span class="badge b-na">Sem servi\u00e7os</span>';
-  else if(!e.n_pend)bdg='<span class="badge b-ok">Tudo OK</span>';
-  else if(e.n_pend<=3)bdg=`<span class="badge b-warn">${e.n_pend} pendente${e.n_pend>1?'s':''}</span>`;
-  else bdg=`<span class="badge b-pend">${e.n_pend} pendentes</span>`;
-  // Organizar serviços em 4 colunas kanban
-  const TODOS_GRUPOS = ['Local','Gerador','Climatizador','Vigia','Buffet','Extra Buffet','Sobremesa',
-    'Bebidas','Gelo','Bar de Drinks','Decora\u00e7\u00e3o','Estruturas','Atra\u00e7\u00e3o 01','Atra\u00e7\u00e3o 02',
-    'DJ Residente','VJ','MC','Seguran\u00e7as','Equipe Limpeza','Banheiro Qu\u00edmico',
-    'Aftermovie','Fotografia','Caneca + Tirante','Camisa','Chinelo','Kit Robe','\u00d3culos','Bon\u00e9 VIVA'];
+function mkcard(e, uid, urg) {
+  const tot = e.n_ok + e.n_pend;
+  const pct = tot ? Math.round(e.n_ok / tot * 100) : 100;
+  const cor = CCOR[e.cidade] || '#888';
+  const pc  = !e.n_pend ? '#48bb78' : e.n_pend <= 3 ? '#f6ad55' : '#fc8181';
 
-  const cols = {
-    contratado:  { label:'Contratado', cls:'kb-contratado', items:[] },
-    pagoentrada: { label:'Pago Entrada', cls:'kb-pagoentrada', items:[] },
-    contato:     { label:'Contato / Aguardando', cls:'kb-contato', items:[] },
-    pendente:    { label:'N\u00e3o Iniciado', cls:'kb-pendente', items:[] },
-    naoha:       { label:'N\u00e3o H\u00e1', cls:'kb-naoha', items:[] },
-  };
+  let dt = '';
+  if      (e.passado)        dt = '<span class="days-ok">' + Math.abs(e.days_to) + 'd atrás</span>';
+  else if (e.days_to === 0)  dt = '<span class="days-urg">Hoje!</span>';
+  else if (e.days_to <= 7)   dt = '<span class="days-urg">em ' + e.days_to + 'd</span>';
+  else if (e.days_to <= 30)  dt = '<span class="days-warn">em ' + e.days_to + 'd</span>';
+  else                       dt = '<span class="days-ok">em ' + e.days_to + 'd</span>';
 
-  TODOS_GRUPOS.forEach(grupo => {
-    const s = e.servicos[grupo];
+  let bdg = '';
+  if      (e.passado)        bdg = '<span class="badge b-past">Passado</span>';
+  else if (!tot)             bdg = '<span class="badge b-na">Sem serviços</span>';
+  else if (!e.n_pend)        bdg = '<span class="badge b-ok">Tudo OK</span>';
+  else if (e.n_pend <= 3)    bdg = '<span class="badge b-warn">' + e.n_pend + ' pendente' + (e.n_pend > 1 ? 's' : '') + '</span>';
+  else                       bdg = '<span class="badge b-pend">' + e.n_pend + ' pendentes</span>';
+
+  // Kanban: agrupar todos os serviços em colunas
+  const svcs = e.servicos || {};
+  const cols = { contratado:[], pagoentrada:[], contato:[], pendente:[], naoha:[] };
+
+  TODOS_GRUPOS.forEach(function(grupo) {
+    const s = svcs[grupo];
     if (!s) {
-      cols.naoha.items.push({ grupo, fornecedor:'\u2014', situacao:'N\u00e3o H\u00e1', status:'naoha' });
-      return;
+      cols.naoha.push({ grupo: grupo, fornecedor: '—', situacao: 'Não Há' });
+    } else if (s.situacao === 'Contratado' || s.situacao === 'Comissão') {
+      cols.contratado.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
+    } else if (s.situacao === 'Pago Entrada') {
+      cols.pagoentrada.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
+    } else if (s.situacao === 'Contato Feito' || s.situacao === 'Aguardando Contrato' || s.situacao === 'Negociação' || s.situacao === 'Comercial') {
+      cols.contato.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
+    } else {
+      cols.pendente.push({ grupo: grupo, fornecedor: s.fornecedor, situacao: s.situacao });
     }
-    if (s.situacao === 'Contratado') cols.contratado.items.push({grupo, ...s});
-    else if (s.situacao === 'Pago Entrada') cols.pagoentrada.items.push({grupo, ...s});
-    else if (['Contato Feito','Aguardando Contrato','Negoci\u00e7\u00e3o','Comercial'].includes(s.situacao)) cols.contato.items.push({grupo, ...s});
-    else cols.pendente.items.push({grupo, ...s});
   });
 
-  function mkKbCol(col) {
-    const cards = col.items.map(it => `
-      <div class="kb-card">
-        <div class="kb-card-grupo">${it.grupo}</div>
-        <div class="kb-card-forn">${it.fornecedor||'\u2014'}</div>
-        <span class="kb-card-sit">${it.situacao}</span>
-      </div>`).join('');
-    const count = col.items.length;
-    return `<div class="kb-col ${col.cls}">
-      <div class="kb-col-header">${col.label}<span class="kb-count">${count}</span></div>
-      <div class="kb-col-body">${cards||'<div class="kb-empty">vazio</div>'}</div>
-    </div>`;
+  function kbcol(items, cls, label) {
+    const cards = items.map(function(it) {
+      return '<div class="kb-card"><div class="kb-card-grupo">' + it.grupo + '</div><div class="kb-card-forn">' + (it.fornecedor || '—') + '</div><span class="kb-card-sit">' + it.situacao + '</span></div>';
+    }).join('');
+    return '<div class="kb-col ' + cls + '"><div class="kb-col-header">' + label + '<span class="kb-count">' + items.length + '</span></div><div class="kb-col-body">' + (cards || '<div class="kb-empty">vazio</div>') + '</div></div>';
   }
 
-  const kanbanH = `<div class="kanban">
-    ${mkKbCol(cols.contratado)}
-    ${mkKbCol(cols.pagoentrada)}
-    ${mkKbCol(cols.contato)}
-    ${mkKbCol(cols.pendente)}
-  </div>
-  <details style="margin-top:6px">
-    <summary style="font-size:11px;color:#a0aec0;cursor:pointer;user-select:none">Mostrar N\u00e3o H\u00e1 (${cols.naoha.items.length})</summary>
-    <div style="margin-top:6px">${mkKbCol(cols.naoha)}</div>
-  </details>`;
+  const kanbanH =
+    '<div class="kanban">' +
+      kbcol(cols.contratado,  'kb-contratado',  'Contratado') +
+      kbcol(cols.pagoentrada, 'kb-pagoentrada', 'Pago Entrada') +
+      kbcol(cols.contato,     'kb-contato',     'Contato / Aguardando') +
+      kbcol(cols.pendente,    'kb-pendente',     'Não Iniciado') +
+    '</div>' +
+    '<details><summary>▸ Não Há (' + cols.naoha.length + ' serviços)</summary><div style="margin-top:6px">' +
+      kbcol(cols.naoha, 'kb-naoha', 'Não Há') +
+    '</div></details>';
 
-  return `<div class="card${urg?' urgente':''}">
-  <div class="card-header" onclick="tog(${uid})">
-    <div class="card-num">#${e.num}</div>
-    <div class="card-left">
-      <div class="card-title">${e.fundo}</div>
-      <div class="card-meta">
-        <span style="display:inline-flex;align-items:center"><span class="cdot" style="background:${cor}"></span><strong style="font-size:11px">${e.cidade}</strong></span>
-        <span class="chip">${e.tipo}</span>
-        <span>${e.data} \u00b7 ${e.dia}</span>
-        <span>${e.horario}</span>
-        ${dt}
-      </div>
-    </div>
-    <div class="card-right">
-      ${bdg}
-      ${tot?`<div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:#a0aec0">${e.n_ok}/${tot}</span><div class="prog-wrap"><div class="prog-bar" style="width:${pct}%;background:${pc}"></div></div></div>`:''}
-      <div class="chevron" id="chev-${uid}">\u25bc</div>
-    </div>
-  </div>
-  <div class="card-body" id="body-${uid}">
-    ${kanbanH}
-    <div class="card-footer"><span>Empresa: <strong>${e.empresa}</strong></span>${e.local?`<span>Local: <strong>${e.local}</strong></span>`:''}</div>
-  </div>
-</div>`;
+  return '<div class="card' + (urg ? ' urgente' : '') + '">' +
+    '<div class="card-header" onclick="tog(' + uid + ')">' +
+      '<div class="card-num">#' + e.num + '</div>' +
+      '<div class="card-left">' +
+        '<div class="card-title">' + e.fundo + '</div>' +
+        '<div class="card-meta">' +
+          '<span style="display:inline-flex;align-items:center"><span class="cdot" style="background:' + cor + '"></span><strong style="font-size:11px">' + e.cidade + '</strong></span>' +
+          '<span class="chip">' + e.tipo + '</span>' +
+          '<span>' + e.data + ' · ' + e.dia + '</span>' +
+          '<span>' + e.horario + '</span>' +
+          dt +
+        '</div>' +
+      '</div>' +
+      '<div class="card-right">' +
+        bdg +
+        (tot ? '<div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:#a0aec0">' + e.n_ok + '/' + tot + '</span><div class="prog-wrap"><div class="prog-bar" style="width:' + pct + '%;background:' + pc + '"></div></div></div>' : '') +
+        '<div class="chevron" id="chev-' + uid + '">▼</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="card-body" id="body-' + uid + '">' +
+      kanbanH +
+      '<div class="card-footer"><span>Empresa: <strong>' + e.empresa + '</strong></span>' + (e.local ? '<span>Local: <strong>' + e.local + '</strong></span>' : '') + '</div>' +
+    '</div>' +
+  '</div>';
 }
 
-function tog(uid){
-  const b=document.getElementById('body-'+uid),c=document.getElementById('chev-'+uid);
-  if(!b||!c)return;
-  const op=b.classList.contains('open');
-  b.classList.toggle('open',!op);c.classList.toggle('open',!op);
+function tog(uid) {
+  const b = document.getElementById('body-' + uid);
+  const c = document.getElementById('chev-' + uid);
+  if (!b || !c) return;
+  const op = b.classList.contains('open');
+  b.classList.toggle('open', !op);
+  c.classList.toggle('open', !op);
 }
 
-['busca','f-cidade','f-status','f-tipo'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',renderizar);
-  document.getElementById(id).addEventListener('change',renderizar);
+['busca','f-cidade','f-status','f-tipo'].forEach(function(id) {
+  document.getElementById(id).addEventListener('input',  renderizar);
+  document.getElementById(id).addEventListener('change', renderizar);
 });
 
 carregar();
