@@ -1,6 +1,6408 @@
 {
   "meta": {
-    "atualizado": "2026-06-19T00:00:00Z"
+    "atualizado": "2026-06-22T21:22:04.036Z"
   },
-  "eventos": []
+  "eventos": [
+    {
+      "num": 1,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "TEDX GOVERNADOR VALADARES",
+      "data": "2026-03-14",
+      "horario": "13h00",
+      "tipo": "Corporativo",
+      "local": "Teatro Atiaia",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 2,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ANA.JULIA_UFVJM-TO_MED_2025-2",
+      "data": "2026-03-19",
+      "horario": "19h00",
+      "tipo": "Missa",
+      "local": "Santuário Senhor Bom Jesus",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Nossa Senhora dos Pobres",
+          "situacao": "Contratado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 01": {
+          "fornecedor": "Rumo ao Altar",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 3,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ANA.JULIA_UFVJM-TO_MED_2025-2",
+      "data": "2026-03-20",
+      "horario": "19h00",
+      "tipo": "Colação de Grau",
+      "local": "Expominas",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Expominas TO",
+          "situacao": "Pago Entrada"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Pago Entrada"
+        },
+        "Estruturas": {
+          "fornecedor": "Guda",
+          "situacao": "Contratado"
+        },
+        "MC": {
+          "fornecedor": "Breno - Prefeitura",
+          "situacao": "Contratado"
+        },
+        "Seguranças": {
+          "fornecedor": "Wesley",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Marcela",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 4,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ANA.JULIA_UFVJM-TO_MED_2025-2",
+      "data": "2026-03-21",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Gerador": {
+          "fornecedor": "Guda",
+          "situacao": "Contratado"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Contratado"
+        },
+        "Sobremesa": {
+          "fornecedor": "Grazy Novais",
+          "situacao": "Pago Entrada"
+        },
+        "Bebidas": {
+          "fornecedor": "Vilmar",
+          "situacao": "Pago Entrada"
+        },
+        "Gelo": {
+          "fornecedor": "Gelitto",
+          "situacao": "Contratado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "Fly Drinks",
+          "situacao": "Pago Entrada"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Pago Entrada"
+        },
+        "Estruturas": {
+          "fornecedor": "Guda",
+          "situacao": "Contratado"
+        },
+        "Atração 01": {
+          "fornecedor": "Carlota",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 02": {
+          "fornecedor": "DJ Wnuk",
+          "situacao": "Pago Entrada"
+        },
+        "DJ Residente": {
+          "fornecedor": "Nil Lima",
+          "situacao": "Pago Entrada"
+        },
+        "MC": {
+          "fornecedor": "Breno - Prefeitura",
+          "situacao": "Contratado"
+        },
+        "Seguranças": {
+          "fornecedor": "Wesley",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Clara",
+          "situacao": "Contratado"
+        },
+        "Chinelo": {
+          "fornecedor": "Ideia no Pé",
+          "situacao": "Pago Entrada"
+        },
+        "Kit Robe": {
+          "fornecedor": "Alterego",
+          "situacao": "Pago Entrada"
+        },
+        "Óculos": {
+          "fornecedor": "VIVA",
+          "situacao": "Pago Entrada"
+        }
+      }
+    },
+    {
+      "num": 5,
+      "cidade": "TO",
+      "empresa": "Luminous",
+      "fundo": "KELLY.FERREIRA_FENORD-TO_DIR_2026-2",
+      "data": "2026-03-28",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Fenord",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 6,
+      "cidade": "TF",
+      "empresa": "VIVA",
+      "fundo": "ANA.ELISA_UFSB-TF_MED_2030-2",
+      "data": "2026-03-28",
+      "horario": "16h00",
+      "tipo": "1/6 Médico",
+      "local": "Veritas",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Veritas",
+          "situacao": "Pago Entrada"
+        },
+        "Buffet": {
+          "fornecedor": "Mara Lisboa",
+          "situacao": "Pago Entrada"
+        },
+        "Sobremesa": {
+          "fornecedor": "Mara Lisboa",
+          "situacao": "Pago Entrada"
+        },
+        "Bebidas": {
+          "fornecedor": "Bruno",
+          "situacao": "Contratado"
+        },
+        "Gelo": {
+          "fornecedor": "Posto - No dia",
+          "situacao": "Contratado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "Paris Drinks",
+          "situacao": "Pago Entrada"
+        },
+        "Decoração": {
+          "fornecedor": "Rebouças",
+          "situacao": "Pago Entrada"
+        },
+        "Estruturas": {
+          "fornecedor": "Wandão",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 01": {
+          "fornecedor": "Pagolaê",
+          "situacao": "Pago Entrada"
+        },
+        "Seguranças": {
+          "fornecedor": "Fred",
+          "situacao": "Pago Entrada"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "-",
+          "situacao": "Contratado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "Gumege",
+          "situacao": "Pago Entrada"
+        }
+      }
+    },
+    {
+      "num": 7,
+      "cidade": "TF",
+      "empresa": "Luminous",
+      "fundo": "ANA.ELISA_UFSB-TF_MED_2030-2",
+      "data": "2026-03-28",
+      "horario": "16h00",
+      "tipo": "1/6 Médico",
+      "local": "Veritas",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 8,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CPR_APAE TO_2026-1",
+      "data": "2026-03-28",
+      "horario": "10h30",
+      "tipo": "Corporativo",
+      "local": "Triunfo",
+      "servicos": {}
+    },
+    {
+      "num": 9,
+      "cidade": "IPA",
+      "empresa": "Luminous",
+      "fundo": "FLAVIA.ALESSANDRA (ELOA)_PITÁGORAS_UNIF_2025-2",
+      "data": "2026-04-02",
+      "horario": "á definir",
+      "tipo": "Missa",
+      "local": "á definir",
+      "servicos": {}
+    },
+    {
+      "num": 10,
+      "cidade": "IPA",
+      "empresa": "Luminous",
+      "fundo": "FLAVIA.ALESSANDRA (ELOA)_PITÁGORAS_UNIF_2025-2",
+      "data": "2026-04-03",
+      "horario": "á definir",
+      "tipo": "Colação de Grau",
+      "local": "á definir",
+      "servicos": {}
+    },
+    {
+      "num": 11,
+      "cidade": "IPA",
+      "empresa": "Luminous",
+      "fundo": "FLAVIA.ALESSANDRA (ELOA)_PITÁGORAS_UNIF_2025-2",
+      "data": "2026-04-04",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Morro do Pilar",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 12,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "KAIRO.EMANUEL_FADIVALE_DIREITO_2026-2",
+      "data": "2026-04-11",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 13,
+      "cidade": "GV",
+      "empresa": "Agenda",
+      "fundo": "Bloquinho da Tati",
+      "data": "2026-04-11",
+      "horario": "16h00",
+      "tipo": "Bloquinho da Tati",
+      "local": "GV",
+      "servicos": {}
+    },
+    {
+      "num": 14,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "PAULA.LIS UFVJM-TO MED 2030-2",
+      "data": "2026-04-11",
+      "horario": "á definir",
+      "tipo": "1/6 Médico",
+      "local": "Espaço Mansão",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Espaço Mansão",
+          "situacao": "Pago Entrada"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Pago Entrada"
+        },
+        "Sobremesa": {
+          "fornecedor": "Grazy Novais",
+          "situacao": "Pago Entrada"
+        },
+        "Bebidas": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Pago Entrada"
+        },
+        "Gelo": {
+          "fornecedor": "Gelitto",
+          "situacao": "Pago Entrada"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "Fly Drinks",
+          "situacao": "Pago Entrada"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contratado"
+        },
+        "Estruturas": {
+          "fornecedor": "Guda",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 01": {
+          "fornecedor": "Ivanzinho Axé",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 02": {
+          "fornecedor": "DJ Wnuk",
+          "situacao": "Pago Entrada"
+        },
+        "DJ Residente": {
+          "fornecedor": "Guda",
+          "situacao": "Pago Entrada"
+        },
+        "Seguranças": {
+          "fornecedor": "Wesley",
+          "situacao": "Pago Entrada"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Marcela e Adriano",
+          "situacao": "Contratado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "Gumege",
+          "situacao": "Contratado"
+        },
+        "Camisa": {
+          "fornecedor": "Trinca",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 15,
+      "cidade": "TO",
+      "empresa": "Luminous",
+      "fundo": "PAULA.LIS UFVJM-TO MED 2030-2",
+      "data": "2026-04-11",
+      "horario": "á definir",
+      "tipo": "1/6 Médico",
+      "local": "Espaço Mansão",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 17,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "ANA.LUIZA.PIMENTEL_UNIVALE-UNI_2028-1 (Odonto e Fono)",
+      "data": "2026-04-17",
+      "horario": "09h00",
+      "tipo": "Sessão de Meio Curso",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 19,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "ANA.LUIZA.PIMENTEL_UNIVALE-UNI_2028-1 (Psico)",
+      "data": "2026-04-24",
+      "horario": "09h00",
+      "tipo": "Sessão de Meio Curso",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 20,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "Marombebados: Evento Atlética Monkila",
+      "data": "2026-04-25",
+      "horario": "a definir",
+      "tipo": "Venda de Ingresso",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Espaço VIVA",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 21,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "CALOURADA: A FLAMEJANTE",
+      "data": "2026-04-25",
+      "horario": "a definir",
+      "tipo": "Calourada Aflamejante",
+      "local": "Platônica Cervejaria",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 23,
+      "cidade": "TO",
+      "empresa": "Luminous",
+      "fundo": "ANA-LUIZA.GONÇALVES_DOCTUM-TO_DIREITO_2026-2",
+      "data": "2026-05-09",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Doctum TO",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 24,
+      "cidade": "GV",
+      "empresa": "Tô Dentro",
+      "fundo": "Tô Dentro: \"To Dentro Tropical Chic\" (Especial Outono)",
+      "data": "2026-05-09",
+      "horario": "16h00",
+      "tipo": "Tô Dentro",
+      "local": "Arena Praia",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Arena Praia",
+          "situacao": "Contratado"
+        },
+        "Bebidas": {
+          "fornecedor": "Arm Vargas",
+          "situacao": "Contratado"
+        },
+        "Gelo": {
+          "fornecedor": "Cia do Gelo",
+          "situacao": "Contratado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson",
+          "situacao": "Contratado"
+        },
+        "Estruturas": {
+          "fornecedor": "Leydson",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 01": {
+          "fornecedor": "Dill Silva",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 02": {
+          "fornecedor": "Juliete Mendes",
+          "situacao": "Pago Entrada"
+        },
+        "DJ Residente": {
+          "fornecedor": "DJ VT do ST2",
+          "situacao": "Pago Entrada"
+        },
+        "Seguranças": {
+          "fornecedor": "Gilson - Spartan",
+          "situacao": "Contratado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "WOW Estruturas",
+          "situacao": "Pago Entrada"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 25,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CONVENÇÃO: DCA",
+      "data": "2026-05-15",
+      "horario": "08h - 20h",
+      "tipo": "Convenção DCA",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Contratado"
+        },
+        "Bebidas": {
+          "fornecedor": "Vilmar",
+          "situacao": "Aguardando Contrato"
+        },
+        "Gelo": {
+          "fornecedor": "Gelitto",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson",
+          "situacao": "Contratado"
+        },
+        "Estruturas": {
+          "fornecedor": "Guda",
+          "situacao": "Contratado"
+        },
+        "Seguranças": {
+          "fornecedor": "Wesley",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Clara",
+          "situacao": "Contratado"
+        },
+        "Aftermovie": {
+          "fornecedor": "Bona TV",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 26,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MILENA.ALMEIDA UNIVALE-DIREITO 2028-2",
+      "data": "2026-05-16",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Meio de Curso",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        }
+      }
+    },
+    {
+      "num": 27,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CONVENÇÃO: DCA",
+      "data": "2026-05-16",
+      "horario": "08h - 20h",
+      "tipo": "Convenção DCA",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Contratado"
+        },
+        "Bebidas": {
+          "fornecedor": "Vilmar",
+          "situacao": "Aguardando Contrato"
+        },
+        "Gelo": {
+          "fornecedor": "Gelitto",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson",
+          "situacao": "Contratado"
+        },
+        "Estruturas": {
+          "fornecedor": "Guda",
+          "situacao": "Contratado"
+        },
+        "Seguranças": {
+          "fornecedor": "Wesley",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Clara",
+          "situacao": "Contratado"
+        },
+        "Aftermovie": {
+          "fornecedor": "Bona TV",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 28,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "PINT OF SCIENCE 2026",
+      "data": "2026-05-18",
+      "horario": "á definir",
+      "tipo": "Pint of Science",
+      "local": "á definir",
+      "servicos": {
+        "Caneca + Tirante": {
+          "fornecedor": "Gumege",
+          "situacao": "Contratado"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Pago Entrada"
+        }
+      }
+    },
+    {
+      "num": 29,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "PINT OF SCIENCE 2026",
+      "data": "2026-05-19",
+      "horario": "á definir",
+      "tipo": "Pint of Science",
+      "local": "á definir",
+      "servicos": {
+        "Caneca + Tirante": {
+          "fornecedor": "Gumege",
+          "situacao": "Contratado"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Pago Entrada"
+        }
+      }
+    },
+    {
+      "num": 30,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "PINT OF SCIENCE 2026",
+      "data": "2026-05-20",
+      "horario": "á definir",
+      "tipo": "Pint of Science",
+      "local": "á definir",
+      "servicos": {
+        "Caneca + Tirante": {
+          "fornecedor": "Gumege",
+          "situacao": "Contratado"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Pago Entrada"
+        }
+      }
+    },
+    {
+      "num": 31,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "MARIA-CLARA.GONZAGA_UFJF-GV_MED_2027-2",
+      "data": "2026-05-23",
+      "horario": "16h00",
+      "tipo": "Me Interna",
+      "local": "Ch. Confiança",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Chácara Confiança",
+          "situacao": "Pago Entrada"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Ferreira",
+          "situacao": "Pago Entrada"
+        },
+        "Extra Buffet": {
+          "fornecedor": "Mc Donalds",
+          "situacao": "Pago Entrada"
+        },
+        "Sobremesa": {
+          "fornecedor": "Scherrer Gourmet",
+          "situacao": "Pago Entrada"
+        },
+        "Bebidas": {
+          "fornecedor": "Armazém Vargas",
+          "situacao": "Contratado"
+        },
+        "Gelo": {
+          "fornecedor": "Cia do Gelo",
+          "situacao": "Pago Entrada"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "Fly Drinks",
+          "situacao": "Pago Entrada"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contratado"
+        },
+        "Estruturas": {
+          "fornecedor": "Alexandre Publio",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 01": {
+          "fornecedor": "DJ Wnuk",
+          "situacao": "Pago Entrada"
+        },
+        "Atração 02": {
+          "fornecedor": "DJ Ruffined",
+          "situacao": "Pago Entrada"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Pago Entrada"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "Ag Heringer",
+          "situacao": "Pago Entrada"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 32,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MARIA-CLARA.GONZAGA_UFJF-GV_MED_2027-2",
+      "data": "2026-05-23",
+      "horario": "16h00",
+      "tipo": "Me Interna",
+      "local": "Ch. Confiança",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 33,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "Sorteio da Rifa",
+      "data": "2026-05-26",
+      "horario": "12h00",
+      "tipo": "Sorteio Rifa",
+      "local": "Espaço VIVA",
+      "servicos": {}
+    },
+    {
+      "num": 34,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MARIA.LOURDES UNIVALE TER.OCUPACIONAL 26-2",
+      "data": "2026-05-30",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 35,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "LARISSA_UNIVALE_ESTETICA_2026-2",
+      "data": "2026-05-30",
+      "horario": "13h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 36,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "MARLUCE_BODAS_2026-1",
+      "data": "2026-06-05",
+      "horario": "21h00",
+      "tipo": "Bodas",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Contratado"
+        },
+        "Bebidas": {
+          "fornecedor": "Vilmar",
+          "situacao": "Pago Entrada"
+        },
+        "Gelo": {
+          "fornecedor": "Gelitto",
+          "situacao": "Contratado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Pago Entrada"
+        },
+        "Estruturas": {
+          "fornecedor": "Guda",
+          "situacao": "Pago Entrada"
+        },
+        "Seguranças": {
+          "fornecedor": "Wesley",
+          "situacao": "Pago Entrada"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Buffet Eliane",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 38,
+      "cidade": "TO",
+      "empresa": "Luminous",
+      "fundo": "VYCTHÓRIA.ARAUJO ANHANGUERA-CONTÁBEIS 2026-2",
+      "data": "2026-06-13",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        },
+        "Camisa": {
+          "fornecedor": "Eduardo - Art Silk",
+          "situacao": "Pago Entrada"
+        }
+      }
+    },
+    {
+      "num": 39,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "BEM LARANJA: Doação de Sangue",
+      "data": "2026-06-14",
+      "horario": "07h00",
+      "tipo": "Bem Laranja",
+      "local": "á definir",
+      "servicos": {}
+    },
+    {
+      "num": 40,
+      "cidade": "TF",
+      "empresa": "VIVA",
+      "fundo": "LOUISE.VENTURA UFSB-TF MED 2031-1",
+      "data": "2026-06-19",
+      "horario": "19h00",
+      "tipo": "Cerimonia do Jaleco",
+      "local": "Auditório UFSB",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Auditório UFSB",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "Água Mineral",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Rebouças",
+          "situacao": "Aguardando Contrato"
+        },
+        "Estruturas": {
+          "fornecedor": "Wandão (Microfone)",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "Cícero",
+          "situacao": "Contratado"
+        },
+        "Seguranças": {
+          "fornecedor": "Fred",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "Janine (Cotação)",
+          "situacao": "Contato Feito"
+        }
+      }
+    },
+    {
+      "num": 41,
+      "cidade": "TF",
+      "empresa": "Luminous",
+      "fundo": "LOUISE.VENTURA UFSB-TF MED 2031-1",
+      "data": "2026-06-19",
+      "horario": "19h00",
+      "tipo": "Cerimonia do Jaleco",
+      "local": "Auditório UFSB",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 42,
+      "cidade": "TF",
+      "empresa": "Luminous",
+      "fundo": "THIAGO.LOPES ANHANGUERA-TF ODONTO 2026-2",
+      "data": "2026-06-20",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Anhaguaera - Teixeira de Freitas",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Anhanguera",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 43,
+      "cidade": "TF",
+      "empresa": "Luminous",
+      "fundo": "THIAGO.CARDOSO ANHANGUERA-TF DIREITO 2028-2",
+      "data": "2026-06-20",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Sitio Malta",
+      "servicos": {
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 44,
+      "cidade": "TF",
+      "empresa": "VIVA",
+      "fundo": "THIAGO.CARDOSO ANHANGUERA-TF DIREITO 2028-2",
+      "data": "2026-06-20",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Sitio Malta",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Sítio Malta",
+          "situacao": "Pago Entrada"
+        },
+        "Buffet": {
+          "fornecedor": "Mara Lisboa",
+          "situacao": "Contato Feito"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "Paris Drinks",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Rebouças",
+          "situacao": "Aguardando Contrato"
+        },
+        "Estruturas": {
+          "fornecedor": "Wandão Som",
+          "situacao": "Aguardando Contrato"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 45,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "ELIDIANA-LUISA_UNI_2028-2",
+      "data": "2026-06-27",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Chácara Country",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 46,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "ELIDIANA-LUISA_UNI_2028-2",
+      "data": "2026-06-27",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Chácara Country",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 47,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "LARISSA SCOFILD_15 ANOS_2026-2",
+      "data": "2026-06-27",
+      "horario": "á definir",
+      "tipo": "15 Anos",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 49,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "WELISSA-AMANDA-EMANUELLY_UNI_2028-2",
+      "data": "2026-07-04",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Chácara Vista Chalé",
+          "situacao": "Pago Entrada"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Ferreira",
+          "situacao": "Contato Feito"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "Armazém Vargas",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "Cia do Gelo",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "Fly Drinks",
+          "situacao": "Contratado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "Alexandre Sabão",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 50,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "WELISSA-AMANDA-EMANUELLY_UNI_2028-2",
+      "data": "2026-07-04",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 52,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MYLA.WERNECK_UNIVALE_PSI_2026-1",
+      "data": "2026-07-07",
+      "horario": "á definir",
+      "tipo": "Missa",
+      "local": "á definir",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 53,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MYLA.WERNECK_UNIVALE_PSI_2026-1",
+      "data": "2026-07-08",
+      "horario": "19h00",
+      "tipo": "Colação de Grau",
+      "local": "Auditorio Univale",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 54,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "LUIZA.SASSATI_UFJF-GV_CONTABEIS_2026-2",
+      "data": "2026-07-11",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 56,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "Casamento: Data Agendada: Francilene: Apenas locação",
+      "data": "2026-07-11",
+      "horario": "",
+      "tipo": "Casamento",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 58,
+      "cidade": "TF",
+      "empresa": "VIVA",
+      "fundo": "PEDRO PERELO_PS_ATENAS_MED_2028-1 (EUNAPÓLIS)",
+      "data": "2026-07-25",
+      "horario": "á definir",
+      "tipo": "á definir",
+      "local": "á definir",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 59,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "BIARA-ROBERTA_UNIVALE_JPP-VET_2026-1",
+      "data": "2026-07-31",
+      "horario": "19h30",
+      "tipo": "Missa",
+      "local": "Catedral de Santo Antônio",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        }
+      }
+    },
+    {
+      "num": 60,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "BIARA-ROBERTA_UNIVALE_JPP-VET_2026-1",
+      "data": "2026-07-31",
+      "horario": "19h30",
+      "tipo": "Missa",
+      "local": "Catedral de Santo Antônio",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 61,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "BIARA-ROBERTA_UNIVALE_JPP-VET_2026-1",
+      "data": "2026-08-01",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Império",
+          "situacao": "Aguardando Contrato"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Célia Bittencourt",
+          "situacao": "Aguardando Contrato"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contato Feito"
+        },
+        "Estruturas": {
+          "fornecedor": "Maik / Alexandre",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 62,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "BIARA-ROBERTA_UNIVALE_JPP-VET_2026-1",
+      "data": "2026-08-01",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        }
+      }
+    },
+    {
+      "num": 63,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "MILENA.ALMEIDA UNIVALE-DIREITO 2028-2",
+      "data": "2026-08-01",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Ferreira",
+          "situacao": "Contato Feito"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 64,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MILENA.ALMEIDA UNIVALE-DIREITO 2028-2",
+      "data": "2026-08-01",
+      "horario": "16h00",
+      "tipo": "Meio de Curso",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 65,
+      "cidade": "GV",
+      "empresa": "Tô Dentro",
+      "fundo": "Tô Dentro: \"Summer Palace\" (Verão Europeu)",
+      "data": "2026-08-08",
+      "horario": "16h00",
+      "tipo": "Tô Dentro",
+      "local": "Arena Praia",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 66,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "BRUNA.GOUVEA_UNIVALE_MED 2031-1",
+      "data": "2026-08-08",
+      "horario": "16h00",
+      "tipo": "1/6 Médico",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Vista Chalé",
+          "situacao": "Pago Entrada"
+        },
+        "Buffet": {
+          "fornecedor": "Buffet Ferreira",
+          "situacao": "Contato Feito"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 67,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "BRUNA.GOUVEA_UNIVALE_MED 2031-1",
+      "data": "2026-08-08",
+      "horario": "16h00",
+      "tipo": "1/6 Médico",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 68,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MARIA.CLARA UNIVALE ODONTO 2028-2",
+      "data": "2026-08-15",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos - Meio de Curso",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Contato Feito"
+        }
+      }
+    },
+    {
+      "num": 69,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "JOSILENE_2026-1",
+      "data": "2026-08-15",
+      "horario": "á definir",
+      "tipo": "Casamento",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 71,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "LILA (LARA)_15 ANOS_2026-1",
+      "data": "2026-08-22",
+      "horario": "á definir",
+      "tipo": "15 Anos",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 72,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "THAYSE_CASAMENTO_2026-1",
+      "data": "2026-08-29",
+      "horario": "á definir",
+      "tipo": "Casamento",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 73,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "INGRYD.DINIZ UNIVALE-DIREITO 2029-2",
+      "data": "2026-08-29",
+      "horario": "21h00",
+      "tipo": "Welcome VIVA",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 74,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "INGRYD.DINIZ UNIVALE-DIREITO 2029-2",
+      "data": "2026-08-29",
+      "horario": "21h00",
+      "tipo": "Welcome VIVA",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 75,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "FRANCILENE_CASAMENTO_2026-2",
+      "data": "2026-09-05",
+      "horario": "",
+      "tipo": "Casamento",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 77,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "LAURA.MENEZES UNIVALE-FARMA 2027-1",
+      "data": "2026-09-12",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos",
+      "local": "Espaço VIVA",
+      "servicos": {}
+    },
+    {
+      "num": 78,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "SINDICATO DOS BANCARIOS",
+      "data": "2026-09-19",
+      "horario": "á definir",
+      "tipo": "Corporativo",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 84,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "LARISSA.ROCHA_UNIVALE_PSICOLOGIA_2027-1",
+      "data": "2026-10-24",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Convite",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 85,
+      "cidade": "TF",
+      "empresa": "VIVA",
+      "fundo": "CELIA.MARIA UFSB-TF MEDICINA 2029-2",
+      "data": "2026-10-31",
+      "horario": "23h00",
+      "tipo": "Meio Médico",
+      "local": "á definir",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Fred",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 86,
+      "cidade": "TF",
+      "empresa": "Luminous",
+      "fundo": "CELIA.MARIA UFSB-TF MEDICINA 2029-2",
+      "data": "2026-10-31",
+      "horario": "23h00",
+      "tipo": "Meio Médico",
+      "local": "á definir",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 87,
+      "cidade": "GV",
+      "empresa": "Tô Dentro",
+      "fundo": "Tô Dentro: \"Golden Hour Festival\"",
+      "data": "2026-11-07",
+      "horario": "16h00",
+      "tipo": "Tô Dentro",
+      "local": "Arena Praia",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 88,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "MARIA.CLARA UNIVALE ODONTO 2028-2",
+      "data": "2026-11-07",
+      "horario": "á definir",
+      "tipo": "Meio Dentista",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 89,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "MARIA.CLARA UNIVALE ODONTO 2028-2",
+      "data": "2026-11-07",
+      "horario": "á definir",
+      "tipo": "Meio Dentista",
+      "local": "Ch. Vista Chalé",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 90,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CONVENÇÃO: DCA - 2ª EDIÇÃO 2026: TODO O TIME",
+      "data": "2026-11-20",
+      "horario": "",
+      "tipo": "Convenção DCA",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 91,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "SARA.PRATES UFJF-GV MED 2030-1",
+      "data": "2026-11-21",
+      "horario": "09h00",
+      "tipo": "Sessão de Fotos Meio Médico",
+      "local": "Espaço VIVA",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 92,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CONVENÇÃO: DCA - 2ª EDIÇÃO 2026: TODO O TIME",
+      "data": "2026-11-21",
+      "horario": "",
+      "tipo": "Convenção DCA",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 93,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "IZABELLA.RINIERI_UNIF_FISIOTERAPIA_2026-2",
+      "data": "2026-11-27",
+      "horario": "19h30",
+      "tipo": "Missa",
+      "local": "Catedral de Santo Antônio",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 94,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "IZABELLA.RINIERI_UNIF_FISIOTERAPIA_2026-2",
+      "data": "2026-11-28",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Império",
+          "situacao": "Aguardando Contrato"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Célia Bittencourt",
+          "situacao": "Aguardando Contrato"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contato Feito"
+        },
+        "Estruturas": {
+          "fornecedor": "Maik / Alexandre",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 95,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CPR_ALFAUNIPAC_2026",
+      "data": "2026-12-05",
+      "horario": "21h00",
+      "tipo": "Coorporativo",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 96,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "GABRYELLE-VITOR-ELIANE_UNIVALE_UNI_2026-2",
+      "data": "2026-12-08",
+      "horario": "19h30",
+      "tipo": "Missa",
+      "local": "Catedral de Santo Antônio",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 97,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "GABRYELLE-VITOR-ELIANE_UNIVALE_UNI_2026-2",
+      "data": "2026-12-11",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Império",
+          "situacao": "Aguardando Contrato"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Célia Bittencourt",
+          "situacao": "Aguardando Contrato"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contato Feito"
+        },
+        "Estruturas": {
+          "fornecedor": "Maik / Alexandre",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 98,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "MILENA-PEDRO_PITÁGORAS_UNI_2026-2",
+      "data": "2026-12-11",
+      "horario": "À confirmar",
+      "tipo": "Missa",
+      "local": "Paroquia Cristo Redentor",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 99,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "MILENA-PEDRO_PITÁGORAS_UNI_2026-2",
+      "data": "2026-12-12",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Império",
+          "situacao": "Aguardando Contrato"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Célia Bittencourt",
+          "situacao": "Aguardando Contrato"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contato Feito"
+        },
+        "Estruturas": {
+          "fornecedor": "Maik / Alexandre",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 100,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "CPR_UNIMED_2026",
+      "data": "2026-12-12",
+      "horario": "21h00",
+      "tipo": "Coorporativo",
+      "local": "Triunfo",
+      "servicos": {}
+    },
+    {
+      "num": 101,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "KAIRO.EMANUEL_FADIVALE_DIREITO_2026-2",
+      "data": "2026-12-17",
+      "horario": "á definir",
+      "tipo": "Colação de Grau",
+      "local": "FADIVALE\n (Confirmar)",
+      "servicos": {}
+    },
+    {
+      "num": 103,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "EULLER-KAIRO_UFJF_FADIVALE_UNI_2026-2",
+      "data": "2026-12-18",
+      "horario": "19h30",
+      "tipo": "Missa",
+      "local": "Catedral de Santo Antônio",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 104,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "EULLER-KAIRO_UFJF_FADIVALE_UNI_2026-2",
+      "data": "2026-12-19",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Império",
+          "situacao": "Aguardando Contrato"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "Célia Bittencourt",
+          "situacao": "Aguardando Contrato"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "Wanderson Decor",
+          "situacao": "Contato Feito"
+        },
+        "Estruturas": {
+          "fornecedor": "Maik / Alexandre",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 105,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "EULLER-KAIRO_UFJF_FADIVALE_UNI_2026-2",
+      "data": "2026-12-19",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Império",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 106,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "BEM LARANJA: Natal Bem Laranja",
+      "data": "2026-12-20",
+      "horario": "14h00",
+      "tipo": "Bem Laranja",
+      "local": "á definir",
+      "servicos": {}
+    },
+    {
+      "num": 107,
+      "cidade": "GV",
+      "empresa": "Eventos 2027",
+      "fundo": "Eventos 2027",
+      "data": "2027-01-01",
+      "horario": "",
+      "tipo": "Eventos",
+      "local": "2027",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 108,
+      "cidade": "TO",
+      "empresa": "Luminous",
+      "fundo": "ANA-LUIZA.GONÇALVES_DOCTUM-TO_DIREITO_2026-2",
+      "data": "2027-01-14",
+      "horario": "19h00",
+      "tipo": "Colação de Grau",
+      "local": "Expominas",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 109,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ANA-LUIZA.GONÇALVES_DOCTUM-TO_DIREITO_2026-2",
+      "data": "2027-01-14",
+      "horario": "19h00",
+      "tipo": "Colação de Grau",
+      "local": "Expominas",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 110,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ISABELLA.DOURADO_UFVJM-TO_MED_2026-1",
+      "data": "2027-01-21",
+      "horario": "19h00",
+      "tipo": "Missa",
+      "local": "á definir",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 111,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ISABELLA.DOURADO_UFVJM-TO_MED_2026-1",
+      "data": "2027-01-22",
+      "horario": "19h00",
+      "tipo": "Colação de Grau",
+      "local": "Expominas",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 112,
+      "cidade": "TO",
+      "empresa": "VIVA",
+      "fundo": "ISABELLA.DOURADO_UFVJM-TO_MED_2026-1",
+      "data": "2027-01-23",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 113,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "ISABELLA.DOURADO_UFVJM-TO_MED_2026-1",
+      "data": "2027-01-23",
+      "horario": "23h00",
+      "tipo": "Baile",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 114,
+      "cidade": "GV",
+      "empresa": "Tô Dentro",
+      "fundo": "Trupico do Lalá",
+      "data": "2027-01-30",
+      "horario": "09h - 00h",
+      "tipo": "Carnaval de Rua",
+      "local": "Trupico",
+      "servicos": {}
+    },
+    {
+      "num": 115,
+      "cidade": "TO",
+      "empresa": "TRIUNFO",
+      "fundo": "LUMA_CASAMENTO_2027-1",
+      "data": "2027-01-30",
+      "horario": "á definir",
+      "tipo": "Casamento",
+      "local": "Triunfo",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Triunfo",
+          "situacao": "Contratado"
+        }
+      }
+    },
+    {
+      "num": 118,
+      "cidade": "GV",
+      "empresa": "VIVA",
+      "fundo": "SARA.PRATES UFJF-GV MED 2030-1",
+      "data": "2027-03-13",
+      "horario": "23h00",
+      "tipo": "Meio Médico",
+      "local": "Ilusão Esporte Clube",
+      "servicos": {
+        "Local": {
+          "fornecedor": "Ilusão",
+          "situacao": "Pago Entrada"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 119,
+      "cidade": "GV",
+      "empresa": "Luminous",
+      "fundo": "SARA.PRATES UFJF-GV MED 2030-1",
+      "data": "2027-03-13",
+      "horario": "23h00",
+      "tipo": "Meio Médico",
+      "local": "Ilusão Esporte Clube",
+      "servicos": {
+        "Fotografia": {
+          "fornecedor": "Luminous",
+          "situacao": "Não Iniciado"
+        }
+      }
+    },
+    {
+      "num": 122,
+      "cidade": "GV",
+      "empresa": "Eventos 2028",
+      "fundo": "Eventos 2028",
+      "data": "2028-01-01",
+      "horario": "",
+      "tipo": "Eventos",
+      "local": "2028",
+      "servicos": {
+        "Local": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gerador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Climatizador": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Vigia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Extra Buffet": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Sobremesa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bebidas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Gelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Bar de Drinks": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Decoração": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Estruturas": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 01": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Atração 02": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "DJ Residente": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "VJ": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "MC": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Seguranças": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Equipe Limpeza": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Banheiro Químico": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Aftermovie": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Fotografia": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Caneca + Tirante": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Camisa": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Chinelo": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Kit Robe": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Óculos": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        },
+        "Boné VIVA": {
+          "fornecedor": "",
+          "situacao": "Não Iniciado"
+        }
+      }
+    }
+  ]
 }
