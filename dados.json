@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-22T21:22:04.036Z"
+    "atualizado": "2026-06-22T21:26:28.471Z"
   },
   "eventos": [
     {
@@ -1172,86 +1172,54 @@
       "local": "Chácara Country",
       "servicos": {
         "Local": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Gerador": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Climatizador": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Vigia": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Country",
+          "situacao": "Pago Entrada"
         },
         "Buffet": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Extra Buffet": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Buffet Ferreira",
+          "situacao": "Contratado"
         },
         "Sobremesa": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Brownie + Sorvete",
+          "situacao": "Aguardando Contrato"
         },
         "Bebidas": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Arm. Vargas",
+          "situacao": "Contratado"
         },
         "Gelo": {
           "fornecedor": "",
           "situacao": "Não Iniciado"
         },
         "Bar de Drinks": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Fly Drinks",
+          "situacao": "Contato Feito"
         },
         "Decoração": {
-          "fornecedor": "",
+          "fornecedor": "Cia do Gelo",
           "situacao": "Não Iniciado"
         },
         "Estruturas": {
-          "fornecedor": "",
+          "fornecedor": "Alexandre",
           "situacao": "Não Iniciado"
         },
         "Atração 01": {
-          "fornecedor": "",
+          "fornecedor": "Juliete Mendes",
           "situacao": "Não Iniciado"
         },
         "Atração 02": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "DJ Residente": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "VJ": {
-          "fornecedor": "",
+          "fornecedor": "DJ Johnny 150",
           "situacao": "Não Iniciado"
         },
         "Seguranças": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Rildo",
+          "situacao": "Contratado"
         },
         "Equipe Limpeza": {
           "fornecedor": "",
           "situacao": "Não Iniciado"
         },
-        "Banheiro Químico": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
         "Aftermovie": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Fotografia": {
           "fornecedor": "",
           "situacao": "Não Iniciado"
         },
@@ -1260,24 +1228,8 @@
           "situacao": "Não Iniciado"
         },
         "Camisa": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Chinelo": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Kit Robe": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Óculos": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
-        "Boné VIVA": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Trinca",
+          "situacao": "Contratado"
         }
       }
     },
