@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-22T21:26:28.471Z"
+    "atualizado": "2026-06-23T02:05:07.937Z"
   },
   "eventos": [
     {
@@ -1196,12 +1196,12 @@
           "situacao": "Contato Feito"
         },
         "Decoração": {
-          "fornecedor": "Cia do Gelo",
+          "fornecedor": "Wanderson Decor",
           "situacao": "Não Iniciado"
         },
         "Estruturas": {
           "fornecedor": "Alexandre",
-          "situacao": "Não Iniciado"
+          "situacao": "Contratado"
         },
         "Atração 01": {
           "fornecedor": "Juliete Mendes",
