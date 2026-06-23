@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-23T02:05:07.937Z"
+    "atualizado": "2026-06-23T02:11:29.738Z"
   },
   "eventos": [
     {
@@ -1188,8 +1188,8 @@
           "situacao": "Contratado"
         },
         "Gelo": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Cia do Gelo",
+          "situacao": "Contratado"
         },
         "Bar de Drinks": {
           "fornecedor": "Fly Drinks",
@@ -1205,11 +1205,11 @@
         },
         "Atração 01": {
           "fornecedor": "Juliete Mendes",
-          "situacao": "Não Iniciado"
+          "situacao": "Contato Feito"
         },
         "Atração 02": {
           "fornecedor": "DJ Johnny 150",
-          "situacao": "Não Iniciado"
+          "situacao": "Contato Feito"
         },
         "Seguranças": {
           "fornecedor": "Rildo",
