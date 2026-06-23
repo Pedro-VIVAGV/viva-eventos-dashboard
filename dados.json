@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-23T02:11:29.738Z"
+    "atualizado": "2026-06-23T02:19:59.037Z"
   },
   "eventos": [
     {
@@ -1177,23 +1177,23 @@
         },
         "Buffet": {
           "fornecedor": "Buffet Ferreira",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         },
         "Sobremesa": {
           "fornecedor": "Brownie + Sorvete",
-          "situacao": "Aguardando Contrato"
+          "situacao": "Pago Entrada"
         },
         "Bebidas": {
           "fornecedor": "Arm. Vargas",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         },
         "Gelo": {
           "fornecedor": "Cia do Gelo",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         },
         "Bar de Drinks": {
           "fornecedor": "Fly Drinks",
-          "situacao": "Contato Feito"
+          "situacao": "Pago Entrada"
         },
         "Decoração": {
           "fornecedor": "Wanderson Decor",
@@ -1201,7 +1201,7 @@
         },
         "Estruturas": {
           "fornecedor": "Alexandre",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         },
         "Atração 01": {
           "fornecedor": "Juliete Mendes",
@@ -1213,7 +1213,7 @@
         },
         "Seguranças": {
           "fornecedor": "Rildo",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         },
         "Equipe Limpeza": {
           "fornecedor": "",
@@ -1224,12 +1224,12 @@
           "situacao": "Não Iniciado"
         },
         "Caneca + Tirante": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Gumege",
+          "situacao": "Pago Entrada"
         },
         "Camisa": {
           "fornecedor": "Trinca",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         }
       }
     },
