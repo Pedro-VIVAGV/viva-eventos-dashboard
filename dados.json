@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-24T16:38:22.795Z"
+    "atualizado": "2026-06-25T22:41:31.708Z"
   },
   "eventos": [
     {
@@ -1205,19 +1205,19 @@
         },
         "Atração 01": {
           "fornecedor": "Juliete Mendes",
-          "situacao": "Contato Feito"
+          "situacao": "Pago Entrada"
         },
         "Atração 02": {
           "fornecedor": "DJ Johnny 150",
-          "situacao": "Contato Feito"
+          "situacao": "Pago Entrada"
         },
         "Seguranças": {
           "fornecedor": "Rildo",
           "situacao": "Pago Entrada"
         },
         "Equipe Limpeza": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Lekel",
+          "situacao": "Contratado"
         },
         "Aftermovie": {
           "fornecedor": "",
@@ -1245,7 +1245,7 @@
       "servicos": {
         "Fotografia": {
           "fornecedor": "Luminous",
-          "situacao": "Não Iniciado"
+          "situacao": "Contratado"
         }
       }
     },
@@ -1259,10 +1259,6 @@
       "tipo": "15 Anos",
       "local": "Triunfo",
       "servicos": {
-        "Local": {
-          "fornecedor": "",
-          "situacao": "Não Iniciado"
-        },
         "Gerador": {
           "fornecedor": "",
           "situacao": "Não Iniciado"
