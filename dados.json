@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-25T22:41:31.708Z"
+    "atualizado": "2026-06-26T15:06:32.152Z"
   },
   "eventos": [
     {
@@ -1393,11 +1393,11 @@
         },
         "Bebidas": {
           "fornecedor": "Armazém Vargas",
-          "situacao": "Não Iniciado"
+          "situacao": "Contato Feito"
         },
         "Gelo": {
           "fornecedor": "Cia do Gelo",
-          "situacao": "Não Iniciado"
+          "situacao": "Contato Feito"
         },
         "Bar de Drinks": {
           "fornecedor": "Fly Drinks",
@@ -1405,18 +1405,18 @@
         },
         "Decoração": {
           "fornecedor": "Wanderson Decor",
-          "situacao": "Não Iniciado"
+          "situacao": "Contato Feito"
         },
         "Estruturas": {
           "fornecedor": "Alexandre Sabão",
-          "situacao": "Não Iniciado"
+          "situacao": "Contato Feito"
         },
         "Atração 01": {
-          "fornecedor": "",
+          "fornecedor": "Momento Black",
           "situacao": "Não Iniciado"
         },
         "Atração 02": {
-          "fornecedor": "",
+          "fornecedor": "DJ Hedaya",
           "situacao": "Não Iniciado"
         },
         "Seguranças": {
@@ -1428,7 +1428,7 @@
           "situacao": "Não Iniciado"
         },
         "Aftermovie": {
-          "fornecedor": "",
+          "fornecedor": "Ag Heringer",
           "situacao": "Não Iniciado"
         },
         "Fotografia": {
