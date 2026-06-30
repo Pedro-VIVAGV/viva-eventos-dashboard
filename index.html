@@ -795,6 +795,20 @@ function ensureTarefasEvento(ev) {
     ev.tarefas[t.id] = t.tipo === 'multiForn' ? { naoHa:false, tipos:[], itens:{} } : { naoHa:false, ...valorDefaultCampos(t.campos) };
   });
 }
+function diasUteisEntre(de, ate) {
+  const d = new Date(de); d.setHours(0,0,0,0);
+  const a = new Date(ate); a.setHours(0,0,0,0);
+  if (a.getTime() === d.getTime()) return 0;
+  const step = a > d ? 1 : -1;
+  let count = 0;
+  const cur = new Date(d);
+  while (step > 0 ? cur < a : cur > a) {
+    const dow = cur.getDay();
+    if (dow !== 0 && dow !== 6) count += step;
+    cur.setDate(cur.getDate() + step);
+  }
+  return count;
+}
 function calcularPrazo(ev, prazo) {
   const iso = ev.dataISO || ev.data;
   const dataEvento = iso ? new Date(iso + 'T00:00:00') : null;
@@ -811,7 +825,8 @@ function calcularPrazo(ev, prazo) {
     label = `Até ${prazo.valor} dia${prazo.valor > 1 ? 's' : ''} útil(eis) depois`;
   }
   const hoje = new Date(); hoje.setHours(0,0,0,0); alvo.setHours(0,0,0,0);
-  return { label, dias: Math.round((alvo - hoje) / 864e5), alvo };
+  const dias = diasUteisEntre(hoje, alvo);
+  return { label, dias, alvo };
 }
 
 // ── CORES DE STATUS (Não Há=cinza / Pendente=vermelho / Solicitado=laranja / demais=verde) ──
@@ -847,6 +862,7 @@ function corCategoriaTarefa(campos, valores) {
   let pior = 'verde', achou = false;
   (campos || []).forEach(c => {
     if (!campoContaProgresso(c)) return;
+    if (campoOculto(c, valores)) return;
     const v = valores[c.k];
     if (v === undefined || v === '') return;
     achou = true;
@@ -1653,7 +1669,9 @@ function mkTarefaEventoCard(e, raw, rawIdx, tpl) {
   const totalPend = todasTarefasTemplate(tpl).filter(t => {
     const v = raw.tarefas[t.id];
     const cat = t.tipo === 'multiForn' ? corCategoriaMultiForn(v) : corCategoriaTarefa(t.campos, v);
-    return cat === 'vermelho';
+    if (cat !== 'vermelho') return false;
+    const p = calcularPrazo(e, t.prazo);
+    return p.dias === null || p.dias <= 0;
   }).length;
   const bdg = totalPend ? `<span class="badge b-pend tk-evento-badge">${totalPend} pendente${totalPend > 1 ? 's' : ''}</span>` : `<span class="badge b-ok tk-evento-badge">Em dia</span>`;
   return `<div class="card" data-evcard="${raw.num}">
@@ -1768,10 +1786,14 @@ function atualizarBadgePendenciasEvento(rawIdx) {
   const raw = EVENTOS_RAW[rawIdx];
   const tpl = templateParaEmpresa(raw.empresa);
   if (!tpl) return;
+  const e = EVENTOS.find(x => x.num === raw.num);
   const totalPend = todasTarefasTemplate(tpl).filter(t => {
     const v = raw.tarefas[t.id];
     const cat = t.tipo === 'multiForn' ? corCategoriaMultiForn(v) : corCategoriaTarefa(t.campos, v);
-    return cat === 'vermelho';
+    if (cat !== 'vermelho') return false;
+    if (!e) return true;
+    const p = calcularPrazo(e, t.prazo);
+    return p.dias === null || p.dias <= 0;
   }).length;
   const el = document.querySelector(`[data-evcard="${raw.num}"] .tk-evento-badge`);
   if (!el) return;
