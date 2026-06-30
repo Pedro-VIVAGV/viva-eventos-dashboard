@@ -180,7 +180,7 @@ details summary::-webkit-details-marker{display:none}
 .csel-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .csel-lbl{flex:1}
 .csel-arrow{color:inherit;opacity:.5;font-size:11px}
-.csel-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-menu);z-index:500;overflow:hidden;padding:5px}
+.csel-menu{display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-menu);z-index:600;overflow-y:auto;max-height:260px;padding:5px}
 .csel-menu.open{display:block}
 .csel-opt{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:2px}
 .csel-opt:last-child{margin-bottom:0}
@@ -1126,7 +1126,30 @@ function setSitBtn(valor) {
   document.getElementById('svc-sit-label').textContent = s.v;
 }
 
-function toggleSitMenu() { document.getElementById('svc-sit-menu').classList.toggle('open'); }
+// Posiciona um .csel-menu (position:fixed) colado no botão que o abriu, escapando de
+// qualquer overflow:hidden de containers ancestrais (cards, linhas de tarefa, etc).
+function posicionarCselMenu(menu, btn) {
+  const rect = btn.getBoundingClientRect();
+  menu.style.left = rect.left + 'px';
+  menu.style.width = rect.width + 'px';
+  const espacoAbaixo = window.innerHeight - rect.bottom;
+  if (espacoAbaixo < 220 && rect.top > 220) {
+    menu.style.top = '';
+    menu.style.bottom = (window.innerHeight - rect.top + 6) + 'px';
+  } else {
+    menu.style.bottom = '';
+    menu.style.top = (rect.bottom + 6) + 'px';
+  }
+}
+
+function toggleSitMenu() {
+  const menu = document.getElementById('svc-sit-menu');
+  const estavaAberto = menu.classList.contains('open');
+  document.querySelectorAll('.csel-menu.open').forEach(m => m.classList.remove('open'));
+  if (estavaAberto) return;
+  posicionarCselMenu(menu, document.getElementById('svc-sit-btn'));
+  menu.classList.add('open');
+}
 function fecharSitMenu()  { document.getElementById('svc-sit-menu').classList.remove('open'); }
 function selecionarSituacao(v) { setSitBtn(v); fecharSitMenu(); }
 document.addEventListener('click', e => {
@@ -1712,9 +1735,13 @@ function renderSelStatus(k, opcoes, valorAtual) {
   </div>`;
 }
 function toggleCselGen(uid) {
-  document.querySelectorAll('.csel-menu.open').forEach(m => { if (m.id !== 'menu-' + uid) m.classList.remove('open'); });
   const menu = document.getElementById('menu-' + uid);
-  if (menu) menu.classList.toggle('open');
+  if (!menu) return;
+  const estavaAberto = menu.classList.contains('open');
+  document.querySelectorAll('.csel-menu.open').forEach(m => m.classList.remove('open'));
+  if (estavaAberto) return;
+  posicionarCselMenu(menu, document.getElementById('btn-' + uid));
+  menu.classList.add('open');
 }
 function selecionarCselGen(uid, optEl) {
   const val = optEl.getAttribute('data-val');
@@ -1736,6 +1763,9 @@ document.addEventListener('click', function(e) {
   if (e.target.closest('.csel')) return;
   document.querySelectorAll('.csel-menu.open').forEach(m => m.classList.remove('open'));
 });
+window.addEventListener('scroll', function() {
+  document.querySelectorAll('.csel-menu.open').forEach(m => m.classList.remove('open'));
+}, true);
 
 function renderFornecedorPicker(k, valorId) {
   const opts = FORNECEDORES.slice().sort((a,b) => a.nome.localeCompare(b.nome))
