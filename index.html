@@ -750,10 +750,34 @@ const TPL_VIVA_DEPOIS = [
       { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Feito'], def:'Pendente' }
   ]}
 ];
-const TPL_LUMINOUS_ANTES = [
+// LUMINOUS tem 2 sub-roteiros conforme o tipo do evento (ver "EVENTOS LUMINOUS.docx"):
+// "Sessão de Fotos / Sessão Meio" (com Camisa Personalizada e Becas) e "Demais Eventos" (sem esses 2).
+const TPL_LUMINOUS_SESSAO_ANTES = [
   { id:'equipe_freelancer', nome:'Equipe Freelancer', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
-      { k:'banheiro', label:'Equipe Manutenção Banheiro', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' },
-      { k:'bar', label:'Equipe Bar', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'fotografia', nome:'Fotografia', grupoKanban:'Fotografia', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'camisa_personalizada', nome:'Camisa Personalizada', prazo:PZ(3,'meses'), responsavel:'Produção', campos:[
+      { k:'arteSituacao', label:'Arte — Situação', tipo:'sel', op:['Pendente','Solicitada','Concluída'], def:'Pendente' },
+      { k:'aprovacao', label:'Aprovação Comissão', tipo:'sel', op:['Pendente','Aprovado'], def:'Pendente' },
+      { k:'confeccaoSituacao', label:'Confecção — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'becas', nome:'Becas', prazo:PZ(3,'meses'), responsavel:'Produção', campos:[
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]}
+];
+const TPL_LUMINOUS_DEMAIS_ANTES = [
+  { id:'equipe_freelancer', nome:'Equipe Freelancer', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
   ]},
   { id:'fotografia', nome:'Fotografia', grupoKanban:'Fotografia', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
       { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
@@ -768,13 +792,18 @@ const TPL_LUMINOUS_DEPOIS = [
   ]}
 ];
 const TEMPLATES = {
-  VIVA:     { antes: TPL_VIVA_ANTES,     depois: TPL_VIVA_DEPOIS },
-  LUMINOUS: { antes: TPL_LUMINOUS_ANTES, depois: TPL_LUMINOUS_DEPOIS }
+  VIVA:             { antes: TPL_VIVA_ANTES,             depois: TPL_VIVA_DEPOIS },
+  LUMINOUS_SESSAO:  { antes: TPL_LUMINOUS_SESSAO_ANTES,  depois: TPL_LUMINOUS_DEPOIS },
+  LUMINOUS_DEMAIS:  { antes: TPL_LUMINOUS_DEMAIS_ANTES,  depois: TPL_LUMINOUS_DEPOIS }
 };
 
-function templateParaEmpresa(empresa) {
+function ehSessaoFotosLuminous(tipo) {
+  const t = (tipo || '').toLowerCase();
+  return t.includes('sessão') || t.includes('sessao') || t.includes('foto') || t.includes('meio de curso') || t.includes('meio curso');
+}
+function templateParaEmpresa(empresa, tipo) {
   const e = (empresa || '').toUpperCase();
-  if (e.includes('LUMINOUS')) return TEMPLATES.LUMINOUS;
+  if (e.includes('LUMINOUS')) return ehSessaoFotosLuminous(tipo) ? TEMPLATES.LUMINOUS_SESSAO : TEMPLATES.LUMINOUS_DEMAIS;
   if (e.includes('VIVA')) return TEMPLATES.VIVA;
   return null;
 }
@@ -787,7 +816,7 @@ function valorDefaultCampos(campos) {
   return o;
 }
 function ensureTarefasEvento(ev) {
-  const tpl = templateParaEmpresa(ev.empresa);
+  const tpl = templateParaEmpresa(ev.empresa, ev.tipo);
   if (!tpl) return;
   if (!ev.tarefas) ev.tarefas = {};
   todasTarefasTemplate(tpl).forEach(t => {
@@ -1568,11 +1597,14 @@ function mudarAba(nome) {
 
 // ── ABA TAREFAS ──────────────────────────────────────────────────────────────
 let tiposTkOk = false;
-function tarefaPendCount(raw, tpl) {
+function tarefaPendCount(raw, tpl, e) {
   return todasTarefasTemplate(tpl).filter(t => {
     const v = raw.tarefas[t.id];
     const cat = t.tipo === 'multiForn' ? corCategoriaMultiForn(v) : corCategoriaTarefa(t.campos, v);
-    return cat === 'vermelho';
+    if (cat !== 'vermelho') return false;
+    if (!e) return true;
+    const p = calcularPrazo(e, t.prazo);
+    return p.dias === null || p.dias <= 0;
   }).length;
 }
 function popularTiposTarefas() {
@@ -1599,10 +1631,10 @@ function renderTarefasTab() {
   EVENTOS.forEach(e => {
     const rawIdx = EVENTOS_RAW.findIndex(r => r.num === e.num);
     const raw = EVENTOS_RAW[rawIdx];
-    const tpl = templateParaEmpresa(raw.empresa);
+    const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
     if (!tpl) return;
     ensureTarefasEvento(raw);
-    enriquecidos.push({ e, raw, rawIdx, tpl, pend: tarefaPendCount(raw, tpl) });
+    enriquecidos.push({ e, raw, rawIdx, tpl, pend: tarefaPendCount(raw, tpl, e) });
   });
 
   const fut = enriquecidos.filter(x => !x.e.passado);
@@ -1614,7 +1646,7 @@ function renderTarefasTab() {
   let f = enriquecidos.filter(x => {
     if (cidade && x.e.cidade !== cidade) return false;
     if (tipo   && x.e.tipo   !== tipo)   return false;
-    if (status === 'pend' && (x.e.passado || !x.pend))            return false;
+    if (status === 'pend' && !x.pend)                              return false;
     if (status === 'ok'   && (x.e.passado ||  x.pend > 0))        return false;
     if (status === 'urg'  && !(x.e.days_to <= 7 && !x.e.passado && x.pend > 0)) return false;
     if (status === 'past' && !x.e.passado)                         return false;
@@ -1646,7 +1678,11 @@ function renderTarefasTab() {
   let html = '';
   if (urgF.length)  html += '<div class="section-label">⚠ Atenção — próximos 14 dias com pendências</div>' + urgF.map(x => mkTarefaEventoCard(x.e, x.raw, x.rawIdx, x.tpl)).join('');
   if (proxF.length) html += `<div class="section-label">${urgF.length ? 'Demais eventos futuros' : 'Próximos eventos'}</div>` + proxF.map(x => mkTarefaEventoCard(x.e, x.raw, x.rawIdx, x.tpl)).join('');
-  if (pastF.length) html += '<div class="section-label">Passados</div>' + pastF.map(x => mkTarefaEventoCard(x.e, x.raw, x.rawIdx, x.tpl)).join('');
+  if (pastF.length) {
+    const pastPend = pastF.filter(x => x.pend > 0).length;
+    const labelPast = pastPend > 0 ? `Passados (${pastPend} com pendências)` : 'Passados';
+    html += `<div class="section-label">${labelPast}</div>` + pastF.map(x => mkTarefaEventoCard(x.e, x.raw, x.rawIdx, x.tpl)).join('');
+  }
   lista.innerHTML = html;
 }
 
@@ -1745,7 +1781,7 @@ function renderCorpoInline(rawIdx, taskId) {
   const body = document.getElementById('tkbody-' + rawIdx + '-' + taskId);
   if (!body) return;
   const raw = EVENTOS_RAW[rawIdx];
-  const tpl = templateParaEmpresa(raw.empresa);
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
   const t = todasTarefasTemplate(tpl).find(x => x.id === taskId);
   body.innerHTML = corpoInlineHtml(t, raw.tarefas[taskId], rawIdx);
 }
@@ -1784,7 +1820,7 @@ function atualizarLinhaTarefa(rawIdx, taskId, t) {
 }
 function atualizarBadgePendenciasEvento(rawIdx) {
   const raw = EVENTOS_RAW[rawIdx];
-  const tpl = templateParaEmpresa(raw.empresa);
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
   if (!tpl) return;
   const e = EVENTOS.find(x => x.num === raw.num);
   const totalPend = todasTarefasTemplate(tpl).filter(t => {
@@ -1808,7 +1844,7 @@ document.addEventListener('change', function(e) {
   if (!exigirLogin()) { carregar(); return; }
   const rawIdx = +body.dataset.rawidx, taskId = body.dataset.taskid;
   const raw = EVENTOS_RAW[rawIdx];
-  const tpl = templateParaEmpresa(raw.empresa);
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
   const t = todasTarefasTemplate(tpl).find(x => x.id === taskId);
   if (!t) return;
   ensureTarefasEvento(raw);
@@ -1960,7 +1996,7 @@ function onTarefaNaoHaToggle() {
 }
 function abrirModalTarefa(rawIdx, taskId) {
   const raw = EVENTOS_RAW[rawIdx];
-  const tpl = templateParaEmpresa(raw.empresa);
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
   const t = todasTarefasTemplate(tpl).find(x => x.id === taskId);
   if (!t) return;
   ensureTarefasEvento(raw);
@@ -2008,7 +2044,7 @@ function renderModalMultiForn(t, raw) {
 function tfToggleTipo(tipo) {
   const { rawIdx, taskId } = tarefaEditCtx;
   const raw = EVENTOS_RAW[rawIdx];
-  const t = todasTarefasTemplate(templateParaEmpresa(raw.empresa)).find(x => x.id === taskId);
+  const t = todasTarefasTemplate(templateParaEmpresa(raw.empresa, raw.tipo)).find(x => x.id === taskId);
   const valores = raw.tarefas[taskId];
   const checked = document.querySelector(`#tf-tipos input[value="${tipo.replace(/"/g,'&quot;')}"]`).checked;
   if (checked && !valores.tipos.includes(tipo)) valores.tipos.push(tipo);
@@ -2019,7 +2055,7 @@ function salvarTarefa() {
   if (!exigirLogin()) return;
   const { rawIdx, taskId } = tarefaEditCtx;
   const raw = EVENTOS_RAW[rawIdx];
-  const tpl = templateParaEmpresa(raw.empresa);
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
   const t = todasTarefasTemplate(tpl).find(x => x.id === taskId);
   const naoHa = document.getElementById('tarefa-naoha').checked;
 
