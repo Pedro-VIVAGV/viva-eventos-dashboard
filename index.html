@@ -5,6 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Viva Eventos — Painel de Pendências</title>
 <script>(function(){try{var t=localStorage.getItem('ve_theme')||'dark';document.documentElement.setAttribute('data-theme', t);}catch(e){}})();</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+  import {
+    getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut
+  } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+  import {
+    getFirestore, collection, doc, getDocs, setDoc, deleteDoc, writeBatch
+  } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDmLTVH8fhjX-QFSreHVFE5sr2M3pT7F1s",
+    authDomain: "viva-eventos-dashboard.firebaseapp.com",
+    projectId: "viva-eventos-dashboard",
+    storageBucket: "viva-eventos-dashboard.firebasestorage.app",
+    messagingSenderId: "123256245000",
+    appId: "1:123256245000:web:be0fd627db7609509dbabd"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  window.FB = {
+    auth, db,
+    onAuthStateChanged, signInWithEmailAndPassword, signOut,
+    collection, doc, getDocs, setDoc, deleteDoc, writeBatch
+  };
+  window.dispatchEvent(new Event('fb-ready'));
+</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -43,6 +72,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tbtn.add{background:var(--btn-fill-bg);border-color:var(--btn-fill-bg);color:var(--btn-fill-text);font-weight:600}
 .tbtn.add:hover{background:var(--btn-fill-hover);border-color:var(--btn-fill-hover)}
 .tbtn.theme{padding:7px 10px;font-size:13px}
+.sync-status{background:none;border:none;cursor:default;color:var(--topbar-text-dim)}
+.sync-status.saving{color:#f6ad55}
+.sync-status.ok{color:#68d391}
+.sync-status.err{color:#fc8181}
 .dirty-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f6ad55;margin-right:4px;vertical-align:middle}
 
 /* LAYOUT */
@@ -264,10 +297,11 @@ details summary::-webkit-details-marker{display:none}
       <div class="leg-item"><div class="leg-dot" style="background:#eab308"></div>Contato / Aguardando</div>
       <div class="leg-item"><div class="leg-dot" style="background:#ef4444"></div>Não iniciado</div>
     </div>
-    <button class="tbtn save" id="btn-salvar" onclick="salvarGitHub()"><span class="dirty-dot"></span>Salvar</button>
+    <span class="tbtn sync-status" id="sync-status" style="display:none"></span>
     <button class="tbtn add" onclick="abrirModalEvento(null)">+ Evento</button>
     <button class="tbtn" onclick="carregar()">↻ Atualizar</button>
-    <button class="tbtn" onclick="abrirModalConfig()">⚙ Config</button>
+    <button class="tbtn" id="btn-importar" onclick="abrir('m-importar')" style="display:none">Importar</button>
+    <button class="tbtn" id="btn-auth" onclick="onClickAuthBtn()">Entrar</button>
     <button class="tbtn theme" id="btn-theme" onclick="alternarTema()" title="Alternar tema claro/escuro">🌙</button>
   </div>
 </div>
@@ -340,35 +374,39 @@ details summary::-webkit-details-marker{display:none}
 </div>
 
 <!-- MODAL CONFIG -->
-<div class="overlay" id="m-config">
-  <div class="modal">
+<!-- MODAL LOGIN -->
+<div class="overlay" id="m-login">
+  <div class="modal narrow">
     <div class="modal-hd">
-      <div class="modal-title">⚙ Configurações do GitHub</div>
-      <button class="modal-x" onclick="fechar('m-config')">✕</button>
+      <div class="modal-title">Entrar</div>
+      <button class="modal-x" onclick="fechar('m-login')">✕</button>
     </div>
     <div class="modal-bd">
-      <div class="fr">
-        <label>Usuário GitHub (owner)</label>
-        <input type="text" id="cfg-owner" placeholder="pedro-vivagv">
-        <div class="hint">Seu nome de usuário no GitHub</div>
-      </div>
-      <div class="fr">
-        <label>Repositório</label>
-        <input type="text" id="cfg-repo" placeholder="viva-eventos-dashboard">
-      </div>
-      <div class="fr">
-        <label>Branch</label>
-        <input type="text" id="cfg-branch" placeholder="main">
-      </div>
-      <div class="fr">
-        <label>Token GitHub (PAT)</label>
-        <input type="password" id="cfg-token" placeholder="ghp_xxxxxxxxxxxx">
-        <div class="hint">Token com permissão de escrita no repositório. Salvo somente no seu navegador (localStorage).</div>
-      </div>
+      <div class="fr"><label>E-mail</label><input type="email" id="login-email" placeholder="voce@viva.com"></div>
+      <div class="fr"><label>Senha</label><input type="password" id="login-senha"></div>
+      <div class="fr hint" id="login-erro" style="color:#c53030;display:none"></div>
     </div>
-    <div class="modal-ft" style="justify-content:space-between">
-      <button class="btn btn-ghost" onclick="importarSheets()" style="font-size:12px">Importar do Google Sheets (1x)</button>
-      <button class="btn btn-primary" onclick="salvarConfig()">Salvar Config</button>
+    <div class="modal-ft">
+      <button class="btn btn-ghost" onclick="fechar('m-login')">Cancelar</button>
+      <button class="btn btn-primary" onclick="fazerLogin()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL IMPORTAR (migração única) -->
+<div class="overlay" id="m-importar">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title">Importar dados antigos (1x)</div>
+      <button class="modal-x" onclick="fechar('m-importar')">✕</button>
+    </div>
+    <div class="modal-bd">
+      <div class="fr hint">Use só na migração inicial — importa os dados de uma fonte antiga direto para o Firestore.</div>
+      <div class="fr"><button class="btn btn-ghost" onclick="importarDoGithub()">Importar do dados.json do GitHub</button></div>
+      <div class="fr"><button class="btn btn-ghost" onclick="importarSheets()">Importar do Google Sheets</button></div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn btn-ghost" onclick="fechar('m-importar')">Fechar</button>
     </div>
   </div>
 </div>
@@ -534,7 +572,6 @@ const SITUACOES = [
 const EXCL_TIPOS = new Set(['Particular','Não agendar','ExpoAgro GV','Carnaval']);
 const EXCL_KW  = ['Flávio: Fora','Janine: Viagem','ExpoAgro','Carnaval','Não agendar'];
 const DIAS     = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-const CFG_KEY  = 've_config';
 
 // URL original do Sheets (só usada na importação única de migração)
 const GVIZ_URL = 'https://docs.google.com/spreadsheets/d/1Xvq2FP-3Ejk2NT3VV33VoH8KxErTXQqVoXXjn-KPQSM/gviz/tq?tqx=out:json&sheet=Contrata%C3%A7%C3%A3o_Fornecedores';
@@ -555,7 +592,6 @@ const MAPA_COLS = {
 let EVENTOS_RAW = [];   // fonte da verdade (espelho do dados.json)
 let EVENTOS     = [];   // processados (com days_to, n_ok, etc.)
 let FORNECEDORES = [];  // catálogo {id, nome, categoria}
-let isDirty     = false;
 let tiposOk     = false;
 let editIdx     = null; // índice em EVENTOS_RAW do evento sendo editado
 let editGrupo   = null; // grupo do serviço sendo editado
@@ -852,60 +888,83 @@ function sincronizarKanbanDeTarefa(raw, t) {
   raw.servicos[t.grupoKanban] = { fornecedor: f ? f.nome : '', situacao: sk };
 }
 
-// ── CONFIG ─────────────────────────────────────────────────────────────────
-function getCfg() { return JSON.parse(localStorage.getItem(CFG_KEY) || '{}'); }
-function setCfg(c) { localStorage.setItem(CFG_KEY, JSON.stringify(c)); }
+// ── AUTENTICAÇÃO (Firebase) ──────────────────────────────────────────────────
+let usuarioLogado = null;
 
-function abrirModalConfig() {
-  const c = getCfg();
-  document.getElementById('cfg-owner').value  = c.owner  || '';
-  document.getElementById('cfg-repo').value   = c.repo   || '';
-  document.getElementById('cfg-branch').value = c.branch || 'main';
-  document.getElementById('cfg-token').value  = c.token  || '';
-  abrir('m-config');
+function aguardarFirebase() {
+  return new Promise(resolve => {
+    if (window.FB) return resolve();
+    window.addEventListener('fb-ready', () => resolve(), { once: true });
+  });
 }
 
-function salvarConfig() {
-  const c = {
-    owner:  document.getElementById('cfg-owner').value.trim(),
-    repo:   document.getElementById('cfg-repo').value.trim(),
-    branch: document.getElementById('cfg-branch').value.trim() || 'main',
-    token:  document.getElementById('cfg-token').value.trim()
-  };
-  if (!c.owner || !c.repo) { toast('Preencha pelo menos owner e repositório.', 'err'); return; }
-  setCfg(c);
-  fechar('m-config');
-  toast('Configurações salvas!', 'ok');
-  carregar();
+function abrirModalLogin() {
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-senha').value = '';
+  document.getElementById('login-erro').style.display = 'none';
+  abrir('m-login');
 }
 
-// ── CARREGAR DO GITHUB ──────────────────────────────────────────────────────
-function rawUrl() {
-  const c = getCfg();
-  return `https://raw.githubusercontent.com/${c.owner}/${c.repo}/${c.branch||'main'}/dados.json?t=${Date.now()}`;
+function fazerLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const senha = document.getElementById('login-senha').value;
+  const erroEl = document.getElementById('login-erro');
+  erroEl.style.display = 'none';
+  if (!email || !senha) { erroEl.textContent = 'Preencha e-mail e senha.'; erroEl.style.display = ''; return; }
+  window.FB.signInWithEmailAndPassword(window.FB.auth, email, senha)
+    .then(() => fechar('m-login'))
+    .catch(e => { erroEl.textContent = 'Não foi possível entrar (confira e-mail/senha).'; erroEl.style.display = ''; });
+}
+
+function fazerLogout() { window.FB.signOut(window.FB.auth); }
+
+function onClickAuthBtn() {
+  if (usuarioLogado) { if (confirm('Sair da conta?')) fazerLogout(); }
+  else abrirModalLogin();
+}
+
+function atualizarUIAuth() {
+  const btn = document.getElementById('btn-auth');
+  const btnImportar = document.getElementById('btn-importar');
+  if (usuarioLogado) {
+    btn.textContent = usuarioLogado.email + ' · Sair';
+    if (btnImportar) btnImportar.style.display = '';
+  } else {
+    btn.textContent = 'Entrar';
+    if (btnImportar) btnImportar.style.display = 'none';
+  }
+}
+
+// Bloqueia uma ação de edição se ninguém estiver logado.
+function exigirLogin() {
+  if (usuarioLogado) return true;
+  toast('Faça login para editar.', 'err');
+  abrirModalLogin();
+  return false;
+}
+
+// ── CARREGAR / SALVAR NO FIRESTORE ───────────────────────────────────────────
+function mostrarSyncStatus(texto, classe) {
+  const el = document.getElementById('sync-status');
+  el.textContent = texto;
+  el.className = 'tbtn sync-status' + (classe ? ' ' + classe : '');
+  el.style.display = texto ? '' : 'none';
 }
 
 async function carregar() {
-  const c = getCfg();
-  if (!c.owner || !c.repo) {
-    document.getElementById('topbar-sub').textContent = 'Configure o GitHub primeiro';
-    document.getElementById('lista').innerHTML = '<div class="error-box">Configure o repositório clicando em <strong>⚙ Config</strong>.</div>';
-    abrirModalConfig();
-    return;
-  }
+  await aguardarFirebase();
   document.getElementById('lista').innerHTML = '<div class="loading">Carregando eventos...</div>';
-  document.getElementById('topbar-sub').textContent = 'Conectando...';
+  document.getElementById('topbar-sub').textContent = 'Conectando ao Firestore...';
   try {
-    const res = await fetch(rawUrl());
-    if (!res.ok) throw new Error('HTTP ' + res.status + ' — verifique o repositório e o arquivo dados.json');
-    const data = await res.json();
-    EVENTOS_RAW = data.eventos || [];
-    FORNECEDORES = data.fornecedores || [];
-    importarFornecedoresDeEventos();
+    const FB = window.FB;
+    const [evSnap, fSnap] = await Promise.all([
+      FB.getDocs(FB.collection(FB.db, 'eventos')),
+      FB.getDocs(FB.collection(FB.db, 'fornecedores'))
+    ]);
+    EVENTOS_RAW = evSnap.docs.map(d => d.data());
+    FORNECEDORES = fSnap.docs.map(d => ({ id: d.id, ...d.data() }));
     EVENTOS_RAW.forEach(ensureTarefasEvento);
     EVENTOS = processar(EVENTOS_RAW);
-    isDirty = false;
-    syncBtnSalvar();
     document.getElementById('topbar-sub').textContent = 'Atualizado: ' + new Date().toLocaleString('pt-BR');
     if (!tiposOk) popularTipos();
     renderizar();
@@ -917,9 +976,61 @@ async function carregar() {
   }
 }
 
+// Persiste UM evento inteiro (documento pequeno — grava na hora, sem conceito de commit).
+async function salvarEventoFirestore(raw) {
+  await aguardarFirebase();
+  mostrarSyncStatus('Salvando…', 'saving');
+  try {
+    await window.FB.setDoc(window.FB.doc(window.FB.db, 'eventos', String(raw.num)), raw);
+    mostrarSyncStatus('Salvo ✓', 'ok');
+    setTimeout(() => mostrarSyncStatus(''), 2000);
+  } catch(e) {
+    mostrarSyncStatus('Erro ao salvar', 'err');
+    toast('Erro ao salvar no Firestore: ' + e.message, 'err');
+  }
+}
+async function excluirEventoFirestore(num) {
+  await aguardarFirebase();
+  mostrarSyncStatus('Excluindo…', 'saving');
+  try {
+    await window.FB.deleteDoc(window.FB.doc(window.FB.db, 'eventos', String(num)));
+    mostrarSyncStatus('Salvo ✓', 'ok');
+    setTimeout(() => mostrarSyncStatus(''), 2000);
+  } catch(e) {
+    mostrarSyncStatus('Erro ao salvar', 'err');
+    toast('Erro ao excluir no Firestore: ' + e.message, 'err');
+  }
+}
+async function salvarFornecedorFirestore(f) {
+  await aguardarFirebase();
+  try {
+    await window.FB.setDoc(window.FB.doc(window.FB.db, 'fornecedores', f.id), { nome: f.nome, categoria: f.categoria || '' });
+  } catch(e) {
+    toast('Erro ao salvar fornecedor: ' + e.message, 'err');
+  }
+}
+async function excluirFornecedorFirestore(id) {
+  await aguardarFirebase();
+  try {
+    await window.FB.deleteDoc(window.FB.doc(window.FB.db, 'fornecedores', id));
+  } catch(e) {
+    toast('Erro ao excluir fornecedor: ' + e.message, 'err');
+  }
+}
+// Grava vários eventos/fornecedores de uma vez (usado nas migrações únicas).
+async function importarEmLote(eventos, fornecedores) {
+  await aguardarFirebase();
+  const FB = window.FB;
+  const batch = FB.writeBatch(FB.db);
+  eventos.forEach(ev => batch.set(FB.doc(FB.db, 'eventos', String(ev.num)), ev));
+  (fornecedores || []).forEach(f => batch.set(FB.doc(FB.db, 'fornecedores', f.id), { nome: f.nome, categoria: f.categoria || '' }));
+  await batch.commit();
+}
+
 // ── IMPORTAR DO SHEETS (migração única) ─────────────────────────────────────
 async function importarSheets() {
-  if (!confirm('Isso importa dados do Google Sheets e substitui os dados atuais na memória.\nVocê ainda precisará clicar em Salvar para gravar no GitHub. Continuar?')) return;
+  if (!exigirLogin()) return;
+  if (!confirm('Isso importa os dados do Google Sheets e grava direto no Firestore, substituindo os eventos atuais. Continuar?')) return;
   toast('Importando do Google Sheets...');
   try {
     const res = await fetch(GVIZ_URL);
@@ -927,16 +1038,47 @@ async function importarSheets() {
     const json = JSON.parse(txt.replace(/^[\s\S]*?google\.visualization\.Query\.setResponse\(/, '').replace(/\);?\s*$/, ''));
     if (json.status === 'error') throw new Error(json.errors[0].message);
     EVENTOS_RAW = sheetsParaRaw(json.table);
+    EVENTOS_RAW.forEach(ensureTarefasEvento);
+    importarFornecedoresDeEventos();
+    await importarEmLote(EVENTOS_RAW, FORNECEDORES);
     EVENTOS = processar(EVENTOS_RAW);
-    isDirty = true;
-    syncBtnSalvar();
-    fechar('m-config');
+    fechar('m-importar');
     tiposOk = false;
     popularTipos();
     renderizar();
-    toast(`${EVENTOS_RAW.length} eventos importados. Clique em Salvar para gravar no GitHub.`, 'ok');
+    renderTarefasTab();
+    renderFornecedoresTab();
+    toast(`${EVENTOS_RAW.length} eventos importados e salvos no Firestore.`, 'ok');
   } catch(e) {
     toast('Erro ao importar: ' + e.message, 'err');
+  }
+}
+
+// Migração única: traz o dados.json que já estava publicado no GitHub Pages para o Firestore.
+async function importarDoGithub() {
+  if (!exigirLogin()) return;
+  if (!confirm('Isso importa os eventos/fornecedores do dados.json do GitHub e grava no Firestore, substituindo o que já estiver lá. Continuar?')) return;
+  toast('Importando do GitHub...');
+  try {
+    const url = `https://raw.githubusercontent.com/pedro-vivagv/viva-eventos-dashboard/main/dados.json?t=${Date.now()}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    EVENTOS_RAW = data.eventos || [];
+    FORNECEDORES = data.fornecedores || [];
+    importarFornecedoresDeEventos();
+    EVENTOS_RAW.forEach(ensureTarefasEvento);
+    await importarEmLote(EVENTOS_RAW, FORNECEDORES);
+    EVENTOS = processar(EVENTOS_RAW);
+    fechar('m-importar');
+    tiposOk = false;
+    popularTipos();
+    renderizar();
+    renderTarefasTab();
+    renderFornecedoresTab();
+    toast(`${EVENTOS_RAW.length} eventos importados do GitHub e salvos no Firestore.`, 'ok');
+  } catch(e) {
+    toast('Erro ao importar do GitHub: ' + e.message, 'err');
   }
 }
 
@@ -990,46 +1132,10 @@ function processar(raw) {
   }).filter(Boolean).sort((a,b) => a.days_to - b.days_to);
 }
 
-// ── SALVAR NO GITHUB ────────────────────────────────────────────────────────
-async function salvarGitHub() {
-  const c = getCfg();
-  if (!c.token) { toast('Configure o token GitHub em ⚙ Config.', 'err'); abrirModalConfig(); return; }
-  const btn = document.getElementById('btn-salvar');
-  btn.disabled = true; btn.textContent = 'Salvando...';
-  try {
-    const apiUrl = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/dados.json`;
-    const payload = { meta: { atualizado: new Date().toISOString() }, eventos: EVENTOS_RAW, fornecedores: FORNECEDORES };
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
-
-    const hdrs = { Authorization: `token ${c.token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
-    let sha;
-    const metaRes = await fetch(apiUrl, { headers: hdrs });
-    if (metaRes.ok) { sha = (await metaRes.json()).sha; }
-    else if (metaRes.status !== 404) { throw new Error('Erro ao ler arquivo: HTTP ' + metaRes.status); }
-
-    const body = { message: 'Atualizar eventos — ' + new Date().toLocaleString('pt-BR'), content, branch: c.branch || 'main' };
-    if (sha) body.sha = sha;
-
-    const put = await fetch(apiUrl, { method:'PUT', headers:hdrs, body:JSON.stringify(body) });
-    if (!put.ok) { const e = await put.json().catch(()=>({})); throw new Error(e.message || 'HTTP ' + put.status); }
-
-    isDirty = false;
-    syncBtnSalvar();
-    toast('Salvo no GitHub com sucesso!', 'ok');
-  } catch(e) {
-    toast('Erro ao salvar: ' + e.message, 'err');
-    syncBtnSalvar();
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-function syncBtnSalvar() {
-  const btn = document.getElementById('btn-salvar');
-  btn.style.display = isDirty ? 'inline-block' : 'none';
-  if (isDirty) btn.innerHTML = '<span class="dirty-dot"></span>Salvar';
-}
-function marcarDirty() { isDirty = true; syncBtnSalvar(); }
+// marcarDirty() não existe mais como conceito (cada edição já persiste sozinha no Firestore
+// via salvarEventoFirestore/salvarFornecedorFirestore). Mantido como no-op por segurança,
+// caso alguma chamada antiga ainda reste em algum ponto do código.
+function marcarDirty() {}
 
 // ── MODAL EVENTO ────────────────────────────────────────────────────────────
 function abrirModalEvento(idx) {
@@ -1063,11 +1169,13 @@ function renderSvcGrid() {
 }
 
 function salvarEvento() {
+  if (!exigirLogin()) return;
   const num   = parseInt(document.getElementById('ev-num').value);
   const fundo = document.getElementById('ev-fundo').value.trim();
   const data  = document.getElementById('ev-data').value;
   if (!num || !fundo || !data) { toast('Preencha Número, Cliente e Data.', 'err'); return; }
   const servicosAtuais = editIdx !== null ? (EVENTOS_RAW[editIdx].servicos || {}) : editSvcs;
+  const numAntigo = editIdx !== null ? EVENTOS_RAW[editIdx].num : null;
   const ev = {
     num, cidade:   document.getElementById('ev-cidade').value,
     empresa:       document.getElementById('ev-empresa').value.trim(),
@@ -1080,24 +1188,27 @@ function salvarEvento() {
   else EVENTOS_RAW.push(ev);
   ensureTarefasEvento(ev);
   EVENTOS = processar(EVENTOS_RAW);
-  marcarDirty();
   fechar('m-evento');
   tiposOk = false; popularTipos();
   renderizar();
   renderTarefasTab();
-  toast('Evento salvo localmente. Clique em Salvar para gravar no GitHub.', 'ok');
+  salvarEventoFirestore(ev).then(() => {
+    if (numAntigo !== null && numAntigo !== num) excluirEventoFirestore(numAntigo);
+  });
+  toast('Evento salvo.', 'ok');
 }
 
 function deletarEvento() {
+  if (!exigirLogin()) return;
   if (editIdx === null) return;
   const ev = EVENTOS_RAW[editIdx];
   if (!confirm(`Excluir evento #${ev.num} — ${ev.fundo}?`)) return;
   EVENTOS_RAW.splice(editIdx, 1);
   EVENTOS = processar(EVENTOS_RAW);
-  marcarDirty();
   fechar('m-evento');
   renderizar();
-  toast('Evento excluído. Clique em Salvar para gravar no GitHub.', 'ok');
+  excluirEventoFirestore(ev.num);
+  toast('Evento excluído.', 'ok');
 }
 
 // ── MODAL SERVIÇO ───────────────────────────────────────────────────────────
@@ -1169,6 +1280,7 @@ document.addEventListener('click', e => {
 renderSitMenu();
 
 function salvarServico() {
+  if (editIdx !== null && !exigirLogin()) return;
   const forn = document.getElementById('svc-forn').value.trim();
   const sit  = svcSitVal;
   if (editIdx !== null) {
@@ -1177,10 +1289,10 @@ function salvarServico() {
     if (sit === 'Não Há') delete EVENTOS_RAW[editIdx].servicos[editGrupo];
     else EVENTOS_RAW[editIdx].servicos[editGrupo] = { fornecedor: forn, situacao: sit };
     EVENTOS = processar(EVENTOS_RAW);
-    marcarDirty();
     fechar('m-servico');
     if (document.getElementById('m-evento').classList.contains('open')) renderSvcGrid();
     renderizar();
+    salvarEventoFirestore(EVENTOS_RAW[editIdx]);
   } else {
     // Evento novo (ainda não existe em EVENTOS_RAW): fica em stage
     if (sit === 'Não Há') delete editSvcs[editGrupo];
@@ -1210,6 +1322,7 @@ function dropSvc(ev, novaSituacao, colEl) {
     data = { rawIdx: +ri, grupo: g };
   }
   _dragData = null;
+  if (!exigirLogin()) return;
   const { rawIdx, grupo } = data;
   const evento = EVENTOS_RAW[rawIdx];
   if (!evento) return;
@@ -1219,8 +1332,8 @@ function dropSvc(ev, novaSituacao, colEl) {
   if (novaSituacao === 'Não Há') delete evento.servicos[grupo];
   else evento.servicos[grupo] = { fornecedor: atual.fornecedor || '', situacao: novaSituacao };
   EVENTOS = processar(EVENTOS_RAW);
-  marcarDirty();
   renderizar();
+  salvarEventoFirestore(evento);
 }
 
 function sitCss(sit) {
@@ -1670,6 +1783,7 @@ function atualizarBadgePendenciasEvento(rawIdx) {
 document.addEventListener('change', function(e) {
   const body = e.target.closest('.tk-inline-body');
   if (!body) return;
+  if (!exigirLogin()) { carregar(); return; }
   const rawIdx = +body.dataset.rawidx, taskId = body.dataset.taskid;
   const raw = EVENTOS_RAW[rawIdx];
   const tpl = templateParaEmpresa(raw.empresa);
@@ -1708,8 +1822,8 @@ document.addEventListener('change', function(e) {
   valores.modificadoEm = new Date().toISOString();
   sincronizarKanbanDeTarefa(raw, t);
   EVENTOS = processar(EVENTOS_RAW);
-  marcarDirty();
   atualizarLinhaTarefa(rawIdx, taskId, t);
+  salvarEventoFirestore(raw);
 });
 
 function togTarefa(num) {
@@ -1803,6 +1917,7 @@ function renderFornecedorPicker(k, valorId) {
 }
 function onFornPickerChange(sel) {
   if (sel.value !== '__novo__') return;
+  if (!exigirLogin()) { sel.value = ''; return; }
   const nome = prompt('Nome do novo fornecedor:');
   if (nome && nome.trim()) {
     const id = getOrCriarFornecedor(nome.trim());
@@ -1810,6 +1925,7 @@ function onFornPickerChange(sel) {
     opt.value = id; opt.textContent = nome.trim();
     sel.insertBefore(opt, sel.lastElementChild);
     sel.value = id;
+    salvarFornecedorFirestore(FORNECEDORES.find(f => f.id === id));
   } else sel.value = '';
 }
 
@@ -1878,6 +1994,7 @@ function tfToggleTipo(tipo) {
   renderModalMultiForn(t, raw);
 }
 function salvarTarefa() {
+  if (!exigirLogin()) return;
   const { rawIdx, taskId } = tarefaEditCtx;
   const raw = EVENTOS_RAW[rawIdx];
   const tpl = templateParaEmpresa(raw.empresa);
@@ -1911,10 +2028,10 @@ function salvarTarefa() {
 
   sincronizarKanbanDeTarefa(raw, t);
   EVENTOS = processar(EVENTOS_RAW);
-  marcarDirty();
   fechar('m-tarefa');
   renderTarefasTab();
   if (abaAtiva === 'kanban') renderizar();
+  salvarEventoFirestore(raw);
   toast('Tarefa salva.', 'ok');
 }
 
@@ -1946,29 +2063,35 @@ function abrirPerfilFornecedor(fid) {
   abrir('m-perfil');
 }
 function excluirFornecedorAtual() {
+  if (!exigirLogin()) return;
   if (!perfilFornAtual) return;
   const f = FORNECEDORES.find(x => x.id === perfilFornAtual);
   if (!f) return;
-  const vinculados = contarEventosFornecedor(perfilFornAtual).length;
-  if (vinculados > 0 && !confirm(`${f.nome} está vinculado a ${vinculados} evento(s). Excluir mesmo assim? (os vínculos ficarão "sem fornecedor selecionado")`)) return;
+  const eventosAfetados = contarEventosFornecedor(perfilFornAtual);
+  if (eventosAfetados.length > 0 && !confirm(`${f.nome} está vinculado a ${eventosAfetados.length} evento(s). Excluir mesmo assim? (os vínculos ficarão "sem fornecedor selecionado")`)) return;
   FORNECEDORES = FORNECEDORES.filter(x => x.id !== perfilFornAtual);
-  EVENTOS_RAW.forEach(ev => Object.values(ev.tarefas || {}).forEach(v => { if (v && v.fornecedorId === perfilFornAtual) v.fornecedorId = ''; }));
-  marcarDirty();
+  eventosAfetados.forEach(ev => {
+    Object.values(ev.tarefas || {}).forEach(v => { if (v && v.fornecedorId === perfilFornAtual) v.fornecedorId = ''; });
+    salvarEventoFirestore(ev);
+  });
+  excluirFornecedorFirestore(perfilFornAtual);
   fechar('m-perfil');
   renderFornecedoresTab();
   toast('Fornecedor excluído.', 'ok');
 }
 function abrirModalNovoFornecedor() {
+  if (!exigirLogin()) return;
   document.getElementById('nf-nome').value = '';
   document.getElementById('nf-categoria').value = '';
   abrir('m-novo-forn');
 }
 function salvarNovoFornecedor() {
+  if (!exigirLogin()) return;
   const nome = document.getElementById('nf-nome').value.trim();
   const categoria = document.getElementById('nf-categoria').value.trim();
   if (!nome) { toast('Informe o nome do fornecedor.', 'err'); return; }
-  getOrCriarFornecedor(nome, categoria);
-  marcarDirty();
+  const id = getOrCriarFornecedor(nome, categoria);
+  salvarFornecedorFirestore(FORNECEDORES.find(f => f.id === id));
   fechar('m-novo-forn');
   renderFornecedoresTab();
   toast('Fornecedor cadastrado.', 'ok');
@@ -1998,7 +2121,14 @@ function atualizarIconeTema() {
 }
 atualizarIconeTema();
 
-carregar();
+// ── INICIALIZAÇÃO ────────────────────────────────────────────────────────────
+aguardarFirebase().then(() => {
+  window.FB.onAuthStateChanged(window.FB.auth, user => {
+    usuarioLogado = user;
+    atualizarUIAuth();
+  });
+  carregar();
+});
 </script>
 </body>
 </html>
