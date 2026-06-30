@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-30T18:33:10.488Z"
+    "atualizado": "2026-06-30T18:43:42.125Z"
   },
   "eventos": [
     {
@@ -5266,7 +5266,7 @@
       "servicos": {
         "Buffet": {
           "fornecedor": "Buffet Ferreira",
-          "situacao": "Contato Feito"
+          "situacao": "Contratado"
         },
         "Sobremesa": {
           "fornecedor": "",
@@ -5278,27 +5278,27 @@
         },
         "Gelo": {
           "fornecedor": "Cia do Gelo",
-          "situacao": "Contato Feito"
+          "situacao": "Contratado"
         },
         "Bar de Drinks": {
           "fornecedor": "Fly Drinks",
-          "situacao": "Contratado"
+          "situacao": "Pago Entrada"
         },
         "Decoração": {
           "fornecedor": "Wanderson Decor",
-          "situacao": "Contato Feito"
+          "situacao": "Contratado"
         },
         "Estruturas": {
           "fornecedor": "Alexandre Sabão",
-          "situacao": "Contato Feito"
+          "situacao": "Contratado"
         },
         "Atração 01": {
           "fornecedor": "Momento Black",
-          "situacao": "Não Iniciado"
+          "situacao": "Contratado"
         },
         "Atração 02": {
           "fornecedor": "DJ Hedaya",
-          "situacao": "Não Iniciado"
+          "situacao": "Contratado"
         },
         "Seguranças": {
           "fornecedor": "Rildo",
@@ -5309,8 +5309,8 @@
           "situacao": "Não Iniciado"
         },
         "Aftermovie": {
-          "fornecedor": "Ag Heringer",
-          "situacao": "Não Iniciado"
+          "fornecedor": "Agência Heringer",
+          "situacao": "Contratado"
         },
         "Fotografia": {
           "fornecedor": "Luminous",
@@ -5338,15 +5338,17 @@
         },
         "arte_evento": {
           "naoHa": false,
-          "cartaz": "Pendente",
-          "ingressoArte": "Pendente",
-          "cardapio": "Pendente",
-          "backdrop": "Pendente"
+          "cartaz": "Solicitado",
+          "ingressoArte": "Solicitado",
+          "cardapio": "Solicitado",
+          "backdrop": "Solicitado",
+          "modificadoEm": "2026-06-30T18:39:56.631Z"
         },
         "impressao_ingressos": {
           "naoHa": false,
-          "situacao": "Pendente",
-          "entrega": "Pendente"
+          "situacao": "Solicitado",
+          "entrega": "Pronto",
+          "modificadoEm": "2026-06-30T18:40:59.633Z"
         },
         "bebidas_frias": {
           "naoHa": false,
@@ -5359,90 +5361,113 @@
         },
         "gelo": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
-          "email": "Não",
+          "fornecedorId": "f_cia-do-gelo_rf0v",
+          "situacao": "Contratado",
+          "email": "Sim",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:34:02.637Z"
         },
         "bebidas_destiladas": {
           "naoHa": false,
-          "categoria": [],
+          "categoria": [
+            "Canelinha"
+          ],
           "categoriaOutra": "",
           "pedido": "Não Há",
-          "dataPedido": ""
+          "dataPedido": "",
+          "modificadoEm": "2026-06-30T18:34:13.902Z"
         },
         "bar_drinks": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
-          "contrato": "Pendente",
-          "email": "Não",
-          "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "fornecedorId": "f_fly-drinks_smvb",
+          "situacao": "Contratado",
+          "contrato": "Assinado",
+          "email": "Sim",
+          "pagamento": "Primeiro Pagamento Realizado e Segundo Cadastrado",
+          "comprovante": "Enviado",
+          "modificadoEm": "2026-06-30T18:34:36.754Z"
         },
         "bebidas_quentes": {
           "naoHa": false,
-          "vodka": "",
-          "vodkaQtd": "",
-          "gin": "",
-          "ginQtd": "",
-          "estoque": "Pendente"
+          "vodka": "Smirnoff",
+          "vodkaQtd": "18",
+          "gin": "Seagers",
+          "ginQtd": "18",
+          "estoque": "Em Estoque",
+          "modificadoEm": "2026-06-30T18:34:54.650Z"
         },
         "buffet": {
           "naoHa": false,
           "tipo": "Mesa Mineira",
           "obs": "",
-          "fornecedorId": "",
-          "situacao": "Pendente",
-          "contrato": "Pendente",
-          "email": "Não",
+          "fornecedorId": "f_buffet-ferreira_c3no",
+          "situacao": "Contratado",
+          "contrato": "Enviado",
+          "email": "Sim",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:35:10.536Z"
         },
         "extras": {
           "naoHa": false,
-          "tipos": [],
-          "itens": {}
+          "tipos": [
+            "Brownie"
+          ],
+          "itens": {
+            "Brownie": {
+              "fornecedorId": "f_scherrer-gourmet_dtm4",
+              "situacao": "Pendente",
+              "contrato": "Pendente",
+              "email": "Não",
+              "pagamento": "Pendente",
+              "comprovante": "Pendente"
+            }
+          },
+          "modificadoEm": "2026-06-30T18:35:35.157Z"
         },
         "decoracao": {
           "naoHa": false,
           "obs": "",
-          "fornecedorId": "",
-          "situacao": "Pendente",
+          "fornecedorId": "f_wanderson-decor_1n9p",
+          "situacao": "Contratado",
           "contrato": "Pendente",
-          "email": "Não",
+          "email": "Sim",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:35:53.609Z"
         },
         "mapa_evento": {
-          "naoHa": false,
-          "situacao": "Pendente"
+          "naoHa": true,
+          "situacao": "Pendente",
+          "modificadoEm": "2026-06-30T18:41:27.487Z"
         },
         "atracao01": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
+          "fornecedorId": "f_momento-black_fwn5",
+          "situacao": "Contratado",
           "contrato": "Pendente",
-          "email": "Não",
+          "email": "Sim",
           "pagamento": "Pendente",
           "comprovante": "Pendente",
           "rider": "Não há",
-          "obsRider": ""
+          "obsRider": "",
+          "modificadoEm": "2026-06-30T18:36:09.353Z"
         },
         "atracao02": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
+          "fornecedorId": "f_dj-hedaya_668a",
+          "situacao": "Contratado",
           "contrato": "Pendente",
-          "email": "Não",
+          "email": "Sim",
           "pagamento": "Pendente",
           "comprovante": "Pendente",
           "rider": "Não há",
-          "obsRider": ""
+          "obsRider": "",
+          "modificadoEm": "2026-06-30T18:36:21.743Z"
         },
         "dj_residente": {
-          "naoHa": false,
+          "naoHa": true,
           "fornecedorId": "",
           "situacao": "Pendente",
           "contrato": "Pendente",
@@ -5450,87 +5475,115 @@
           "pagamento": "Pendente",
           "comprovante": "Pendente",
           "rider": "Não há",
-          "obsRider": ""
+          "obsRider": "",
+          "modificadoEm": "2026-06-30T18:36:29.986Z"
         },
         "estrutura": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
+          "fornecedorId": "f_alexandre-sabao_lttq",
+          "situacao": "Contratado",
           "contrato": "Pendente",
-          "email": "Não",
+          "email": "Sim",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:36:46.837Z"
         },
         "painel_led": {
-          "naoHa": false,
+          "naoHa": true,
           "fornecedorId": "",
           "situacao": "Pendente",
           "contrato": "Pendente",
           "email": "Não",
           "pagamento": "Pendente",
           "comprovante": "Pendente",
-          "videoPainel": "Pendente"
+          "videoPainel": "Pendente",
+          "modificadoEm": "2026-06-30T18:36:50.520Z"
         },
         "segurancas": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
+          "fornecedorId": "f_rildo_e3qi",
+          "situacao": "Contratado",
           "contrato": "Pendente",
-          "email": "Não",
+          "email": "Sim",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:37:00.189Z"
         },
         "brinquedo_inflavel": {
-          "naoHa": false,
+          "naoHa": true,
           "obs": "",
           "fornecedorId": "",
           "situacao": "Pendente",
           "contrato": "Pendente",
           "email": "Não",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:37:04.920Z"
         },
         "equipe_freelancer": {
           "naoHa": false,
-          "banheiro": "Pendente",
-          "bar": "Pendente"
+          "banheiro": "Reservado",
+          "bar": "Reservado",
+          "modificadoEm": "2026-06-30T18:37:21.242Z"
         },
         "aftermovie": {
           "naoHa": false,
           "obs": "",
-          "fornecedorId": "",
-          "situacao": "Pendente",
+          "fornecedorId": "f_agencia-heringer_onv8",
+          "situacao": "Contratado",
           "contrato": "Pendente",
           "email": "Não",
-          "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "pagamento": "Cadastrado",
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:37:42.914Z"
         },
         "produtos_extras": {
           "naoHa": false,
-          "tipos": [],
-          "itens": {}
+          "tipos": [
+            "Camisa"
+          ],
+          "itens": {
+            "Camisa": {
+              "arteSituacao": "Concluída",
+              "aprovacao": "Aprovado",
+              "fornecedorId": "f_trinca_4gf6",
+              "situacao": "Contratado",
+              "contrato": "Pendente",
+              "email": "Sim",
+              "pagamento": "Pendente",
+              "comprovante": "Pendente"
+            }
+          },
+          "modificadoEm": "2026-06-30T18:39:42.013Z"
         },
         "jogos": {
           "naoHa": false,
-          "tipo": []
+          "tipo": [
+            "BigShot",
+            "Beer Pong",
+            "Flip Cup"
+          ],
+          "modificadoEm": "2026-06-30T18:41:34.149Z"
         },
         "copos_canecas": {
           "naoHa": false,
-          "estoque": "Pendente",
+          "estoque": "Em Estoque",
           "fornecedorId": "",
           "situacao": "Pendente",
           "email": "Não",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:42:50.900Z"
         },
         "banner_backdrop": {
           "naoHa": false,
           "arte": "",
-          "impressao": "Pendente",
-          "fornecedorId": "",
+          "impressao": "Solicitado",
+          "fornecedorId": "f_dill-silva_jrdm",
           "email": "Não",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:43:40.532Z"
         },
         "legalizacao": {
           "naoHa": false,
