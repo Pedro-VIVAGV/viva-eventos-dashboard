@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-30T18:43:42.125Z"
+    "atualizado": "2026-06-30T18:44:55.291Z"
   },
   "eventos": [
     {
@@ -5579,11 +5579,11 @@
           "naoHa": false,
           "arte": "",
           "impressao": "Solicitado",
-          "fornecedorId": "f_dill-silva_jrdm",
+          "fornecedorId": "f_digital-sign_2ekm",
           "email": "Não",
           "pagamento": "Pendente",
           "comprovante": "Pendente",
-          "modificadoEm": "2026-06-30T18:43:40.532Z"
+          "modificadoEm": "2026-06-30T18:44:30.127Z"
         },
         "legalizacao": {
           "naoHa": false,
@@ -16330,6 +16330,11 @@
       "id": "f_ag-heringer_9b4b",
       "nome": "Ag Heringer",
       "categoria": "Aftermovie"
+    },
+    {
+      "id": "f_digital-sign_2ekm",
+      "nome": "Digital Sign",
+      "categoria": "Gráfica"
     }
   ]
 }
