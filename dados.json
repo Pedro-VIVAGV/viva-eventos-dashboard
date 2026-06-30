@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-30T18:44:55.291Z"
+    "atualizado": "2026-06-30T19:02:11.513Z"
   },
   "eventos": [
     {
@@ -5272,14 +5272,6 @@
           "fornecedor": "",
           "situacao": "Não Iniciado"
         },
-        "Bebidas": {
-          "fornecedor": "Arm. Vargas",
-          "situacao": "Contratado"
-        },
-        "Gelo": {
-          "fornecedor": "Cia do Gelo",
-          "situacao": "Contratado"
-        },
         "Bar de Drinks": {
           "fornecedor": "Fly Drinks",
           "situacao": "Pago Entrada"
@@ -5323,6 +5315,14 @@
         "Local": {
           "fornecedor": "Vista Chalé",
           "situacao": "Pago Entrada"
+        },
+        "Bebidas": {
+          "fornecedor": "Arm. Vargas",
+          "situacao": "Contratado"
+        },
+        "Gelo": {
+          "fornecedor": "Cia do Gelo",
+          "situacao": "Contratado"
         }
       },
       "tarefas": {
@@ -5357,7 +5357,7 @@
           "email": "Sim",
           "pagamento": "Pendente",
           "comprovante": "Pendente",
-          "modificadoEm": "2026-06-30T18:32:52.647Z"
+          "modificadoEm": "2026-06-30T19:00:21.138Z"
         },
         "gelo": {
           "naoHa": false,
@@ -5366,7 +5366,7 @@
           "email": "Sim",
           "pagamento": "Pendente",
           "comprovante": "Pendente",
-          "modificadoEm": "2026-06-30T18:34:02.637Z"
+          "modificadoEm": "2026-06-30T19:00:23.323Z"
         },
         "bebidas_destiladas": {
           "naoHa": false,
@@ -16335,6 +16335,11 @@
       "id": "f_digital-sign_2ekm",
       "nome": "Digital Sign",
       "categoria": "Gráfica"
+    },
+    {
+      "id": "f_arm-vargas_l03v",
+      "nome": "Arm Vargas",
+      "categoria": "Bebidas"
     }
   ]
 }
