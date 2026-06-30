@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-30T18:22:04.296Z"
+    "atualizado": "2026-06-30T18:32:55.646Z"
   },
   "eventos": [
     {
@@ -5273,8 +5273,8 @@
           "situacao": "Não Iniciado"
         },
         "Bebidas": {
-          "fornecedor": "Armazém Vargas",
-          "situacao": "Contato Feito"
+          "fornecedor": "Arm. Vargas",
+          "situacao": "Contratado"
         },
         "Gelo": {
           "fornecedor": "Cia do Gelo",
@@ -5350,11 +5350,12 @@
         },
         "bebidas_frias": {
           "naoHa": false,
-          "fornecedorId": "",
-          "situacao": "Pendente",
-          "email": "Não",
+          "fornecedorId": "f_arm-vargas_zchs",
+          "situacao": "Contratado",
+          "email": "Sim",
           "pagamento": "Pendente",
-          "comprovante": "Pendente"
+          "comprovante": "Pendente",
+          "modificadoEm": "2026-06-30T18:32:52.647Z"
         },
         "gelo": {
           "naoHa": false,
