@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-30T18:32:55.646Z"
+    "atualizado": "2026-06-30T18:33:10.488Z"
   },
   "eventos": [
     {
@@ -16062,11 +16062,6 @@
       "id": "f_arena-praia_5ibw",
       "nome": "Arena Praia",
       "categoria": "Local"
-    },
-    {
-      "id": "f_arm-vargas_7zua",
-      "nome": "Arm Vargas",
-      "categoria": "Bebidas"
     },
     {
       "id": "f_cia-do-gelo_rf0v",
