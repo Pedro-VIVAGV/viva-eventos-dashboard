@@ -210,6 +210,9 @@ details summary::-webkit-details-marker{display:none}
 .tk-secao{margin-bottom:10px}
 .tk-secao-titulo{font-size:10px;font-weight:700;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;margin:10px 0 6px}
 .tk-secao:first-child .tk-secao-titulo{margin-top:0}
+.tk-prazo-titulo{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--text-mute);margin:10px 0 5px;padding-left:2px}
+.tk-prazo-titulo::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--text-faint);flex-shrink:0}
+.tk-meta-info{font-size:10px;color:var(--text-mute);margin-bottom:12px}
 .tk-linha{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--radius-md);cursor:pointer;border:1px solid var(--border-soft);margin-bottom:5px;background:var(--surface)}
 .tk-linha:hover{border-color:var(--text-faint);background:var(--surface-2)}
 .tk-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -456,9 +459,10 @@ details summary::-webkit-details-marker{display:none}
     </div>
     <div class="modal-bd">
       <div class="tk-naoha-row" id="tarefa-naoha-wrap">
-        <input type="checkbox" id="tarefa-naoha">
+        <input type="checkbox" id="tarefa-naoha" onchange="onTarefaNaoHaToggle()">
         <label for="tarefa-naoha">Não Há — ocultar esta tarefa deste evento</label>
       </div>
+      <div id="tarefa-meta"></div>
       <div id="tarefa-campos"></div>
       <div id="tarefa-modo-multiforn" style="display:none"></div>
     </div>
@@ -596,11 +600,11 @@ function campoForn(comContrato) {
     { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
     { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Contratado'], def:'Pendente' }
   ];
-  if (comContrato) f.push({ k:'contrato', label:'Contrato', tipo:'sel', op:['Pendente','Enviado','Assinado'], def:'Pendente' });
+  if (comContrato) f.push({ k:'contrato', label:'Contrato', tipo:'sel', op:['Não Há','Pendente','Enviado','Assinado'], def:'Pendente' });
   f.push(
     { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
-    { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
-    { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSeK:'pagamento', ocultoSeV:'Não Há' }
+    { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+    { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
   );
   return f;
 }
@@ -615,10 +619,10 @@ const PZ = (valor, unidade, antes = true) => ({ valor, unidade, antes });
 const TPL_VIVA_ANTES = [
   { id:'reserva_local', nome:'Reserva do Local', grupoKanban:'Local', prazo:PZ(6,'meses'), responsavel:'Relacionamento e Produção', campos: campoForn(true) },
   { id:'arte_evento', nome:'Arte do Evento', prazo:PZ(3,'meses'), responsavel:'Marketing', campos:[
-      { k:'cartaz', label:'Cartaz — Informações Gerais', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' },
-      { k:'ingressoArte', label:'Ingresso — Arte', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' },
-      { k:'cardapio', label:'Cardápio', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' },
-      { k:'backdrop', label:'Backdrop', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' }
+      { k:'cartaz', label:'Cartaz — Informações Gerais', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' },
+      { k:'ingressoArte', label:'Ingresso — Arte', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' },
+      { k:'cardapio', label:'Cardápio', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' },
+      { k:'backdrop', label:'Backdrop', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' }
   ]},
   { id:'impressao_ingressos', nome:'Impressão dos Ingressos', prazo:PZ(2,'meses'), responsavel:'Janine', campos:[
       { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' },
@@ -629,7 +633,7 @@ const TPL_VIVA_ANTES = [
   { id:'bebidas_destiladas', nome:'Bebidas Destiladas – Escritório', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
       { k:'categoria', label:'Categoria', tipo:'multi', op:['Whisky','Energético','Canelinha','Outra'], def:[] },
       { k:'categoriaOutra', label:'Outra (qual?)', tipo:'texto', def:'' },
-      { k:'pedido', label:'Pedido', tipo:'sel', op:['Não Há','Realizado','Em Estoque'], def:'Não Há' },
+      { k:'pedido', label:'Pedido', tipo:'sel', op:['Não Há','Pedido Realizado','Em Estoque'], def:'Não Há' },
       { k:'dataPedido', label:'Data do Pedido', tipo:'data', def:'' }
   ]},
   { id:'bar_drinks', nome:'Bar de Drinks', grupoKanban:'Bar de Drinks', prazo:PZ(4,'meses'), responsavel:'Produção', campos: campoForn(true) },
@@ -683,15 +687,15 @@ const TPL_VIVA_ANTES = [
   ]},
   { id:'copos_canecas', nome:'Copos e Canecas VIVA', prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
       { k:'estoque', label:'Estoque', tipo:'sel', op:['Pendente','Pedido Realizado','Em Estoque'], def:'Pendente' },
-      ...campoForn(false)
+      ...campoForn(false).map(c => ({ ...c, ocultoSe:[...(c.ocultoSe||[]), { k:'estoque', v:'Em Estoque' }] }))
   ]},
   { id:'banner_backdrop', nome:'Banner Backdrop', prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
       { k:'arte', label:'Arte', tipo:'auto', auto:{ taskId:'arte_evento', campo:'backdrop' } },
       { k:'impressao', label:'Impressão — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
       { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
       { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
-      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
-      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSeK:'pagamento', ocultoSeV:'Não Há' }
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
   ]},
   { id:'legalizacao', nome:'Legalização do Evento', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
       { k:'alvara', label:'Alvará do Evento', tipo:'sel', op:['Pendente','Realizado'], def:'Pendente' },
@@ -792,10 +796,16 @@ function categoriaValor(v) {
   if (!s) return 'cinza';
   if (s.indexOf('não há') !== -1 || s.indexOf('nao ha') !== -1 || s === 'não tem' || s === 'nao tem') return 'cinza';
   if (s.indexOf('solicitad') !== -1) return 'laranja';
+  if (s === 'pedido realizado' || s === 'cadastrado') return 'laranja';
   if (s === 'não' || s === 'nao' || s === 'pendente' || s.indexOf('pendente') !== -1 || s.indexOf('a enviar') !== -1) return 'vermelho';
-  return 'verde'; // feito, cadastrado, programado, enviado, contratado, sim, realizado, assinado, aprovado, em estoque, reservado, impresso, pronto, concluída, há...
+  return 'verde'; // feito, programado, enviado, contratado, sim, pagamento único realizado, primeiro pagamento realizado, assinado, aprovado, em estoque, reservado, impresso, pronto, concluído, há...
 }
 function campoContaProgresso(c) { return c.tipo === 'sel' && !c.naoStatus && c.k !== 'email' && c.k !== 'rider'; }
+function campoOculto(c, valores) { return (c.ocultoSe || []).some(cond => valores[cond.k] === cond.v); }
+function metaInfoHtml(t, valores) {
+  const mod = valores.modificadoEm ? new Date(valores.modificadoEm).toLocaleString('pt-BR') : 'ainda não editado';
+  return `<div class="tk-meta-info">Responsável: <strong>${t.responsavel}</strong> &middot; Última modificação: ${mod}</div>`;
+}
 function corCategoriaTarefa(campos, valores) {
   if (!valores || valores.naoHa) return 'cinza';
   let pior = 'verde', achou = false;
@@ -1517,7 +1527,15 @@ function mkTarefaEventoCard(e, raw, rawIdx, tpl) {
   function secao(taskList, faseLabel) {
     const ordenada = taskList.map(t => ({ ...t, _prazo: calcularPrazo(e, t.prazo) }))
       .sort((a, b) => (a._prazo.dias ?? 9e9) - (b._prazo.dias ?? 9e9));
-    return `<div class="tk-secao"><div class="tk-secao-titulo">${faseLabel}</div>${ordenada.map(t => mkTarefaLinha(t, raw, rawIdx, zebraIdx++)).join('')}</div>`;
+    let corpo = '', prazoAtual = null;
+    ordenada.forEach(t => {
+      if (t._prazo.label !== prazoAtual) {
+        prazoAtual = t._prazo.label;
+        corpo += `<div class="tk-prazo-titulo">${prazoAtual}</div>`;
+      }
+      corpo += mkTarefaLinha(t, raw, rawIdx, zebraIdx++);
+    });
+    return `<div class="tk-secao"><div class="tk-secao-titulo">${faseLabel}</div>${corpo}</div>`;
   }
   const totalPend = todasTarefasTemplate(tpl).filter(t => {
     const v = raw.tarefas[t.id];
@@ -1567,21 +1585,27 @@ let abertosInline = new Set(); // chaves "rawIdx|taskId" com o corpo expandido
 
 function corpoInlineHtml(t, valores, rawIdx) {
   let html = `<label class="tk-naoha-inline-row"><input type="checkbox" class="tk-naoha-inline" ${valores.naoHa ? 'checked' : ''}> Não Há — ocultar esta tarefa</label>`;
+  html += metaInfoHtml(t, valores);
+  const oculto = valores.naoHa ? 'display:none' : '';
   if (t.tipo === 'multiForn') {
     const camposItem = [...(t.extraCampos || []), ...campoForn(true)];
+    html += `<div class="tk-campos-wrap" style="${oculto}">`;
     html += `<div class="fr"><label>Tipos</label><div class="tk-multi" data-k="tipos">${
       t.opcoes.map(o => `<label class="tk-chk"><input type="checkbox" class="tk-tipo-toggle" value="${o}" ${valores.tipos.includes(o) ? 'checked' : ''}> ${o}</label>`).join('')
     }</div></div>`;
     html += valores.tipos.map(tp => `<div class="tk-item-bloco" data-tipo="${tp}"><div class="tk-item-titulo">${tp}</div>${
       camposItem.map(c => `<div class="fr"><label>${c.label}</label>${renderCampoInput(c, (valores.itens[tp] || {})[c.k])}</div>`).join('')
     }</div>`).join('');
+    html += `</div>`;
   } else {
+    html += `<div class="tk-campos-wrap" style="${oculto}">`;
     html += (t.campos || []).map(c => {
-      if (c.ocultoSeK && valores[c.ocultoSeK] === c.ocultoSeV) return '';
+      if (campoOculto(c, valores)) return '';
       let valorAtual = valores[c.k];
       if (c.tipo === 'auto') valorAtual = (EVENTOS_RAW[rawIdx].tarefas[c.auto.taskId] || {})[c.auto.campo] || '';
       return `<div class="fr"><label>${c.label}</label>${renderCampoInput(c, valorAtual)}</div>`;
     }).join('');
+    html += `</div>`;
   }
   return html;
 }
@@ -1657,6 +1681,8 @@ document.addEventListener('change', function(e) {
 
   if (el.classList.contains('tk-naoha-inline')) {
     valores.naoHa = el.checked;
+    const wrap = body.querySelector('.tk-campos-wrap');
+    if (wrap) wrap.style.display = el.checked ? 'none' : '';
   } else if (el.classList.contains('tk-tipo-toggle')) {
     const tipo = el.value;
     if (el.checked && !valores.tipos.includes(tipo)) valores.tipos.push(tipo);
@@ -1674,7 +1700,7 @@ document.addEventListener('change', function(e) {
     if (multiWrap && el.type === 'checkbox') {
       alvo[multiWrap.dataset.k] = [...multiWrap.querySelectorAll('input:checked')].map(i => i.value);
     } else if (el.dataset.k) {
-      const precisaRerender = (t.campos || []).some(c => c.ocultoSeK === el.dataset.k);
+      const precisaRerender = (t.campos || []).some(c => (c.ocultoSe || []).some(cond => cond.k === el.dataset.k));
       alvo[el.dataset.k] = el.value;
       if (precisaRerender) renderCorpoInline(rawIdx, taskId);
     }
@@ -1788,6 +1814,12 @@ function onFornPickerChange(sel) {
 }
 
 // ── MODAL TAREFA ─────────────────────────────────────────────────────────────
+function onTarefaNaoHaToggle() {
+  const checked = document.getElementById('tarefa-naoha').checked;
+  const campos = document.getElementById('tarefa-campos'), multi = document.getElementById('tarefa-modo-multiforn');
+  if (campos.dataset.ativo === '1') campos.style.display = checked ? 'none' : '';
+  if (multi.dataset.ativo === '1') multi.style.display = checked ? 'none' : '';
+}
 function abrirModalTarefa(rawIdx, taskId) {
   const raw = EVENTOS_RAW[rawIdx];
   const tpl = templateParaEmpresa(raw.empresa);
@@ -1803,10 +1835,12 @@ function abrirModalTarefa(rawIdx, taskId) {
 function renderModalCampos(t, valores) {
   document.getElementById('tarefa-naoha-wrap').style.display = '';
   document.getElementById('tarefa-naoha').checked = !!valores.naoHa;
-  document.getElementById('tarefa-campos').style.display = '';
-  document.getElementById('tarefa-modo-multiforn').style.display = 'none';
-  document.getElementById('tarefa-campos').innerHTML = (t.campos || []).map(c => {
-    if (c.ocultoSeK && valores[c.ocultoSeK] === c.ocultoSeV) return '';
+  document.getElementById('tarefa-meta').innerHTML = metaInfoHtml(t, valores);
+  const campos = document.getElementById('tarefa-campos'), multi = document.getElementById('tarefa-modo-multiforn');
+  campos.style.display = valores.naoHa ? 'none' : ''; campos.dataset.ativo = '1';
+  multi.style.display = 'none'; multi.dataset.ativo = '0';
+  campos.innerHTML = (t.campos || []).map(c => {
+    if (campoOculto(c, valores)) return '';
     let valorAtual = valores[c.k];
     if (c.tipo === 'auto') valorAtual = (EVENTOS_RAW[tarefaEditCtx.rawIdx].tarefas[c.auto.taskId] || {})[c.auto.campo] || '';
     return `<div class="fr"><label>${c.label}</label>${renderCampoInput(c, valorAtual)}</div>`;
@@ -1814,11 +1848,14 @@ function renderModalCampos(t, valores) {
 }
 function renderModalMultiForn(t, raw) {
   document.getElementById('tarefa-naoha-wrap').style.display = '';
-  document.getElementById('tarefa-naoha').checked = !!(raw.tarefas[t.id] || {}).naoHa;
-  document.getElementById('tarefa-campos').style.display = 'none';
+  const valores0 = raw.tarefas[t.id] || { tipos: [], itens: {} };
+  document.getElementById('tarefa-naoha').checked = !!valores0.naoHa;
+  document.getElementById('tarefa-meta').innerHTML = metaInfoHtml(t, valores0);
+  const campos = document.getElementById('tarefa-campos');
+  campos.style.display = 'none'; campos.dataset.ativo = '0';
   const wrap = document.getElementById('tarefa-modo-multiforn');
-  wrap.style.display = '';
-  const valores = raw.tarefas[t.id] || { tipos: [], itens: {} };
+  wrap.style.display = valores0.naoHa ? 'none' : ''; wrap.dataset.ativo = '1';
+  const valores = valores0;
   const camposItem = [...(t.extraCampos || []), ...campoForn(true)];
   wrap.innerHTML = `
     <div class="fr"><label>Tipos</label>
