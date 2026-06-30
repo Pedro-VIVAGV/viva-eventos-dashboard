@@ -1,6 +1,6 @@
 {
   "meta": {
-    "atualizado": "2026-06-30T16:00:05.814Z"
+    "atualizado": "2026-06-30T18:22:04.296Z"
   },
   "eventos": [
     {
@@ -5331,10 +5331,10 @@
           "fornecedorId": "f_vista-chale_65g6",
           "situacao": "Contratado",
           "contrato": "Assinado",
-          "email": "Não",
+          "email": "Sim",
           "pagamento": "Primeiro Pagamento Realizado e Segundo Cadastrado",
           "comprovante": "Enviado",
-          "modificadoEm": "2026-06-30T15:54:11.669Z"
+          "modificadoEm": "2026-06-30T18:22:03.472Z"
         },
         "arte_evento": {
           "naoHa": false,
@@ -16271,6 +16271,16 @@
       "id": "f_agencia-heringer_onv8",
       "nome": "Agência Heringer",
       "categoria": "Cobertura Digital"
+    },
+    {
+      "id": "f__k0m0",
+      "nome": "-",
+      "categoria": "Equipe Limpeza"
+    },
+    {
+      "id": "f_ag-heringer_9b4b",
+      "nome": "Ag Heringer",
+      "categoria": "Aftermovie"
     }
   ]
 }
