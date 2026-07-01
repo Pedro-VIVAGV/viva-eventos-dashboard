@@ -661,7 +661,7 @@ const TPL_VIVA_ANTES = [
       { k:'backdrop', label:'Backdrop', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' }
   ]},
   { id:'impressao_ingressos', nome:'Impressão dos Ingressos', prazo:PZ(2,'meses'), responsavel:'Janine', campos:[
-      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' },
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
       { k:'entrega', label:'Entrega do Ingresso', tipo:'sel', op:['Pendente','Pronto'], def:'Pendente' }
   ]},
   { id:'bebidas_frias', nome:'Bebidas Frias', grupoKanban:'Bebidas', prazo:PZ(4,'meses'), responsavel:'Produção', campos: campoForn(false) },
@@ -736,10 +736,13 @@ const TPL_VIVA_ANTES = [
   { id:'legalizacao', nome:'Legalização do Evento', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
       { k:'alvara', label:'Alvará do Evento', tipo:'sel', op:['Pendente','Realizado'], def:'Pendente' },
       { k:'documentacao', label:'Documentação', tipo:'sel', op:['Pendente','Feita'], def:'Pendente' },
-      { k:'notasFiscais', label:'Notas Fiscais', tipo:'sel', op:['Pendente','Solicitadas'], def:'Pendente' }
+      { k:'notasFiscais', label:'Notas Fiscais', tipo:'sel', op:['Pendente','Solicitadas','Finalizado'], def:'Pendente' }
   ]},
   { id:'contato_chacara', nome:'Contato com a Chácara', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
       { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Feito'], def:'Pendente' }
+  ]},
+  { id:'confirmacao_fornecedores', nome:'Confirmação com Fornecedores', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Confirmado'], def:'Pendente' }
   ]}
 ];
 const TPL_VIVA_DEPOIS = [
@@ -773,6 +776,9 @@ const TPL_LUMINOUS_SESSAO_ANTES = [
       { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
       { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
       { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'confirmacao_fornecedores', nome:'Confirmação com Fornecedores', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Confirmado'], def:'Pendente' }
   ]}
 ];
 const TPL_LUMINOUS_DEMAIS_ANTES = [
@@ -781,6 +787,9 @@ const TPL_LUMINOUS_DEMAIS_ANTES = [
   ]},
   { id:'fotografia', nome:'Fotografia', grupoKanban:'Fotografia', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
       { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'confirmacao_fornecedores', nome:'Confirmação com Fornecedores', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Confirmado'], def:'Pendente' }
   ]}
 ];
 const TPL_LUMINOUS_DEPOIS = [
@@ -1792,9 +1801,18 @@ function toggleTarefaInline(rawIdx, taskId) {
   const chev = document.getElementById('tkchev-' + rawIdx + '-' + taskId);
   if (!body) return;
   const open = body.style.display !== 'none';
+  // Fecha qualquer outra tarefa aberta antes de abrir a nova
+  abertosInline.forEach(k => {
+    if (k === key) return;
+    const [ri, tid] = k.split('|');
+    const b = document.getElementById('tkbody-' + ri + '-' + tid);
+    const ch = document.getElementById('tkchev-' + ri + '-' + tid);
+    if (b) b.style.display = 'none';
+    if (ch) ch.classList.remove('open');
+  });
+  abertosInline.clear();
   if (open) {
     body.style.display = 'none';
-    abertosInline.delete(key);
   } else {
     renderCorpoInline(rawIdx, taskId);
     body.style.display = '';
