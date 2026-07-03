@@ -120,6 +120,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .prog-bar{height:100%;border-radius:2px}
 .edit-card-btn{font-size:10px;color:var(--text-mute);background:none;border:1px solid var(--border);border-radius:var(--radius-pill);padding:3px 10px;cursor:pointer;font-family:inherit}
 .edit-card-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.locacao-btn{font-size:10px;border-radius:var(--radius-pill);padding:3px 10px;cursor:pointer;font-family:inherit;border:1px solid #9ae6b4;color:#22543d;background:#c6f6d5;font-weight:600}
+.locacao-btn:hover{background:#9ae6b4}
+.locacao-btn.inativo{border-color:var(--border);color:var(--text-mute);background:none;font-weight:400}
+.locacao-btn.inativo:hover{border-color:#9ae6b4;color:#22543d;background:#f0fff4}
+.b-locacao{background:#c6f6d5;color:#22543d}
 .chevron{width:22px;height:22px;border-radius:50%;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--text-dim);flex-shrink:0;margin-top:2px;transition:transform .2s}
 .chevron.open{transform:rotate(180deg)}
 .card-body{border-top:1px solid var(--border-soft);padding:12px 16px;display:none;background:var(--surface-2)}
@@ -800,24 +805,278 @@ const TPL_LUMINOUS_DEPOIS = [
       { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Feito'], def:'Pendente' }
   ]}
 ];
+// ── TEMPLATE BAILE (VIVA Baile / TRIUNFO) ───────────────────────────────────
+const TPL_BAILE_ANTES = [
+  { id:'reserva_local', nome:'Reserva do Local', grupoKanban:'Local', prazo:PZ(12,'meses'), responsavel:'Relacionamento e Produção', campos: campoForn(true) },
+  { id:'arte_evento', nome:'Arte do Evento', prazo:PZ(3,'meses'), responsavel:'Marketing', campos:[
+      { k:'ingressoArte', label:'Ingresso — Arte', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' },
+      { k:'cardapio', label:'Cardápio', tipo:'sel', op:['Pendente','Solicitado','Concluído'], def:'Pendente' },
+      { k:'backdrop', label:'Backdrop', tipo:'sel', op:['Pendente','Solicitado','Não há','Concluído'], def:'Pendente' },
+      { k:'adesivoArte', label:'Adesivo Pista de Dança', tipo:'sel', op:['Pendente','Solicitado','Não há','Concluído'], def:'Pendente' }
+  ]},
+  { id:'impressao_ingressos', nome:'Impressão dos Ingressos', prazo:PZ(4,'meses'), responsavel:'Janine', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'entrega', label:'Entrega do Ingresso', tipo:'sel', op:['Pendente','Pronto'], def:'Pendente' }
+  ]},
+  { id:'bebidas_frias', nome:'Bebidas Frias', grupoKanban:'Bebidas', prazo:PZ(8,'meses'), responsavel:'Produção', campos: campoForn(false) },
+  { id:'gelo', nome:'Gelo', grupoKanban:'Gelo', prazo:PZ(6,'meses'), responsavel:'Produção', campos: campoForn(false) },
+  { id:'bebidas_destiladas', nome:'Bebidas Destiladas – Escritório', prazo:PZ(7,'meses'), responsavel:'Produção', campos:[
+      { k:'categoria', label:'Categoria', tipo:'multi', op:['Vinho','Espumante','Whisky','Energético','Outra'], def:[] },
+      { k:'categoriaOutra', label:'Outra (qual?)', tipo:'texto', def:'' },
+      { k:'pedido', label:'Pedido', tipo:'sel', op:['Não Há','Pedido Realizado','Em Estoque'], def:'Não Há' },
+      { k:'dataPedido', label:'Data do Pedido', tipo:'data', def:'' }
+  ]},
+  { id:'bar_drinks', nome:'Bar de Drinks', grupoKanban:'Bar de Drinks', prazo:PZ(10,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'bebidas_quentes', nome:'Bebidas Quentes', prazo:PZ(7,'meses'), responsavel:'Produção', campos:[
+      { k:'vodka', label:'Vodka', tipo:'texto', def:'' },
+      { k:'vodkaQtd', label:'Quantidade (Vodka)', tipo:'texto', def:'' },
+      { k:'gin', label:'Gin', tipo:'texto', def:'' },
+      { k:'ginQtd', label:'Quantidade (Gin)', tipo:'texto', def:'' },
+      { k:'estoque', label:'Estoque', tipo:'sel', op:['Pendente','Pedido Realizado','Em Estoque'], def:'Pendente' }
+  ]},
+  { id:'buffet', nome:'Buffet', grupoKanban:'Buffet', prazo:PZ(12,'meses'), responsavel:'Produção', campos:[
+      { k:'tipo', label:'Tipo', tipo:'sel', op:['Mesa Mineira','Mesa Americana','Churrasco'], def:'Mesa Mineira', naoStatus:true },
+      { k:'obs', label:'Observação', tipo:'texto', def:'' },
+      ...campoForn(true)
+  ]},
+  { id:'extras', nome:'Extras', prazo:PZ(4,'meses'), responsavel:'Produção', tipo:'multiForn',
+    opcoes:['Rodadas de Pizza','Churrasco','Japonês','Doces','Mesa de Tortas','Brigadeiro no Tacho','Churros','Brownie','Brownie + Sorvete','Açaí','Açaí + Sorvete','Outro'] },
+  { id:'decoracao', nome:'Decoração', grupoKanban:'Decoração', prazo:PZ(12,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'mapa_evento', nome:'Mapa do Evento', prazo:PZ(8,'meses'), responsavel:'Rodrigo', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Solicitado','Feito'], def:'Pendente' }
+  ]},
+  { id:'atracao01', nome:'Atração 01', grupoKanban:'Atração 01', prazo:PZ(8,'meses'), responsavel:'Produção', campos:[...campoForn(true), ...campoRider()] },
+  { id:'atracao02', nome:'Atração 02', grupoKanban:'Atração 02', prazo:PZ(8,'meses'), responsavel:'Produção', campos:[...campoForn(true), ...campoRider()] },
+  { id:'dj_residente', nome:'DJ Residente', grupoKanban:'DJ Residente', prazo:PZ(8,'meses'), responsavel:'Produção', campos:[...campoForn(true), ...campoRider()] },
+  { id:'sonorizacao', nome:'Sonorização', prazo:PZ(7,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'estrutura', nome:'Estrutura', grupoKanban:'Estruturas', prazo:PZ(7,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'painel_led', nome:'Painel de LED', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      ...campoForn(true),
+      { k:'videoPainel', label:'Vídeo Painel — Situação', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'segurancas', nome:'Seguranças e Brigadistas', grupoKanban:'Seguranças', prazo:PZ(6,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'brinquedo_inflavel', nome:'Brinquedo Inflável', prazo:PZ(6,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'equipe_freelancer', nome:'Equipe Freelancer', prazo:PZ(5,'meses'), responsavel:'Produção', campos:[
+      { k:'banheiro', label:'Equipe Manutenção Banheiro', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' },
+      { k:'bar', label:'Equipe Bar', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'mestre_ceremonias', nome:'Mestre de Cerimônias', prazo:PZ(5,'meses'), responsavel:'Produção', campos:[
+      { k:'banheiro', label:'Equipe Manutenção Banheiro', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' },
+      { k:'bar', label:'Equipe Bar', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'banheiro_quimico', nome:'Banheiro Químico', prazo:PZ(5,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'tendas', nome:'Tendas', prazo:PZ(5,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'aftermovie', nome:'Aftermovie', grupoKanban:'Aftermovie', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'cobertura_digital', nome:'Cobertura Digital', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'produtos_extras', nome:'Produtos Extras', prazo:PZ(7,'meses'), responsavel:'Produção', tipo:'multiForn',
+    opcoes:['Abadá','Boné','Boné VIVA','Caricatura','Camisa','Caneca','Caneca + Tirante','Chinelo','Kit Robe','Óculos','Óculos VIVA','Tirante','Outro'],
+    extraCampos:[
+      { k:'arteSituacao', label:'Arte — Situação', tipo:'sel', op:['Pendente','Solicitada','Concluída'], def:'Pendente' },
+      { k:'aprovacao', label:'Aprovação Comissão', tipo:'sel', op:['Pendente','Aprovado'], def:'Pendente' }
+    ] },
+  { id:'jogos', nome:'Jogos', prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
+      { k:'tipo', label:'Tipo', tipo:'multi', op:['BigShot','Beer Pong','Flip Cup','Tabuleiro Humano','Roleta Shot','Neon Colors','Tombogã'], def:[] }
+  ]},
+  { id:'copos_canecas', nome:'Copos e Canecas VIVA', prazo:PZ(5,'meses'), responsavel:'Produção', campos:[
+      { k:'estoque', label:'Estoque', tipo:'sel', op:['Pendente','Pedido Realizado','Em Estoque'], def:'Pendente' },
+      ...campoForn(false).map(c => ({ ...c, ocultoSe:[...(c.ocultoSe||[]), { k:'estoque', v:'Em Estoque' }] }))
+  ]},
+  { id:'banner_backdrop', nome:'Banner Backdrop', prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
+      { k:'arte', label:'Arte', tipo:'auto', auto:{ taskId:'arte_evento', campo:'backdrop' } },
+      { k:'impressao', label:'Impressão — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'adesivo_pista_danca', nome:'Adesivo Pista de Dança', prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
+      { k:'arte', label:'Arte', tipo:'auto', auto:{ taskId:'arte_evento', campo:'adesivoArte' } },
+      { k:'impressao', label:'Impressão — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'legalizacao', nome:'Legalização do Evento', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'alvara', label:'Alvará do Evento', tipo:'sel', op:['Pendente','Realizado'], def:'Pendente' },
+      { k:'documentacao', label:'Documentação', tipo:'sel', op:['Pendente','Feita'], def:'Pendente' },
+      { k:'notasFiscais', label:'Notas Fiscais', tipo:'sel', op:['Pendente','Solicitadas','Finalizado'], def:'Pendente' }
+  ]},
+  { id:'contato_chacara', nome:'Contato com a Chácara', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Feito'], def:'Pendente' }
+  ]},
+  { id:'confirmacao_fornecedores', nome:'Confirmação com Fornecedores', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Confirmado'], def:'Pendente' }
+  ]}
+];
+// Pós-Baile: sub-evento dentro do baile. Tarefas iniciam ocultas (defaultNaoHa:true).
+const TPL_BAILE_POS_ANTES = [
+  { id:'pb_bebidas_frias', nome:'Bebidas Frias', defaultNaoHa:true, prazo:PZ(8,'meses'), responsavel:'Produção', campos: campoForn(false) },
+  { id:'pb_gelo', nome:'Gelo', defaultNaoHa:true, prazo:PZ(6,'meses'), responsavel:'Produção', campos: campoForn(false) },
+  { id:'pb_bebidas_destiladas', nome:'Bebidas Destiladas – Escritório', defaultNaoHa:true, prazo:PZ(7,'meses'), responsavel:'Produção', campos:[
+      { k:'categoria', label:'Categoria', tipo:'multi', op:['Vinho','Espumante','Whisky','Energético','Outra'], def:[] },
+      { k:'categoriaOutra', label:'Outra (qual?)', tipo:'texto', def:'' },
+      { k:'pedido', label:'Pedido', tipo:'sel', op:['Não Há','Pedido Realizado','Em Estoque'], def:'Não Há' },
+      { k:'dataPedido', label:'Data do Pedido', tipo:'data', def:'' }
+  ]},
+  { id:'pb_bar_drinks', nome:'Bar de Drinks', defaultNaoHa:true, prazo:PZ(10,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'pb_bebidas_quentes', nome:'Bebidas Quentes', defaultNaoHa:true, prazo:PZ(7,'meses'), responsavel:'Produção', campos:[
+      { k:'vodka', label:'Vodka', tipo:'texto', def:'' },
+      { k:'vodkaQtd', label:'Quantidade (Vodka)', tipo:'texto', def:'' },
+      { k:'gin', label:'Gin', tipo:'texto', def:'' },
+      { k:'ginQtd', label:'Quantidade (Gin)', tipo:'texto', def:'' },
+      { k:'estoque', label:'Estoque', tipo:'sel', op:['Pendente','Pedido Realizado','Em Estoque'], def:'Pendente' }
+  ]},
+  { id:'pb_buffet', nome:'Buffet', defaultNaoHa:true, prazo:PZ(12,'meses'), responsavel:'Produção', campos:[
+      { k:'tipo', label:'Tipo', tipo:'sel', op:['Mesa Mineira','Mesa Americana','Churrasco'], def:'Mesa Mineira', naoStatus:true },
+      { k:'obs', label:'Observação', tipo:'texto', def:'' },
+      ...campoForn(true)
+  ]},
+  { id:'pb_extras', nome:'Extras', defaultNaoHa:true, prazo:PZ(4,'meses'), responsavel:'Produção', tipo:'multiForn',
+    opcoes:['Rodadas de Pizza','Churrasco','Japonês','Doces','Mesa de Tortas','Brigadeiro no Tacho','Churros','Brownie','Brownie + Sorvete','Açaí','Açaí + Sorvete','Outro'] },
+  { id:'pb_decoracao', nome:'Decoração', defaultNaoHa:true, prazo:PZ(12,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'pb_mapa_evento', nome:'Mapa do Evento', defaultNaoHa:true, prazo:PZ(8,'meses'), responsavel:'Rodrigo', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Solicitado','Feito'], def:'Pendente' }
+  ]},
+  { id:'pb_atracao01', nome:'Atração 01', defaultNaoHa:true, prazo:PZ(8,'meses'), responsavel:'Produção', campos:[...campoForn(true), ...campoRider()] },
+  { id:'pb_atracao02', nome:'Atração 02', defaultNaoHa:true, prazo:PZ(8,'meses'), responsavel:'Produção', campos:[...campoForn(true), ...campoRider()] },
+  { id:'pb_dj_residente', nome:'DJ Residente', defaultNaoHa:true, prazo:PZ(8,'meses'), responsavel:'Produção', campos:[...campoForn(true), ...campoRider()] },
+  { id:'pb_sonorizacao', nome:'Sonorização', defaultNaoHa:true, prazo:PZ(7,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'pb_estrutura', nome:'Estrutura', defaultNaoHa:true, prazo:PZ(7,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'pb_painel_led', nome:'Painel de LED', defaultNaoHa:true, prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      ...campoForn(true),
+      { k:'videoPainel', label:'Vídeo Painel — Situação', tipo:'sel', op:['Pendente','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'pb_segurancas', nome:'Seguranças e Brigadistas', defaultNaoHa:true, prazo:PZ(6,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'pb_brinquedo_inflavel', nome:'Brinquedo Inflável', defaultNaoHa:true, prazo:PZ(6,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'pb_equipe_freelancer', nome:'Equipe Freelancer', defaultNaoHa:true, prazo:PZ(5,'meses'), responsavel:'Produção', campos:[
+      { k:'banheiro', label:'Equipe Manutenção Banheiro', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' },
+      { k:'bar', label:'Equipe Bar', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'pb_mestre_ceremonias', nome:'Mestre de Cerimônias', defaultNaoHa:true, prazo:PZ(5,'meses'), responsavel:'Produção', campos:[
+      { k:'banheiro', label:'Equipe Manutenção Banheiro', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' },
+      { k:'bar', label:'Equipe Bar', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'pb_banheiro_quimico', nome:'Banheiro Químico', defaultNaoHa:true, prazo:PZ(5,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'pb_tendas', nome:'Tendas', defaultNaoHa:true, prazo:PZ(5,'meses'), responsavel:'Produção', campos: campoForn(true) },
+  { id:'pb_aftermovie', nome:'Aftermovie', defaultNaoHa:true, prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'pb_cobertura_digital', nome:'Cobertura Digital', defaultNaoHa:true, prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'pb_produtos_extras', nome:'Produtos Extras', defaultNaoHa:true, prazo:PZ(7,'meses'), responsavel:'Produção', tipo:'multiForn',
+    opcoes:['Abadá','Boné','Boné VIVA','Caricatura','Camisa','Caneca','Caneca + Tirante','Chinelo','Kit Robe','Óculos','Óculos VIVA','Tirante','Outro'],
+    extraCampos:[
+      { k:'arteSituacao', label:'Arte — Situação', tipo:'sel', op:['Pendente','Solicitada','Concluída'], def:'Pendente' },
+      { k:'aprovacao', label:'Aprovação Comissão', tipo:'sel', op:['Pendente','Aprovado'], def:'Pendente' }
+    ] },
+  { id:'pb_jogos', nome:'Jogos', defaultNaoHa:true, prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
+      { k:'tipo', label:'Tipo', tipo:'multi', op:['BigShot','Beer Pong','Flip Cup','Tabuleiro Humano','Roleta Shot','Neon Colors','Tombogã'], def:[] }
+  ]},
+  { id:'pb_copos_canecas', nome:'Copos e Canecas VIVA', defaultNaoHa:true, prazo:PZ(5,'meses'), responsavel:'Produção', campos:[
+      { k:'estoque', label:'Estoque', tipo:'sel', op:['Pendente','Pedido Realizado','Em Estoque'], def:'Pendente' },
+      ...campoForn(false).map(c => ({ ...c, ocultoSe:[...(c.ocultoSe||[]), { k:'estoque', v:'Em Estoque' }] }))
+  ]},
+  { id:'pb_banner_backdrop', nome:'Banner Backdrop', defaultNaoHa:true, prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
+      { k:'arte', label:'Arte', tipo:'auto', auto:{ taskId:'arte_evento', campo:'backdrop' } },
+      { k:'impressao', label:'Impressão — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'pb_adesivo_pista_danca', nome:'Adesivo Pista de Dança', defaultNaoHa:true, prazo:PZ(2,'meses'), responsavel:'Produção', campos:[
+      { k:'arte', label:'Arte', tipo:'auto', auto:{ taskId:'arte_evento', campo:'adesivoArte' } },
+      { k:'impressao', label:'Impressão — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]}
+];
+const TPL_BAILE_DEPOIS = [
+  { id:'digitalizacao_docs', nome:'Digitalização Documentos', prazo:PZ(1,'dias_uteis',false), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Feito'], def:'Pendente' }
+  ]},
+  { id:'acerto_finais', nome:'Acerto Finais Fornecedores', prazo:PZ(2,'dias_uteis',false), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Feito'], def:'Pendente' }
+  ]}
+];
+// ── TEMPLATE LUMINOUS COLAÇÃO DE GRAU ───────────────────────────────────────
+// Igual à Sessão de Fotos, porém com Placa de Homenagem no lugar da Camisa Personalizada
+const TPL_LUMINOUS_COLACAO_ANTES = [
+  { id:'equipe_freelancer', nome:'Equipe Freelancer', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Reservado','Solicitado'], def:'Pendente' }
+  ]},
+  { id:'fotografia', nome:'Fotografia', grupoKanban:'Fotografia', prazo:PZ(4,'meses'), responsavel:'Produção', campos:[
+      { k:'obs', label:'Observação', tipo:'texto', def:'' }, ...campoForn(true)
+  ]},
+  { id:'placa_homenagem', nome:'Placa de Homenagem', prazo:PZ(3,'meses'), responsavel:'Produção', campos:[
+      { k:'arteSituacao', label:'Arte — Situação', tipo:'sel', op:['Pendente','Solicitada','Concluída'], def:'Pendente' },
+      { k:'aprovacao', label:'Aprovação Comissão', tipo:'sel', op:['Pendente','Aprovado'], def:'Pendente' },
+      { k:'confeccaoSituacao', label:'Confecção — Situação', tipo:'sel', op:['Pendente','Solicitado','Impresso'], def:'Pendente' },
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'becas', nome:'Becas', prazo:PZ(3,'meses'), responsavel:'Produção', campos:[
+      { k:'fornecedorId', label:'Fornecedor', tipo:'fornecedor' },
+      { k:'email', label:'E-mail enviado', tipo:'sel', op:['Não','Sim'], def:'Não' },
+      { k:'pagamento', label:'Pagamento', tipo:'sel', op:['Pendente','Cadastrado','Pagamento Único Realizado','Primeiro Pagamento Realizado','Primeiro Pagamento Realizado e Segundo Cadastrado','Não Há'], def:'Pendente' },
+      { k:'comprovante', label:'Comprovante de Pagamento', tipo:'sel', op:['Pendente','Enviado'], def:'Pendente', ocultoSe:[{ k:'pagamento', v:'Não Há' }] }
+  ]},
+  { id:'confirmacao_fornecedores', nome:'Confirmação com Fornecedores', prazo:PZ(0,'semana'), responsavel:'Produção', campos:[
+      { k:'situacao', label:'Situação', tipo:'sel', op:['Pendente','Confirmado'], def:'Pendente' }
+  ]}
+];
 const TEMPLATES = {
   VIVA:             { antes: TPL_VIVA_ANTES,             depois: TPL_VIVA_DEPOIS },
+  BAILE:            { antes: TPL_BAILE_ANTES,            pos_baile: TPL_BAILE_POS_ANTES, depois: TPL_BAILE_DEPOIS },
   LUMINOUS_SESSAO:  { antes: TPL_LUMINOUS_SESSAO_ANTES,  depois: TPL_LUMINOUS_DEPOIS },
+  LUMINOUS_COLACAO: { antes: TPL_LUMINOUS_COLACAO_ANTES, depois: TPL_LUMINOUS_DEPOIS },
   LUMINOUS_DEMAIS:  { antes: TPL_LUMINOUS_DEMAIS_ANTES,  depois: TPL_LUMINOUS_DEPOIS }
 };
 
+function ehColacaoLuminous(tipo) {
+  const t = (tipo || '').toLowerCase();
+  return t.includes('colação') || t.includes('colacao');
+}
 function ehSessaoFotosLuminous(tipo) {
+  if (ehColacaoLuminous(tipo)) return false;
   const t = (tipo || '').toLowerCase();
   return t.includes('sessão') || t.includes('sessao') || t.includes('foto') || t.includes('meio de curso') || t.includes('meio curso');
 }
+function ehBaileTipo(tipo) {
+  const t = (tipo || '').toLowerCase();
+  return t.includes('baile');
+}
 function templateParaEmpresa(empresa, tipo) {
   const e = (empresa || '').toUpperCase();
-  if (e.includes('LUMINOUS')) return ehSessaoFotosLuminous(tipo) ? TEMPLATES.LUMINOUS_SESSAO : TEMPLATES.LUMINOUS_DEMAIS;
-  if (e.includes('VIVA')) return TEMPLATES.VIVA;
+  if (e.includes('TRIUNFO')) return TEMPLATES.BAILE;
+  if (e.includes('LUMINOUS')) {
+    if (ehColacaoLuminous(tipo)) return TEMPLATES.LUMINOUS_COLACAO;
+    if (ehSessaoFotosLuminous(tipo)) return TEMPLATES.LUMINOUS_SESSAO;
+    return TEMPLATES.LUMINOUS_DEMAIS;
+  }
+  if (e.includes('VIVA')) return ehBaileTipo(tipo) ? TEMPLATES.BAILE : TEMPLATES.VIVA;
   return null;
 }
 function todasTarefasTemplate(tpl) {
-  return [...(tpl.antes || []).map(t => ({ ...t, fase:'antes' })), ...(tpl.depois || []).map(t => ({ ...t, fase:'depois' }))];
+  return [...(tpl.antes || []).map(t => ({ ...t, fase:'antes' })), ...(tpl.pos_baile || []).map(t => ({ ...t, fase:'pos_baile' })), ...(tpl.depois || []).map(t => ({ ...t, fase:'depois' }))];
 }
 function valorDefaultCampos(campos) {
   const o = {};
@@ -830,7 +1089,7 @@ function ensureTarefasEvento(ev) {
   if (!ev.tarefas) ev.tarefas = {};
   todasTarefasTemplate(tpl).forEach(t => {
     if (ev.tarefas[t.id]) return;
-    ev.tarefas[t.id] = t.tipo === 'multiForn' ? { naoHa:false, tipos:[], itens:{} } : { naoHa:false, ...valorDefaultCampos(t.campos) };
+    ev.tarefas[t.id] = t.tipo === 'multiForn' ? { naoHa:!!t.defaultNaoHa, tipos:[], itens:{} } : { naoHa:!!t.defaultNaoHa, ...valorDefaultCampos(t.campos) };
   });
 }
 function diasUteisEntre(de, ate) {
@@ -1174,15 +1433,18 @@ function processar(raw) {
     if (!d || isNaN(d)) return null;
     const dt = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - hoje) / 864e5);
     const svcs = r.servicos || {};
+    const locacaoApenas = !!(r.locacaoApenas);
     let ok = 0, pend = 0;
-    for (const g of TODOS_GRUPOS) {
-      const s = svcs[g]; if (!s || !s.situacao || s.situacao === 'Não Há') continue;
-      if (SIT_OK.has(s.situacao)) ok++; else if (SIT_PEND.has(s.situacao)) pend++;
+    if (!locacaoApenas) {
+      for (const g of TODOS_GRUPOS) {
+        const s = svcs[g]; if (!s || !s.situacao || s.situacao === 'Não Há') continue;
+        if (SIT_OK.has(s.situacao)) ok++; else if (SIT_PEND.has(s.situacao)) pend++;
+      }
     }
     return { num:r.num, cidade:r.cidade, empresa:r.empresa, fundo:r.fundo,
       data:d.toLocaleDateString('pt-BR'), dataISO:r.data, dia:DIAS[d.getDay()],
       tipo:r.tipo, horario:r.horario, local:r.local, servicos:svcs,
-      n_ok:ok, n_pend:pend, days_to:dt, passado:dt < 0 };
+      n_ok:ok, n_pend:pend, days_to:dt, passado:dt < 0, locacaoApenas };
   }).filter(Boolean).sort((a,b) => a.days_to - b.days_to);
 }
 
@@ -1358,6 +1620,16 @@ function salvarServico() {
 
 // ── DRAG & DROP entre colunas do kanban ─────────────────────────────────────
 let _dragData = null;
+async function toggleLocacaoApenas(num) {
+  if (!exigirLogin()) return;
+  const rawIdx = EVENTOS_RAW.findIndex(r => r.num === num);
+  if (rawIdx < 0) return;
+  EVENTOS_RAW[rawIdx].locacaoApenas = !EVENTOS_RAW[rawIdx].locacaoApenas;
+  EVENTOS = processar(EVENTOS_RAW);
+  renderizar();
+  salvarEventoFirestore(EVENTOS_RAW[rawIdx]);
+}
+
 function dragSvcStart(ev, rawIdx, grupo) {
   _dragData = { rawIdx, grupo };
   ev.dataTransfer.effectAllowed = 'move';
@@ -1499,8 +1771,10 @@ function mkcard(e, uid, urg) {
   else if (e.days_to <= 30)  dt = `<span class="days-warn">em ${e.days_to}d</span>`;
   else                       dt = `<span class="days-ok">em ${e.days_to}d</span>`;
 
+  const isTriunfo = (e.empresa || '').toUpperCase().includes('TRIUNFO');
   let bdg = '';
-  if      (e.passado)     bdg = `<span class="badge b-past">Passado</span>`;
+  if (e.locacaoApenas)    bdg = `<span class="badge b-locacao">Locação ✓</span>`;
+  else if (e.passado)     bdg = `<span class="badge b-past">Passado</span>`;
   else if (!tot)          bdg = `<span class="badge b-na">Sem serviços</span>`;
   else if (!e.n_pend)     bdg = `<span class="badge b-ok">Tudo OK</span>`;
   else if (e.n_pend <= 3) bdg = `<span class="badge b-warn">${e.n_pend} pendente${e.n_pend > 1 ? 's' : ''}</span>`;
@@ -1567,12 +1841,13 @@ function mkcard(e, uid, urg) {
       <div class="card-right">
         ${bdg}
         ${tot ? `<div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:#a0aec0">${e.n_ok}/${tot}</span><div class="prog-wrap"><div class="prog-bar" style="width:${pct}%;background:${pc}"></div></div></div>` : ''}
+        ${isTriunfo ? `<button class="locacao-btn${e.locacaoApenas ? '' : ' inativo'}" onclick="event.stopPropagation();toggleLocacaoApenas(${e.num})">${e.locacaoApenas ? '✓ Apenas Locação' : '🔑 Marcar como Locação'}</button>` : ''}
         <button class="edit-card-btn" onclick="event.stopPropagation();abrirModalEvento(${rawIdx})">✏ editar</button>
         <div class="chevron${isOpen ? ' open' : ''}" id="chev-${e.num}">▼</div>
       </div>
     </div>
     <div class="card-body${isOpen ? ' open' : ''}" id="body-${e.num}">
-      ${kanbanH}
+      ${e.locacaoApenas ? `<div style="padding:16px;color:var(--text-dim);font-size:13px;text-align:center">🔑 Este evento está marcado como <strong>Apenas Locação</strong> — sem atividades a gerenciar.</div>` : kanbanH}
       <div class="card-footer">${e.local ? `<span>Local: <strong>${e.local}</strong></span>` : `<span style="color:#d1d5db;font-style:italic">Sem local definido</span>`}</div>
     </div>
   </div>`;
@@ -1642,6 +1917,7 @@ function renderTarefasTab() {
     const raw = EVENTOS_RAW[rawIdx];
     const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
     if (!tpl) return;
+    if (raw.locacaoApenas) return;
     ensureTarefasEvento(raw);
     enriquecidos.push({ e, raw, rawIdx, tpl, pend: tarefaPendCount(raw, tpl, e) });
   });
@@ -1675,7 +1951,7 @@ function renderTarefasTab() {
 
   if (!f.length) {
     lista.innerHTML = `<div class="empty">${enriquecidos.length === 0
-      ? 'Nenhum evento com checklist disponível ainda (por enquanto só VIVA e LUMINOUS têm template de Pré-evento).'
+      ? 'Nenhum evento com checklist disponível ainda (VIVA, LUMINOUS e TRIUNFO têm template de tarefas).'
       : 'Nenhum evento encontrado com esses filtros.'}</div>`;
     return;
   }
@@ -1730,6 +2006,7 @@ function mkTarefaEventoCard(e, raw, rawIdx, tpl) {
     </div>
     <div class="card-body${isOpen ? ' open' : ''}" id="bodyT-${e.num}">
       ${secao(tpl.antes, 'Antes do evento')}
+      ${tpl.pos_baile && tpl.pos_baile.length ? secao(tpl.pos_baile, 'Pós-Baile') : ''}
       ${secao(tpl.depois, 'Depois do evento')}
     </div>
   </div>`;
