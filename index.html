@@ -1917,7 +1917,6 @@ function renderTarefasTab() {
     const raw = EVENTOS_RAW[rawIdx];
     const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
     if (!tpl) return;
-    if (raw.locacaoApenas) return;
     ensureTarefasEvento(raw);
     enriquecidos.push({ e, raw, rawIdx, tpl, pend: tarefaPendCount(raw, tpl, e) });
   });
@@ -1987,14 +1986,20 @@ function mkTarefaEventoCard(e, raw, rawIdx, tpl) {
     });
     return `<div class="tk-secao"><div class="tk-secao-titulo">${faseLabel}</div>${corpo}</div>`;
   }
-  const totalPend = todasTarefasTemplate(tpl).filter(t => {
+  const isTriunfo = (e.empresa || '').toUpperCase().includes('TRIUNFO');
+  const totalPend = raw.locacaoApenas ? 0 : todasTarefasTemplate(tpl).filter(t => {
     const v = raw.tarefas[t.id];
     const cat = t.tipo === 'multiForn' ? corCategoriaMultiForn(v) : corCategoriaTarefa(t.campos, v);
     if (cat !== 'vermelho') return false;
     const p = calcularPrazo(e, t.prazo);
     return p.dias === null || p.dias <= 0;
   }).length;
-  const bdg = totalPend ? `<span class="badge b-pend tk-evento-badge">${totalPend} pendente${totalPend > 1 ? 's' : ''}</span>` : `<span class="badge b-ok tk-evento-badge">Em dia</span>`;
+  const bdg = raw.locacaoApenas
+    ? `<span class="badge b-locacao tk-evento-badge">Locação ✓</span>`
+    : totalPend ? `<span class="badge b-pend tk-evento-badge">${totalPend} pendente${totalPend > 1 ? 's' : ''}</span>` : `<span class="badge b-ok tk-evento-badge">Em dia</span>`;
+  const corpoCard = raw.locacaoApenas
+    ? `<div style="padding:16px;color:var(--text-dim);font-size:13px;text-align:center">🔑 Marcado como <strong>Apenas Locação</strong> — sem atividades a gerenciar.</div>`
+    : `${secao(tpl.antes, 'Antes do evento')}${tpl.pos_baile && tpl.pos_baile.length ? secao(tpl.pos_baile, 'Pós-Baile') : ''}${secao(tpl.depois, 'Depois do evento')}`;
   return `<div class="card" data-evcard="${raw.num}">
     <div class="card-header" onclick="togTarefa(${e.num})">
       <div class="card-num">#${e.num}</div>
@@ -2002,12 +2007,14 @@ function mkTarefaEventoCard(e, raw, rawIdx, tpl) {
         <div class="card-title">${formatEmpresa(e.empresa)}${e.fundo}</div>
         <div class="card-meta"><span class="chip">${e.tipo}</span><span>${e.data} · ${e.dia}</span></div>
       </div>
-      <div class="card-right">${bdg}<div class="chevron${isOpen ? ' open' : ''}" id="chevT-${e.num}">▼</div></div>
+      <div class="card-right">
+        ${bdg}
+        ${isTriunfo ? `<button class="locacao-btn${e.locacaoApenas ? '' : ' inativo'}" onclick="event.stopPropagation();toggleLocacaoApenas(${e.num})">${e.locacaoApenas ? '✓ Apenas Locação' : '🔑 Marcar como Locação'}</button>` : ''}
+        <div class="chevron${isOpen ? ' open' : ''}" id="chevT-${e.num}">▼</div>
+      </div>
     </div>
     <div class="card-body${isOpen ? ' open' : ''}" id="bodyT-${e.num}">
-      ${secao(tpl.antes, 'Antes do evento')}
-      ${tpl.pos_baile && tpl.pos_baile.length ? secao(tpl.pos_baile, 'Pós-Baile') : ''}
-      ${secao(tpl.depois, 'Depois do evento')}
+      ${corpoCard}
     </div>
   </div>`;
 }
