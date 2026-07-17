@@ -271,6 +271,10 @@ details summary::-webkit-details-marker{display:none}
 .tk-linha-wrap.tk-zebra .tk-linha:hover{background:var(--surface-3)}
 .tk-modal-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-pill);width:24px;height:24px;font-size:12px;color:var(--text-mute);cursor:pointer;flex-shrink:0;font-family:inherit;line-height:1}
 .tk-modal-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.tk-fin-btn{background:none;border:1px solid var(--border);border-radius:var(--radius-pill);padding:2px 8px;font-size:10px;font-weight:600;color:var(--text-mute);cursor:pointer;flex-shrink:0;font-family:inherit;white-space:nowrap}
+.tk-fin-btn:hover{color:#276749;border-color:#276749;background:#f0fff4}
+.tk-fin-btn.ativo{color:#276749;border-color:#276749;background:#f0fff4}
+[data-theme="dark"] .tk-fin-btn:hover,[data-theme="dark"] .tk-fin-btn.ativo{color:#68d391;border-color:#68d391;background:#1a2a1e}
 .tk-chevron-mini{font-size:10px;color:var(--text-faint);flex-shrink:0;transition:transform .15s;width:14px;text-align:center}
 .tk-chevron-mini.open{transform:rotate(180deg);color:var(--text-dim)}
 .tk-inline-body{padding:14px 14px 14px 27px;background:var(--surface-2);border:1px solid var(--border-soft);border-top:none;border-radius:0 0 var(--radius-md) var(--radius-md);margin-top:-1px}
@@ -1156,6 +1160,7 @@ function metaInfoHtml(t, valores) {
 }
 function corCategoriaTarefa(campos, valores) {
   if (!valores || valores.naoHa) return 'cinza';
+  if (valores._forcarConcluido) return 'verde';
   let pior = 'verde', achou = false;
   (campos || []).forEach(c => {
     if (!campoContaProgresso(c)) return;
@@ -1171,6 +1176,7 @@ function corCategoriaTarefa(campos, valores) {
 }
 function corCategoriaMultiForn(valores) {
   if (!valores || valores.naoHa || !(valores.tipos || []).length) return 'cinza';
+  if (valores._forcarConcluido) return 'verde';
   let pior = 'verde', achou = false;
   Object.values(valores.itens || {}).forEach(item => {
     Object.entries(item || {}).forEach(([k, v]) => {
@@ -2034,6 +2040,7 @@ function mkTarefaLinha(t, raw, rawIdx, zebraIdx) {
       <span class="tk-nome">${t.nome}</span>
       <span class="tk-prazo">${prazoTxt}</span>
       <span class="tk-badge" style="background:${c.bg};color:${c.fg}">${rotulo}</span>
+      ${!valores.naoHa ? `<button class="tk-fin-btn${valores._forcarConcluido ? ' ativo' : ''}" id="tkfin-${rawIdx}-${t.id}" title="${valores._forcarConcluido ? 'Desmarcar conclusão forçada' : 'Marcar como concluído (forçar)'}" onclick="event.stopPropagation();toggleForcarConcluido(${rawIdx},'${t.id}')">${valores._forcarConcluido ? '✓ Concluído' : 'Concluir'}</button>` : ''}
       <button class="tk-modal-btn" title="Abrir em janela" onclick="event.stopPropagation();abrirModalTarefa(${rawIdx},'${t.id}')">⤢</button>
       <span class="tk-chevron-mini${aberto ? ' open' : ''}" id="tkchev-${rawIdx}-${t.id}">▾</span>
     </div>
@@ -2138,6 +2145,25 @@ function atualizarBadgePendenciasEvento(rawIdx) {
   if (!el) return;
   el.className = 'badge tk-evento-badge ' + (totalPend ? 'b-pend' : 'b-ok');
   el.textContent = totalPend ? `${totalPend} pendente${totalPend > 1 ? 's' : ''}` : 'Em dia';
+}
+
+async function toggleForcarConcluido(rawIdx, taskId) {
+  if (!exigirLogin()) return;
+  const raw = EVENTOS_RAW[rawIdx];
+  if (!raw || !raw.tarefas) return;
+  const v = raw.tarefas[taskId];
+  if (!v) return;
+  v._forcarConcluido = !v._forcarConcluido;
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
+  const t = tpl ? todasTarefasTemplate(tpl).find(x => x.id === taskId) : null;
+  if (t) atualizarLinhaTarefa(rawIdx, taskId, t);
+  const btn = document.getElementById(`tkfin-${rawIdx}-${taskId}`);
+  if (btn) {
+    btn.classList.toggle('ativo', !!v._forcarConcluido);
+    btn.textContent = v._forcarConcluido ? '✓ Concluído' : 'Concluir';
+    btn.title = v._forcarConcluido ? 'Desmarcar conclusão forçada' : 'Marcar como concluído (forçar)';
+  }
+  salvarEventoFirestore(raw);
 }
 
 // Listener delegado: qualquer alteração dentro de um corpo inline grava direto no modelo
