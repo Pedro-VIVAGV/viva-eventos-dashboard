@@ -2649,7 +2649,9 @@ function _planilhaParaRaw(wb) {
     const local   = row[7];
     const tipo    = row[9];
     const horario = row[10];
-    if (!num || !fundo || !dataRaw) continue;
+    if (!fundo || !dataRaw) continue;
+    const numInt = parseInt(num, 10);
+    if (!numInt || isNaN(numInt)) continue;
     const empresaS = (empresa || '').toString().trim();
     const tipoS    = (tipo    || '').toString().trim();
     if (_EMPRESA_EXC.has(empresaS.toLowerCase())) continue;
@@ -2657,8 +2659,11 @@ function _planilhaParaRaw(wb) {
     if (_TIPO_EXC.has(tipoS.toLowerCase())) continue;
     const dataISO = _excelDateToISO(dataRaw);
     if (!dataISO) continue;
+    const anoEvento = parseInt(dataISO.slice(0, 4), 10);
+    const anoAtual  = new Date().getFullYear();
+    if (anoEvento < anoAtual || anoEvento > anoAtual + 1) continue;
     eventos.push({
-      num:     parseInt(num, 10),
+      num:     numInt,
       fundo:   fundo.toString().trim(),
       empresa: _normEmpresaSync(empresaS),
       cidade:  (cidade  || '').toString().trim(),
