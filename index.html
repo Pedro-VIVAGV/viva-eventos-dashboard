@@ -2016,6 +2016,7 @@ function mkTarefaEventoCard(e, raw, rawIdx, tpl) {
       </div>
       <div class="card-right">
         ${bdg}
+        ${!raw.locacaoApenas ? `<button class="tk-fin-btn${totalPend === 0 ? ' ativo' : ''}" id="tkfin-ev-${raw.num}" onclick="event.stopPropagation();toggleConcluirEvento(${raw.num})">${totalPend === 0 ? '✓ Tudo concluído' : 'Concluir tudo'}</button>` : ''}
         ${isTriunfo ? `<button class="locacao-btn${e.locacaoApenas ? '' : ' inativo'}" onclick="event.stopPropagation();toggleLocacaoApenas(${e.num})">${e.locacaoApenas ? '✓ Apenas Locação' : '🔑 Marcar como Locação'}</button>` : ''}
         <div class="chevron${isOpen ? ' open' : ''}" id="chevT-${e.num}">▼</div>
       </div>
@@ -2145,6 +2146,45 @@ function atualizarBadgePendenciasEvento(rawIdx) {
   if (!el) return;
   el.className = 'badge tk-evento-badge ' + (totalPend ? 'b-pend' : 'b-ok');
   el.textContent = totalPend ? `${totalPend} pendente${totalPend > 1 ? 's' : ''}` : 'Em dia';
+}
+
+async function toggleConcluirEvento(num) {
+  if (!exigirLogin()) return;
+  const rawIdx = EVENTOS_RAW.findIndex(r => r.num === num);
+  if (rawIdx < 0) return;
+  const raw = EVENTOS_RAW[rawIdx];
+  const tpl = templateParaEmpresa(raw.empresa, raw.tipo);
+  if (!tpl) return;
+  ensureTarefasEvento(raw);
+  const tarefas = todasTarefasTemplate(tpl);
+  const todasConcluidas = tarefas.every(t => {
+    const v = raw.tarefas[t.id];
+    if (!v || v.naoHa) return true;
+    return !!v._forcarConcluido;
+  });
+  const novoEstado = !todasConcluidas;
+  tarefas.forEach(t => {
+    const v = raw.tarefas[t.id];
+    if (!v || v.naoHa) return;
+    v._forcarConcluido = novoEstado;
+  });
+  // atualiza todas as linhas visíveis
+  tarefas.forEach(t => {
+    atualizarLinhaTarefa(rawIdx, t.id, t);
+    const btn = document.getElementById(`tkfin-${rawIdx}-${t.id}`);
+    if (btn) {
+      btn.classList.toggle('ativo', novoEstado);
+      btn.textContent = novoEstado ? '✓ Concluído' : 'Concluir';
+      btn.title = novoEstado ? 'Desmarcar conclusão forçada' : 'Marcar como concluído (forçar)';
+    }
+  });
+  atualizarBadgePendenciasEvento(rawIdx);
+  const btnEv = document.getElementById(`tkfin-ev-${num}`);
+  if (btnEv) {
+    btnEv.classList.toggle('ativo', novoEstado);
+    btnEv.textContent = novoEstado ? '✓ Tudo concluído' : 'Concluir tudo';
+  }
+  salvarEventoFirestore(raw);
 }
 
 async function toggleForcarConcluido(rawIdx, taskId) {
