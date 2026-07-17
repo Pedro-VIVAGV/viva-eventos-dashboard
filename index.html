@@ -275,6 +275,10 @@ details summary::-webkit-details-marker{display:none}
 .tk-fin-btn:hover{color:#276749;border-color:#276749;background:#f0fff4}
 .tk-fin-btn.ativo{color:#276749;border-color:#276749;background:#f0fff4}
 [data-theme="dark"] .tk-fin-btn:hover,[data-theme="dark"] .tk-fin-btn.ativo{color:#68d391;border-color:#68d391;background:#1a2a1e}
+.sync-preview-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:4px}
+.sync-preview-table th,.sync-preview-table td{padding:5px 8px;text-align:left;border-bottom:1px solid var(--border)}
+.sync-preview-table th{background:var(--surface-2);font-weight:600;color:var(--text-dim);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.sync-preview-table tbody tr:hover{background:var(--surface-2)}
 .tk-chevron-mini{font-size:10px;color:var(--text-faint);flex-shrink:0;transition:transform .15s;width:14px;text-align:center}
 .tk-chevron-mini.open{transform:rotate(180deg);color:var(--text-dim)}
 .tk-inline-body{padding:14px 14px 14px 27px;background:var(--surface-2);border:1px solid var(--border-soft);border-top:none;border-radius:0 0 var(--radius-md) var(--radius-md);margin-top:-1px}
@@ -309,6 +313,7 @@ details summary::-webkit-details-marker{display:none}
     <span class="tbtn sync-status" id="sync-status" style="display:none"></span>
     <button class="tbtn add" onclick="abrirModalEvento(null)">+ Evento</button>
     <button class="tbtn" onclick="carregar()">↻ Atualizar</button>
+    <button class="tbtn" id="btn-sync-planilha" onclick="abrirSyncPlanilha()" style="display:none">📋 Planilha</button>
     <button class="tbtn" id="btn-importar" onclick="abrir('m-importar')" style="display:none">Importar</button>
     <button class="tbtn" id="btn-auth" onclick="onClickAuthBtn()">Entrar</button>
     <button class="tbtn theme" id="btn-theme" onclick="alternarTema()" title="Alternar tema claro/escuro">🌙</button>
@@ -398,6 +403,31 @@ details summary::-webkit-details-marker{display:none}
     <div class="modal-ft">
       <button class="btn btn-ghost" onclick="fechar('m-login')">Cancelar</button>
       <button class="btn btn-primary" onclick="fazerLogin()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SYNC PLANILHA -->
+<div class="overlay" id="m-sync-planilha">
+  <div class="modal" style="max-width:740px">
+    <div class="modal-hd">
+      <div class="modal-title">Sincronizar Planilha de Datas</div>
+      <button class="modal-x" onclick="fechar('m-sync-planilha')">✕</button>
+    </div>
+    <div class="modal-bd">
+      <div class="fr hint">Selecione o arquivo Excel de datas. Apenas eventos novos (não existentes no painel) serão inseridos — os já cadastrados não são alterados.</div>
+      <div class="fr">
+        <label class="btn btn-ghost" style="cursor:pointer;display:inline-block">
+          Selecionar arquivo .xlsx
+          <input type="file" id="sync-planilha-input" accept=".xlsx,.xls" style="display:none" onchange="processarArquivoExcel(this.files[0])">
+        </label>
+        <span id="sync-planilha-nome" style="margin-left:10px;font-size:13px;color:var(--text-mute)"></span>
+      </div>
+      <div id="sync-planilha-preview"></div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn btn-ghost" onclick="fechar('m-sync-planilha')">Fechar</button>
+      <button class="btn btn-primary" id="btn-sync-confirmar" onclick="confirmarSyncPlanilha()" style="display:none">Inserir eventos novos</button>
     </div>
   </div>
 </div>
@@ -1245,12 +1275,15 @@ function onClickAuthBtn() {
 function atualizarUIAuth() {
   const btn = document.getElementById('btn-auth');
   const btnImportar = document.getElementById('btn-importar');
+  const btnSyncPlanilha = document.getElementById('btn-sync-planilha');
   if (usuarioLogado) {
     btn.textContent = usuarioLogado.email + ' · Sair';
     if (btnImportar) btnImportar.style.display = '';
+    if (btnSyncPlanilha) btnSyncPlanilha.style.display = '';
   } else {
     btn.textContent = 'Entrar';
     if (btnImportar) btnImportar.style.display = 'none';
+    if (btnSyncPlanilha) btnSyncPlanilha.style.display = 'none';
   }
 }
 
@@ -2549,6 +2582,167 @@ function atualizarIconeTema() {
 atualizarIconeTema();
 
 // ── INICIALIZAÇÃO ────────────────────────────────────────────────────────────
+// ── SYNC PLANILHA EXCEL ──────────────────────────────────────────────────────
+let _syncEventosNovos = [];
+
+async function _carregarSheetJS() {
+  if (window.XLSX) return;
+  await new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js';
+    s.onload = resolve; s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+function abrirSyncPlanilha() {
+  if (!exigirLogin()) return;
+  _syncEventosNovos = [];
+  document.getElementById('sync-planilha-preview').innerHTML = '';
+  document.getElementById('sync-planilha-nome').textContent = '';
+  document.getElementById('btn-sync-confirmar').style.display = 'none';
+  const inp = document.getElementById('sync-planilha-input');
+  if (inp) inp.value = '';
+  abrir('m-sync-planilha');
+}
+
+const _EMPRESA_INC  = new Set(['viva','luminous','triunfo','tá dentro','ta dentro']);
+const _EMPRESA_EXC  = new Set(['particular','comissão','comissao','orçamento','orcamento',
+  'agenda','agencia','agência','pacote','-','','rodrigo','mandrake','atletica','atlética','franqueadora']);
+const _TIPO_EXC     = new Set(['não agendar','nao agendar','particular']);
+const _EMPRESA_NORM = {'luminous':'LUMINOUS','viva':'VIVA','triunfo':'TRIUNFO',
+  'tá dentro':'Tá Dentro','ta dentro':'Tá Dentro'};
+
+function _normEmpresaSync(s) {
+  const k = (s || '').trim().toLowerCase();
+  return _EMPRESA_NORM[k] || (s || '').trim().toUpperCase();
+}
+
+function _excelDateToISO(v) {
+  if (typeof v === 'number') {
+    const ms = Math.round((v - 25569) * 86400 * 1000);
+    const d = new Date(ms);
+    const y = d.getUTCFullYear(), m = d.getUTCMonth() + 1, day = d.getUTCDate();
+    return `${y}-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  }
+  if (typeof v === 'string') {
+    const p = v.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+    if (p) return `${p[3]}-${p[2]}-${p[1]}`;
+    if (/^\d{4}-\d{2}-\d{2}/.test(v)) return v.slice(0,10);
+  }
+  return null;
+}
+
+function _planilhaParaRaw(wb) {
+  const wsName = wb.SheetNames.find(n => n.toLowerCase().includes('contato')) || wb.SheetNames[0];
+  const ws = wb.Sheets[wsName];
+  const rows = XLSX.utils.sheet_to_json(ws, { header:1, raw:true, defval:null });
+  const eventos = [];
+  for (let i = 5; i < rows.length; i++) {
+    const row = rows[i];
+    if (!row) continue;
+    const num     = row[1];
+    const cidade  = row[2];
+    const empresa = row[3];
+    const fundo   = row[4];
+    const dataRaw = row[5];
+    const local   = row[7];
+    const tipo    = row[9];
+    const horario = row[10];
+    if (!num || !fundo || !dataRaw) continue;
+    const empresaS = (empresa || '').toString().trim();
+    const tipoS    = (tipo    || '').toString().trim();
+    if (_EMPRESA_EXC.has(empresaS.toLowerCase())) continue;
+    if (!_EMPRESA_INC.has(empresaS.toLowerCase())) continue;
+    if (_TIPO_EXC.has(tipoS.toLowerCase())) continue;
+    const dataISO = _excelDateToISO(dataRaw);
+    if (!dataISO) continue;
+    eventos.push({
+      num:     parseInt(num, 10),
+      fundo:   fundo.toString().trim(),
+      empresa: _normEmpresaSync(empresaS),
+      cidade:  (cidade  || '').toString().trim(),
+      data:    dataISO,
+      tipo:    tipoS,
+      horario: (horario || '').toString().trim(),
+      local:   (local   || '').toString().trim(),
+    });
+  }
+  return eventos;
+}
+
+async function processarArquivoExcel(file) {
+  if (!file) return;
+  const preview = document.getElementById('sync-planilha-preview');
+  const btnConf = document.getElementById('btn-sync-confirmar');
+  const nomeEl  = document.getElementById('sync-planilha-nome');
+  if (nomeEl) nomeEl.textContent = file.name;
+  preview.innerHTML = '<div class="loading">Lendo planilha…</div>';
+  btnConf.style.display = 'none';
+  _syncEventosNovos = [];
+  try {
+    await _carregarSheetJS();
+    const buf = await file.arrayBuffer();
+    const wb  = XLSX.read(buf, { type:'array', raw:true });
+    const daPlanilha = _planilhaParaRaw(wb);
+    const chaves = new Set(EVENTOS_RAW.map(r =>
+      `${(r.fundo||'').trim().toUpperCase()}|${(r.empresa||'').trim().toUpperCase()}|${r.data}`
+    ));
+    const novos = daPlanilha.filter(ev =>
+      !chaves.has(`${ev.fundo.toUpperCase()}|${ev.empresa.toUpperCase()}|${ev.data}`)
+    );
+    if (!novos.length) {
+      preview.innerHTML = '<div class="fr" style="color:#276749;font-weight:600;padding:8px 0">✓ Nenhum evento novo — painel já está atualizado!</div>';
+      return;
+    }
+    _syncEventosNovos = novos;
+    const dataFmt = iso => iso.split('-').reverse().join('/');
+    const rows = novos.map(ev => `<tr>
+      <td>#${ev.num}</td>
+      <td>${ev.empresa}</td>
+      <td>${ev.cidade}</td>
+      <td style="white-space:nowrap">${dataFmt(ev.data)}</td>
+      <td>${ev.tipo}</td>
+      <td>${ev.fundo}</td>
+    </tr>`).join('');
+    preview.innerHTML = `
+      <div style="margin:12px 0 6px;font-size:13px;font-weight:600;color:var(--text)">${novos.length} evento${novos.length>1?'s':''} novo${novos.length>1?'s':''} encontrado${novos.length>1?'s':''}:</div>
+      <div style="overflow-x:auto;max-height:340px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-md)">
+        <table class="sync-preview-table">
+          <thead><tr><th>#</th><th>Empresa</th><th>Cidade</th><th>Data</th><th>Tipo</th><th>Nome do evento</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+    btnConf.style.display = '';
+  } catch(err) {
+    preview.innerHTML = `<div class="fr" style="color:#c53030;padding:8px 0">Erro ao ler planilha: ${err.message}</div>`;
+  }
+}
+
+async function confirmarSyncPlanilha() {
+  if (!_syncEventosNovos.length || !exigirLogin()) return;
+  const btnConf = document.getElementById('btn-sync-confirmar');
+  btnConf.disabled = true; btnConf.textContent = `Inserindo ${_syncEventosNovos.length} evento${_syncEventosNovos.length>1?'s':''}…`;
+  try {
+    await aguardarFirebase();
+    const FB = window.FB;
+    const batch = FB.writeBatch(FB.db);
+    _syncEventosNovos.forEach(ev => {
+      const doc = { ...ev, tarefas:{}, servicos:{}, locacaoApenas:false };
+      batch.set(FB.doc(FB.db, 'eventos', String(ev.num)), doc);
+    });
+    await batch.commit();
+    const total = _syncEventosNovos.length;
+    _syncEventosNovos = [];
+    fechar('m-sync-planilha');
+    await carregar();
+    toast(`${total} evento${total>1?'s':''} inserido${total>1?'s':''} com sucesso.`, 'ok');
+  } catch(err) {
+    btnConf.disabled = false; btnConf.textContent = 'Inserir eventos novos';
+    toast('Erro ao inserir: ' + err.message, 'err');
+  }
+}
+
 aguardarFirebase().then(() => {
   window.FB.onAuthStateChanged(window.FB.auth, user => {
     usuarioLogado = user;
