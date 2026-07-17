@@ -2584,6 +2584,7 @@ atualizarIconeTema();
 // ── INICIALIZAÇÃO ────────────────────────────────────────────────────────────
 // ── SYNC PLANILHA EXCEL ──────────────────────────────────────────────────────
 let _syncEventosNovos = [];
+let _syncNumErrado    = [];
 
 async function _carregarSheetJS() {
   if (window.XLSX) return;
@@ -2685,66 +2686,108 @@ async function processarArquivoExcel(file) {
   preview.innerHTML = '<div class="loading">Lendo planilha…</div>';
   btnConf.style.display = 'none';
   _syncEventosNovos = [];
+  _syncNumErrado    = [];
   try {
     await _carregarSheetJS();
     const buf = await file.arrayBuffer();
     const wb  = XLSX.read(buf, { type:'array', raw:true });
     const daPlanilha = _planilhaParaRaw(wb);
-    const chaves = new Set(EVENTOS_RAW.map(r =>
-      `${(r.fundo||'').trim().toUpperCase()}|${(r.empresa||'').trim().toUpperCase()}|${r.data}`
-    ));
-    const novos = daPlanilha.filter(ev =>
-      !chaves.has(`${ev.fundo.toUpperCase()}|${ev.empresa.toUpperCase()}|${ev.data}`)
-    );
-    if (!novos.length) {
-      preview.innerHTML = '<div class="fr" style="color:#276749;font-weight:600;padding:8px 0">✓ Nenhum evento novo — painel já está atualizado!</div>';
+
+    // Dois mapas de lookup a partir do Firestore atual
+    const numExistentes  = new Set(EVENTOS_RAW.map(r => r.num));
+    const chaveParaNum   = {};
+    EVENTOS_RAW.forEach(r => {
+      const k = `${(r.fundo||'').trim().toUpperCase()}|${(r.empresa||'').trim().toUpperCase()}|${r.data}`;
+      chaveParaNum[k] = r.num;
+    });
+
+    const novos = [], numErrado = [];
+    daPlanilha.forEach(ev => {
+      if (numExistentes.has(ev.num)) return; // num correto já existe
+      const chave = `${ev.fundo.toUpperCase()}|${ev.empresa.toUpperCase()}|${ev.data}`;
+      const numAtual = chaveParaNum[chave];
+      if (numAtual !== undefined) {
+        numErrado.push({ ...ev, numAtual }); // existe mas com num errado
+      } else {
+        novos.push(ev); // completamente novo
+      }
+    });
+
+    _syncEventosNovos = novos;
+    _syncNumErrado    = numErrado;
+
+    if (!novos.length && !numErrado.length) {
+      preview.innerHTML = '<div class="fr" style="color:#276749;font-weight:600;padding:8px 0">✓ Painel já está sincronizado com a planilha!</div>';
       return;
     }
-    _syncEventosNovos = novos;
+
     const dataFmt = iso => iso.split('-').reverse().join('/');
-    const rows = novos.map(ev => `<tr>
-      <td>#${ev.num}</td>
-      <td>${ev.empresa}</td>
-      <td>${ev.cidade}</td>
-      <td style="white-space:nowrap">${dataFmt(ev.data)}</td>
-      <td>${ev.tipo}</td>
-      <td>${ev.fundo}</td>
-    </tr>`).join('');
-    preview.innerHTML = `
-      <div style="margin:12px 0 6px;font-size:13px;font-weight:600;color:var(--text)">${novos.length} evento${novos.length>1?'s':''} novo${novos.length>1?'s':''} encontrado${novos.length>1?'s':''}:</div>
-      <div style="overflow-x:auto;max-height:340px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-md)">
+    const mkTabela = (lista, colunas) => `
+      <div style="overflow-x:auto;max-height:260px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-md)">
         <table class="sync-preview-table">
-          <thead><tr><th>#</th><th>Empresa</th><th>Cidade</th><th>Data</th><th>Tipo</th><th>Nome do evento</th></tr></thead>
-          <tbody>${rows}</tbody>
+          <thead><tr>${colunas.map(c=>`<th>${c}</th>`).join('')}</tr></thead>
+          <tbody>${lista.map(ev => `<tr>
+            <td>#${ev.num}</td>
+            <td>${ev.empresa}</td>
+            <td>${ev.cidade}</td>
+            <td style="white-space:nowrap">${dataFmt(ev.data)}</td>
+            <td>${ev.tipo}</td>
+            <td>${ev.fundo}</td>
+            ${ev.numAtual !== undefined ? `<td style="color:#c53030">estava como #${ev.numAtual}</td>` : ''}
+          </tr>`).join('')}</tbody>
         </table>
       </div>`;
+
+    let html = '';
+    if (novos.length) {
+      html += `<div style="margin:12px 0 4px;font-size:13px;font-weight:600;color:var(--text)">➕ ${novos.length} evento${novos.length>1?'s':''} novo${novos.length>1?'s':''}:</div>`;
+      html += mkTabela(novos, ['#','Empresa','Cidade','Data','Tipo','Nome do evento']);
+    }
+    if (numErrado.length) {
+      html += `<div style="margin:14px 0 4px;font-size:13px;font-weight:600;color:var(--text)">🔢 ${numErrado.length} evento${numErrado.length>1?'s':''} com número errado (serão renumerados):</div>`;
+      html += mkTabela(numErrado, ['# correto','Empresa','Cidade','Data','Tipo','Nome do evento','Situação']);
+    }
+    preview.innerHTML = html;
     btnConf.style.display = '';
+    btnConf.textContent = 'Aplicar tudo';
   } catch(err) {
     preview.innerHTML = `<div class="fr" style="color:#c53030;padding:8px 0">Erro ao ler planilha: ${err.message}</div>`;
   }
 }
 
 async function confirmarSyncPlanilha() {
-  if (!_syncEventosNovos.length || !exigirLogin()) return;
+  if (!_syncEventosNovos.length && !_syncNumErrado.length) return;
+  if (!exigirLogin()) return;
   const btnConf = document.getElementById('btn-sync-confirmar');
-  btnConf.disabled = true; btnConf.textContent = `Inserindo ${_syncEventosNovos.length} evento${_syncEventosNovos.length>1?'s':''}…`;
+  const totalOps = _syncEventosNovos.length + _syncNumErrado.length;
+  btnConf.disabled = true; btnConf.textContent = `Aplicando ${totalOps} alteraç${totalOps>1?'ões':'ão'}…`;
   try {
     await aguardarFirebase();
     const FB = window.FB;
     const batch = FB.writeBatch(FB.db);
+    // Inserir eventos novos
     _syncEventosNovos.forEach(ev => {
-      const doc = { ...ev, tarefas:{}, servicos:{}, locacaoApenas:false };
-      batch.set(FB.doc(FB.db, 'eventos', String(ev.num)), doc);
+      batch.set(FB.doc(FB.db, 'eventos', String(ev.num)), { ...ev, tarefas:{}, servicos:{}, locacaoApenas:false });
+    });
+    // Renumerar eventos com num errado: copiar dados do doc antigo para id correto, deletar antigo
+    _syncNumErrado.forEach(ev => {
+      const oldRaw = EVENTOS_RAW.find(r => r.num === ev.numAtual);
+      if (!oldRaw) return;
+      batch.set(FB.doc(FB.db, 'eventos', String(ev.num)), { ...oldRaw, num: ev.num });
+      batch.delete(FB.doc(FB.db, 'eventos', String(ev.numAtual)));
     });
     await batch.commit();
-    const total = _syncEventosNovos.length;
-    _syncEventosNovos = [];
+    const nNovos = _syncEventosNovos.length, nRen = _syncNumErrado.length;
+    _syncEventosNovos = []; _syncNumErrado = [];
     fechar('m-sync-planilha');
     await carregar();
-    toast(`${total} evento${total>1?'s':''} inserido${total>1?'s':''} com sucesso.`, 'ok');
+    const partes = [];
+    if (nNovos) partes.push(`${nNovos} inserido${nNovos>1?'s':''}`);
+    if (nRen)   partes.push(`${nRen} renumerado${nRen>1?'s':''}`);
+    toast(partes.join(', ') + '.', 'ok');
   } catch(err) {
-    btnConf.disabled = false; btnConf.textContent = 'Inserir eventos novos';
-    toast('Erro ao inserir: ' + err.message, 'err');
+    btnConf.disabled = false; btnConf.textContent = 'Aplicar tudo';
+    toast('Erro ao sincronizar: ' + err.message, 'err');
   }
 }
 
